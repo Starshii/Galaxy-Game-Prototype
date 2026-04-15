@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bybluwhlvgu8w"]
+
+[ext_resource type="Script" uid="uid://b1vdwdkurlrbl" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dat8s3ovwjecu" path="res://cameraRaycast.gd" id="2_onrkg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sh265"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4flbx"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("telescopeCam", "playerCam")]
+script = ExtResource("1_4flbx")
+telescopeCam = NodePath("Head/TelescopeCam")
+playerCam = NodePath("Head/PlayerCam")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_sh265")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4flbx")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="PlayerCam" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.8862036, 0.46329606, 0, -0.46329606, 0.8862036, 0, 2.3500948, 1.8966248)
+
+[node name="TelescopeCam" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.99641067, -0.08465177, 0, 0.08465177, 0.99641067, 0, 0.1811781, -0.24123764)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/TelescopeCam"]
+transform = Transform3D(1, 0, 0, 0, 0.084651716, -0.99641055, 0, 0.99641055, 0.084651716, 0, -0.16010657, 0.25570878)
+exclude_parent = false
+target_position = Vector3(0, -100, 0)
+script = ExtResource("2_onrkg")

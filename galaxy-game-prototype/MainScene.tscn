@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dckcf16tirldj"]
+
+[ext_resource type="PackedScene" uid="uid://dtdmlh7ld6ab1" path="res://ground.tscn" id="1_x4av3"]
+[ext_resource type="PackedScene" uid="uid://bybluwhlvgu8w" path="res://player.tscn" id="2_rpqi1"]
+[ext_resource type="PackedScene" uid="uid://bol2whvi28oop" path="res://telescope.tscn" id="3_rpqi1"]
+[ext_resource type="PackedScene" uid="uid://fxposg04agk0" path="res://planet.tscn" id="4_uxrcv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.9788674, -0.16993296, 0.1137602, 0, 0.55629563, 0.8309845, -0.20449595, 0.81342363, -0.5445397, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ground" parent="." instance=ExtResource("1_x4av3")]
+transform = Transform3D(12.861747, 0, 0, 0, 0.40545946, 0, 0, 0, 17.2692, 0, 0, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("2_rpqi1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, 1.1868709, -0.001921773)
+
+[node name="Node3D" parent="." instance=ExtResource("3_rpqi1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06343166, 0.7027297, -1.9117045)
+
+[node name="Planet" parent="." instance=ExtResource("4_uxrcv")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 21.799698, 11.515104, 6.003317)
+
+[node name="Planet2" parent="." instance=ExtResource("4_uxrcv")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 16.99682, 11.515104, -33.787292)
+
+[node name="Planet3" parent="." instance=ExtResource("4_uxrcv")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -28.871584, 11.515104, -33.787292)
+
+[node name="Planet4" parent="." instance=ExtResource("4_uxrcv")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -28.871584, 11.515104, -1.4564323)

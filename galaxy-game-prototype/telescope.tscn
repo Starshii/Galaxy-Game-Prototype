@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bol2whvi28oop"]
+
+[ext_resource type="Script" uid="uid://bouyikp60qtu2" path="res://telescope.gd" id="1_mi1wi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2og4"]
+size = Vector3(2.2377853, 1.8260498, 2.2994995)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mi1wi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mi1wi"]
+
+[node name="Node3D" type="Area3D"]
+script = ExtResource("1_mi1wi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04946518, 0.4130249, 0.028045654)
+shape = SubResource("BoxShape3D_q2og4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mi1wi")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_mi1wi")

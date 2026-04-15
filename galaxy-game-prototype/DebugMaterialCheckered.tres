@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c0sur8dtu0ihq"]
+
+[ext_resource type="Texture2D" uid="uid://bq3gaimofskgp" path="res://Sprites/test_checkered.png" id="1_t42wt"]
+
+[resource]
+albedo_color = Color(0.98141986, 0.61727136, 0.8622934, 1)
+albedo_texture = ExtResource("1_t42wt")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
