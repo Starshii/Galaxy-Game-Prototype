@@ -1,0 +1,482 @@
+[gd_scene load_steps=18 format=3 uid="uid://bbbelf003rey0"]
+
+[ext_resource type="Script" uid="uid://dw7b0jyuluyi4" path="res://gravity_area.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://brulharhismkn" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ht0m38ctmh81" path="res://gameplay_camera.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bp2y2duvb6unb" path="res://bunny_enemy.tscn" id="2_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://c8iphkv2rxlgt" path="res://Super Mario Galaxy 2 Soundtrack - Sweet Mystery Galaxy.mp3" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://c6g60u6iinfpj" path="res://pushblock.tscn" id="6_272bh"]
+[ext_resource type="Script" uid="uid://bavt8xns8ax2e" path="res://animation_player.gd" id="7_5vw27"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(6, 10, 12)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7dm0k"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ig7tw"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ig7tw"]
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+resource_name = "pushblockanim"
+length = 60.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.40000004,
+"stream": ExtResource("5_7mycd")
+}],
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BunnyEnemy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.72, 2.62, 3.3, 4.2, 4.97, 5.87, 6.55, 7.4500003, 8.23, 9.129999, 9.82, 10.719999, 11.46, 12.36, 13.07, 13.969999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("PushBlock")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.71, 2.5766668, 3.3, 4.1666665, 4.97, 5.8366666, 6.56, 7.4266667, 8.24, 9.106667, 9.84, 10.706667, 11.47, 12.336667, 13.09, 13.956667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}, {
+"args": [],
+"method": &"Push"
+}, {
+"args": [],
+"method": &"PushBack"
+}]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PushBlock:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0, -9.061008, -0.14666668, 4.0205503, 0, 0, 15.06229, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.88, 1.7, 2.5666668, 3.3866668, 4.17, 4.9900002, 5.856667, 6.6766667, 7.43, 8.25, 9.116667, 9.9366665, 10.719999, 11.54, 12.406667, 13.226666)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PushBlock:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0, 7.467718, -0.14666668, 0, 0, 0, 7.467718, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.88, 1.7, 2.5666668, 3.3866668, 4.17, 4.9900002, 5.856667, 6.6766667, 7.43, 8.25, 9.116667, 9.9366665, 10.719999, 11.54, 12.406667, 13.226666)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PushBlock:position:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0, -60.262405, -0.14666668, 0, 0, 0, -60.262405, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.88, 1.7, 2.5666668, 3.3866668, 4.17, 4.9900002, 5.856667, 6.6766667, 7.43, 8.25, 9.116667, 9.9366665, 10.719999, 11.54, 12.406667, 13.226666)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PushBlock2:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0, -28.548492, -0.14833334, 2.3953197, 0, 0, -14.176575, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.89, 1.71, 2.5666668, 3.3866668, 4.166667, 4.986667, 5.866667, 6.686667, 7.42, 8.24, 9.11, 9.929999, 10.71, 11.53, 12.386667, 13.206667, 13.986668, 14.806667, 15.6866665, 16.506668, 17.24, 18.06, 18.93, 19.75)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PushBlock2:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0, 5.508, -0.14833334, 0, 0, 0, 5.508, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.89, 1.71, 2.5666668, 3.3866668, 4.166667, 4.986667, 5.866667, 6.686667, 7.42, 8.24, 9.11, 9.929999, 10.71, 11.53, 12.386667, 13.206667, 13.986668, 14.806667, 15.6866665, 16.506668, 17.24, 18.06, 18.93, 19.75)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PushBlock2:position:z")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0, -93.102135, -0.14833334, 0, 0, 0, -93.102135, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.89, 1.71, 2.5666668, 3.3866668, 4.166667, 4.986667, 5.866667, 6.686667, 7.42, 8.24, 9.11, 9.929999, 10.71, 11.53, 12.386667, 13.206667, 13.986668, 14.806667, 15.6866665, 16.506668, 17.24, 18.06, 18.93, 19.75)
+}
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PushBlock:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15.06229, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PushBlock:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PushBlock:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-60.262405, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PushBlock2:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-28.548492, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PushBlock2:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PushBlock2:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-93.102135, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kek77"]
+_data = {
+&"RESET": SubResource("Animation_7mycd"),
+&"pushblockanim": SubResource("Animation_5vw27")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BunnyEnemy" parent="." instance=ExtResource("2_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4266863, 23.26113, -118.97794)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(6, 1, 6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 2, -5)
+size = Vector3(6, 1, 6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 2.0590687, 0, 3.9611816, -19.109451)
+size = Vector3(6, 1, 11.96582)
+
+[node name="GravityArea" type="Area3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.961182, -20.759022)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/GravityArea"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="GravityArea2" type="Area3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -1.0388184, -20.759022)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/GravityArea2"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="GravityArea3" type="Area3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -5.430292, -2.9850283)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/GravityArea3"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(4.2936673, 0, 0, 0, 1.2967719, 0, 0, 0, 4.9121447, -2.466116, 3.9611816, -64.451965)
+size = Vector3(13.746216, 1, 11.96582)
+
+[node name="GravityArea2" type="Area3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(8.993969, 0, 0, 0, 0.99999994, 0, 0, 0, 5.1948705, 0, -1.0388184, -64.65956)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D4/GravityArea2"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="GravityArea" type="Area3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(8.993969, 0, 0, 0, 1, 0, 0, 0, 5.194871, 0, 8.961182, -64.65956)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D4/GravityArea"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.9072322, 0, 0, 0, 1.8061093, -1.5113693, 0, 1.1921763, 2.2896762, 12.928077, 12.27701, -107.17612)
+size = Vector3(13.746216, 1, 11.96582)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(2.3191369, 0, 0, 0, 28.19379, 0, 0, 0, 2.1726403, -15.760363, 12.277012, -106.75997)
+size = Vector3(13.746216, 1, 11.96582)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.686917, 0)
+collision_layer = 3
+collision_mask = 3
+floor_snap_length = 0.5
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("SphereShape3D_7dm0k")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("SphereMesh_ig7tw")
+
+[node name="Nose" type="MeshInstance3D" parent="Player/Mesh"]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0.045690536, -0.535)
+mesh = SubResource("PrismMesh_ig7tw")
+
+[node name="FIrstPerson" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355)
+
+[node name="TelescopeRay" type="RayCast3D" parent="Player/FIrstPerson"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-06, -1, 0, 100, -4.371139e-08, 0, 0, 0.355)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5867399, -0.8097755, 0, 0.8097755, 0.5867399, 0, 0, 0, 1, 0, 0.16860318, 5.704989)
+current = true
+script = ExtResource("2_0xm2m")
+
+[node name="GravityFields" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kek77")
+}
+autoplay = "pushblockanim"
+script = ExtResource("7_5vw27")
+
+[node name="PushBlock" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.06229, 7.467718, -60.262405)
+
+[node name="PushBlock2" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(0.6787974, 0, 0, 0, 0.1195712, 0, 0, 0, 0.36160314, -28.548492, 7.467718, -93.102135)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

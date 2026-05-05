@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dtdmlh7ld6ab1"]
-
-[node name="ground" type="CSGCombiner3D"]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
