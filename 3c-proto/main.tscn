@@ -30,6 +30,75 @@ size = Vector3(6, 10, 12)
 
 [sub_resource type="PrismMesh" id="PrismMesh_ig7tw"]
 
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PushBlock:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15.06229, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PushBlock:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PushBlock:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-60.262405, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PushBlock2:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-28.548492, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PushBlock2:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PushBlock2:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-93.102135, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_5vw27"]
 resource_name = "pushblockanim"
 length = 60.0
@@ -256,75 +325,6 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.89, 1.71, 2.5666668, 3.3866668, 4.166667, 4.986667, 5.866667, 6.686667, 7.42, 8.24, 9.11, 9.929999, 10.71, 11.53, 12.386667, 13.206667, 13.986668, 14.806667, 15.6866665, 16.506668, 17.24, 18.06, 18.93, 19.75)
 }
 
-[sub_resource type="Animation" id="Animation_7mycd"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PushBlock:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(15.06229, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PushBlock:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PushBlock:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-60.262405, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PushBlock2:position:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-28.548492, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PushBlock2:position:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(7.467718, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PushBlock2:position:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-93.102135, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kek77"]
 _data = {
 &"RESET": SubResource("Animation_7mycd"),
@@ -428,8 +428,13 @@ size = Vector3(13.746216, 1, 11.96582)
 transform = Transform3D(2.3191369, 0, 0, 0, 28.19379, 0, 0, 0, 2.1726403, -15.760363, 12.277012, -106.75997)
 size = Vector3(13.746216, 1, 11.96582)
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5867399, -0.8097755, 0, 0.8097755, 0.5867399, 0, 0, 0, 1, 0, 0.16860342, 5.704989)
+current = true
+script = ExtResource("2_0xm2m")
+
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.686917, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90129745, 0)
 collision_layer = 3
 collision_mask = 3
 floor_snap_length = 0.5
@@ -439,22 +444,12 @@ script = ExtResource("1_ig7tw")
 shape = SubResource("SphereShape3D_7dm0k")
 
 [node name="Mesh" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.99999994, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("SphereMesh_ig7tw")
 
 [node name="Nose" type="MeshInstance3D" parent="Player/Mesh"]
 transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0.045690536, -0.535)
 mesh = SubResource("PrismMesh_ig7tw")
-
-[node name="FIrstPerson" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.355)
-
-[node name="TelescopeRay" type="RayCast3D" parent="Player/FIrstPerson"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-06, -1, 0, 100, -4.371139e-08, 0, 0, 0.355)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.5867399, -0.8097755, 0, 0.8097755, 0.5867399, 0, 0, 0, 1, 0, 0.16860318, 5.704989)
-current = true
-script = ExtResource("2_0xm2m")
 
 [node name="GravityFields" type="Node" parent="."]
 

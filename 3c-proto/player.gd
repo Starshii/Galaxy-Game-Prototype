@@ -47,6 +47,7 @@ var gravity : float
 
 func _ready() -> void:
 	facing_direction = -global_basis.z
+	facing_direction_smoothed = facing_direction
 	up_direction = Vector3.UP
 	up_direction_linear = up_direction
 	up_direction_smoothed = up_direction_linear
@@ -70,8 +71,6 @@ func remove_gravity_area(gravity_area : GravityArea) -> void:
 
 
 func _physics_process(delta: float) -> void:
-
-	
 	if len(gravity_areas) > 0:
 		current_gravity_area = gravity_areas[0]
 	
@@ -143,10 +142,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		directional_input = new_directional_length * directional_input.normalized()
 		directional_input_player = VectorUtil.make_perpendicular(directional_input_player, up_direction).normalized() * new_directional_length
-	state_machine.update(self, delta)
 	
 	facing_direction_smoothed = VectorUtil.make_perpendicular(facing_direction_smoothed, up_direction_linear).normalized()
 	global_basis = Basis(facing_direction_smoothed.cross(up_direction_linear).normalized(), up_direction_linear, -facing_direction_smoothed)
+	
+	state_machine.check_state(self)
+	state_machine.update(self, delta)
 	
 	if velocity.length_squared() > MAX_VELOCITY * MAX_VELOCITY:
 		velocity = velocity.normalized() * MAX_VELOCITY
@@ -156,6 +157,7 @@ func _physics_process(delta: float) -> void:
 
 class PlayerGroundState extends State:
 	var name = "Ground"
+	
 	
 	var current_walking_speed : float
 	
@@ -263,6 +265,7 @@ class PlayerFallState extends PlayerAirState:
 		return null
 	
 	func on_enter(player : Node):
+		print("fall")
 		player.gravity = player.DEFAULT_GRAVITY
 	
 	func update(player : Node, delta : float):
