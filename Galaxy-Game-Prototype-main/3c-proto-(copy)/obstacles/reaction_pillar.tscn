@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b7k0oaiesji85"]
+
+[sub_resource type="GDScript" id="GDScript_7o15y"]
+script/source = "extends AnimatableBody3D
+
+@export var pathfollow: PathFollow3D
+@onready var springTimer: Timer = $SpringTimer
+@onready var collision: CollisionShape3D = $Area3D/CollisionShape3D
+
+var canBoost: bool
+var isColliding: bool
+var linear_velocity = PhysicsServer3D.body_get_state(self.get_rid(), PhysicsServer3D.BODY_STATE_LINEAR_VELOCITY)
+var lastVelocity: Vector3
+
+var max_progress: float = 1
+var lerpspeed: float = 0.1
+
+func _ready() -> void:
+	pass
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"sound\"):
+		MoveIt()
+		
+		
+		
+	linear_velocity = PhysicsServer3D.body_get_state(self.get_rid(), PhysicsServer3D.BODY_STATE_LINEAR_VELOCITY)
+	if linear_velocity.x > 0 or linear_velocity.y > 0 or linear_velocity.z > 0:
+		print(\"its trueeee\")
+		lastVelocity = linear_velocity
+	print(lastVelocity)
+	
+func MoveIt():
+	springTimer.start()
+	var tween = create_tween()
+	tween.tween_property(pathfollow, \"progress_ratio\", 1, lerpspeed)
+	tween.tween_property(pathfollow, \"progress_ratio\", 0, lerpspeed *8)
+
+func _on_spring_timer_timeout() -> void:
+	pass
+	
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group(\"bounceable\"):
+		isColliding = true
+		
+	
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group(\"bounceable\"):
+		print(\"should jump\")
+		body.velocity += lastVelocity
+		
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7o15y"]
+size = Vector3(3, 15, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sxoq4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxoq4"]
+
+[node name="ReactionPillar" type="AnimatableBody3D" unique_id=2020100416 groups=["bounceable"]]
+script = SubResource("GDScript_7o15y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=843155080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+shape = SubResource("BoxShape3D_7o15y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1276598679]
+transform = Transform3D(2.9699998, 0, 0, 0, 14.866599, 0, 0, 0, 2.9721966, 0, 7.0420156, 0)
+mesh = SubResource("BoxMesh_sxoq4")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=729048794]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=627772295]
+transform = Transform3D(1.025, 0, 0, 0, 1.025, 0, 0, 0, 1.025, 0, 0, 0)
+shape = SubResource("BoxShape3D_sxoq4")
+
+[node name="SpringTimer" type="Timer" parent="." unique_id=1245394513]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="SpringTimer" to="." method="_on_spring_timer_timeout"]

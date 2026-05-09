@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://d8be41vfar5g"
+path="res://.godot/imported/icon.png-18bfa6b730b5d9706b72ed41da4437af.image"
+
+[deps]
+
+source_file="res://addons/dupeanimkeys/icon.png"
+dest_files=["res://.godot/imported/icon.png-18bfa6b730b5d9706b72ed41da4437af.image"]
+
+[params]
+

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp2y2duvb6unb"]
+
+[ext_resource type="Script" uid="uid://b6i6d2mb81bqf" path="res://scripts/bunnyenemy.gd" id="1_vpxrc"]
+[ext_resource type="PackedScene" uid="uid://5ygtc1rcg7hr" path="res://models/sheepgalaxygame.glb" id="2_wghxs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o4ma6"]
+
+[node name="BunnyEnemy" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_vpxrc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.98, 0, 0, 0, 1.98, 0, 0, 0, 1.98, 0, 0, 0)
+shape = SubResource("SphereShape3D_o4ma6")
+
+[node name="sheepgalaxygame" parent="." instance=ExtResource("2_wghxs")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0018288493, -0.021130264, 0.0029498339)
