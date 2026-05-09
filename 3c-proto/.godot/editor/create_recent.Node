@@ -1,0 +1,15 @@
+RemoteTransform3D
+PathFollow3D
+MeshInstance3D
+CollisionShape3D
+AnimatableBody3D
+Path3D
+Node
+RigidBody3D
+AudioStreamPlayer
+AudioStreamPlayer3D
+AnimationPlayer
+CharacterBody3D
+CSGCylinder3D
+Control
+RayCast3D

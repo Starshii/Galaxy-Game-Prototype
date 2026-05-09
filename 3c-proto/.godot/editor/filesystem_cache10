@@ -1,0 +1,37 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1778100838
+bunny_enemy.tscn::PackedScene::3496497151307889075::1778097383::0::1::::<><><>0<>0<><>::uid://b6i6d2mb81bqf::::res://bunnyenemy.gd<>uid://5ygtc1rcg7hr::::res://models/sheepgalaxygame.glb
+icon.svg::CompressedTexture2D::610318207714750526::1776109539::1776109542::1::::<><><>0<>0<>5423a986b3b568bb8defe53887dd6615<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+main.tscn::PackedScene::2458936719200050689::1778099993::0::1::::<><><>0<>0<><>::uid://dw7b0jyuluyi4::::res://scripts/gravity_area.gd<>uid://brulharhismkn::::res://scripts/player.gd<>uid://ht0m38ctmh81::::res://scripts/gameplay_camera.gd<>uid://bp2y2duvb6unb::::res://bunny_enemy.tscn<>uid://c8iphkv2rxlgt::::res://audio/Super Mario Galaxy 2 Soundtrack - Sweet Mystery Galaxy.mp3<>uid://bavt8xns8ax2e::::res://scripts/animation_player.gd<>uid://ntnnhpoxg6sd::::res://obstacles/moving_platform.tscn
+panorama_image.png::CompressedTexture2D::2500757799783654408::1778100791::1778100881::1::::<><><>0<>0<>e0f546502f4c9a1d22081708606fb1a9<>res://.godot/imported/panorama_image.png-dc754b58f8837ad6d82485f39c8f4d1c.bptc.ctex::
+pushblock.tscn::PackedScene::6963009757043578563::1778097443::0::1::::<><><>0<>0<><>::uid://ygec74n7yvfw::::res://scripts/pushblock.gd
+::res://addons/::1710815055
+::res://addons/dupeanimkeys/::1777905784
+dialog.gd::GDScript::2789651323859991811::1710815055::0::1::::DupeDialog<>AcceptDialog<><>0<>1<><>::
+dialog.tscn::PackedScene::7480432033152615456::1710815055::0::1::::<><><>0<>0<><>::res://addons/dupeanimkeys/dialog.gd
+icon.png::Image::278760421269371062::1710815055::1777905784::1::::<><><>0<>0<>abb0b2483e6a31a351232bb67f5de84f<>res://.godot/imported/icon.png-18bfa6b730b5d9706b72ed41da4437af.image::
+plugin.cfg::TextFile::-1::1710815055::0::1::::<><><>0<>0<><>::
+plugin.gd::GDScript::7485105190252258973::1710815055::0::1::::<>EditorPlugin<><>0<>1<><>::
+::res://addons/dupeanimkeys/demo/::1710815055
+test.tscn::PackedScene::549480869237537212::1710815055::0::1::::<><><>0<>0<><>::
+::res://audio/::1778097400
+Super Mario Galaxy 2 Soundtrack - Sweet Mystery (Yoshi).mp3::AudioStreamMP3::8903147847770870404::1777905847::1778097400::1::::<><><>0<>0<>4b8e9f603334badf05c8f8234ba9d4ac<>res://.godot/imported/Super Mario Galaxy 2 Soundtrack - Sweet Mystery (Yoshi).mp3-90876a883d7cf12b2f2c5abc22362d16.mp3str::
+Super Mario Galaxy 2 Soundtrack - Sweet Mystery Galaxy.mp3::AudioStreamMP3::7106512043847365491::1777905847::1778097400::1::::<><><>0<>0<>0bf02d1172c4eeceefe66d8d1c395255<>res://.godot/imported/Super Mario Galaxy 2 Soundtrack - Sweet Mystery Galaxy.mp3-7f4e0512c3bf95ddb26942330150eff5.mp3str::
+::res://models/::1777993132
+sheepgalaxygame.glb::PackedScene::2155608753266161007::1777993132::1777993132::1::::<><><>0<>0<>1bd7eb5b5c6e48ced5a135135253a607<>res://.godot/imported/sheepgalaxygame.glb-3f2805b35dd065318f26d2623481c939.scn::
+::res://obstacles/::1778097456
+moving_platform.tscn::PackedScene::952491072350905603::1778097349::0::1::::<><><>0<>0<><>::
+::res://scripts/::1778099931
+animation_player.gd::GDScript::2430986399571255686::1777968157::0::1::::<>AnimationPlayer<><>0<>0<><>::
+bunnyenemy.gd::GDScript::4580678879420723241::1777975524::0::1::::Bunny<>GravityObject<><>0<>0<><>::
+gameplay_camera.gd::GDScript::532085958888474664::1776781138::0::1::::GameplayCamera<>Camera3D<><>0<>0<><>::
+gravity_area.gd::GDScript::8769582571795996893::1777892246::0::1::::GravityArea<>Area3D<><>0<>0<><>::
+gravity_object.gd::GDScript::2959568758091205262::1777973593::0::1::::GravityObject<>CharacterBody3D<><>0<>0<><>::
+player.gd::GDScript::3621598994689747905::1778099931::0::1::::Player<>CharacterBody3D<><>0<>0<><>::
+pushblock.gd::GDScript::1697166679576935220::1777974789::0::1::::<>CharacterBody3D<><>0<>0<><>::
+state.gd::GDScript::6918280392176278423::1777892259::0::1::::State<>RefCounted<><>1<>0<><>::
+state_machine.gd::GDScript::5000316365615101826::1777892263::0::1::::StateMachine<>RefCounted<><>0<>0<><>::
+vector_util.gd::GDScript::9209836866862726609::1776781030::0::1::::VectorUtil<>Node<><>0<>0<><>::
+::res://StateMachine/::1776780522
+state.gd::GDScript::6918280392176278423::1776780522::0::1::::State<>RefCounted<><>1<>0<><>::
+state_machine.gd::GDScript::5000316365615101826::1776780522::0::1::::StateMachine<>RefCounted<><>0<>0<><>::

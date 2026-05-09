@@ -1,0 +1,5 @@
+res://main.tscn
+res://player.gd
+res://bunny_enemy.tscn
+res://pushblock.tscn
+res://scripts/player.gd
