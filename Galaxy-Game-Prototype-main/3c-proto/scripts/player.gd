@@ -158,9 +158,9 @@ func _physics_process(delta: float) -> void:
 
 class PlayerGroundState extends State:
 	var name = "Ground"
-	
-	
+	var extraJump: bool
 	var current_walking_speed : float
+
 	
 	func on_enter(player : Node):
 		player.gravity = DEFAULT_GRAVITY
@@ -197,10 +197,9 @@ class PlayerGroundState extends State:
 		current_walking_speed = min(current_walking_speed, Player.MAX_VELOCITY)
 		player.velocity = player.facing_direction * current_walking_speed - player.up_direction * 0.01
 	
-	
+		
 	func on_exit(_player : Node):
 		pass
-
 
 @abstract class PlayerAirState extends State:
 	func do_air_movement(player : Node, delta : float):

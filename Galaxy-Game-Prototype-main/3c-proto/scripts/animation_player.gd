@@ -1,12 +1,11 @@
 extends AnimationPlayer
 
-var animation
+var anim = get_animation("yoshiversiom")
 
 func SwitchTrack() :
 	play("yoshiversiom")
 
-
 func CheckSync():
-	
+	pass
 	
 	

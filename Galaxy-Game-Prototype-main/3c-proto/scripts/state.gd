@@ -5,6 +5,7 @@
 @abstract func on_enter(this : Node)
 @abstract func on_exit(this : Node)
 
+
 class NullState extends State:
 	var name := "NullState"
 	

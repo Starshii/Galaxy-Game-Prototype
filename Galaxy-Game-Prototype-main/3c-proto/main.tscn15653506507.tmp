@@ -264,7 +264,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_dg77c"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -501,7 +501,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.585, 5.59, -92.97)
 curve = SubResource("Curve3D_efxa6")
 
 [node name="PillarPAth" type="Path3D" parent="paths"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.385273, 25.93431, -112.92087)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.369592, 25.94843, -102.899284)
 curve = SubResource("Curve3D_dg77c")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="paths/PillarPAth"]
@@ -514,5 +514,5 @@ remote_path = NodePath("../../../../ReactionPillar")
 transform = Transform3D(15.15148, 0, 0, 0, 15.15148, 0, 0, 0, 15.15148, -14.62402, 0, -16.499304)
 
 [node name="ReactionPillar" parent="." node_paths=PackedStringArray("pathfollow") instance=ExtResource("11_efxa6")]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -11.385273, 25.93431, -112.92087)
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -7.369592, 25.94843, -102.899284)
 pathfollow = NodePath("../paths/PillarPAth/PathFollow3D")

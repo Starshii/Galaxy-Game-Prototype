@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7k0oaiesji85"]
+
+[sub_resource type="GDScript" id="GDScript_7o15y"]
+script/source = "extends Node3D
+
+@export var pathfollow: PathFollow3D
+@onready var spring_collision: CollisionShape3D = $Area3D/CollisionShape3D
+
+
+
+var timer: float = 1
+var timerRunning: bool
+var max_progress: float = 1
+var lerpspeed: float = 0.1
+
+func _process(delta: float):
+	if Input.is_action_just_pressed(\"sound\"):
+		MoveIt()
+	
+	if timerRunning:
+		if timer <= 0:
+			timerRunning = false
+			timer = 1
+			spring_collision.disabled = true
+		else:
+			timer -= delta
+			spring_collision.disabled = false
+
+	
+func MoveIt():
+	timerRunning = true
+	var tween = create_tween()
+	tween.tween_property(pathfollow, \"progress_ratio\", 1, lerpspeed)
+	
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7o15y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sxoq4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxoq4"]
+
+[node name="ReactionPillar" type="StaticBody3D"]
+transform = Transform3D(1.605, 0, 0, 0, 9.248, 0, 0, 0, 1.605, 0, 0, 0)
+script = SubResource("GDScript_7o15y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+shape = SubResource("BoxShape3D_7o15y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = SubResource("BoxMesh_sxoq4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_sxoq4")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

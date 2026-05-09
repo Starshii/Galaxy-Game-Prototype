@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://2j1gapi8lxbq"]
+
+[ext_resource type="Script" uid="uid://dw7b0jyuluyi4" path="res://scripts/gravity_area.gd" id="1_ubw1r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atror"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubw1r"]
+
+[node name="CubeGround" type="CSGBox3D"]
+transform = Transform3D(19.416527, 0, 0, 0, 19.416527, 0, 0, 0, 19.416527, 0, 0, 0)
+
+[node name="GravityArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73684156, 0)
+script = ExtResource("1_ubw1r")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24438906, 0)
+shape = SubResource("BoxShape3D_atror")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_ubw1r")
