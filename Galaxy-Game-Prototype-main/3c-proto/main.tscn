@@ -1,0 +1,503 @@
+[gd_scene load_steps=26 format=3 uid="uid://bbbelf003rey0"]
+
+[ext_resource type="Script" uid="uid://dw7b0jyuluyi4" path="res://scripts/gravity_area.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://brulharhismkn" path="res://scripts/player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ht0m38ctmh81" path="res://scripts/gameplay_camera.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bp2y2duvb6unb" path="res://bunny_enemy.tscn" id="2_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://dy30srgv10of1" path="res://audio/Super Mario Galaxy 2 Soundtrack - Sweet Mystery (Yoshi).mp3" id="2_kek77"]
+[ext_resource type="Texture2D" uid="uid://bbvnd6vovrk5m" path="res://panorama_image.png" id="3_5vw27"]
+[ext_resource type="AudioStream" uid="uid://c8iphkv2rxlgt" path="res://audio/Super Mario Galaxy 2 Soundtrack - Sweet Mystery Galaxy.mp3" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://bavt8xns8ax2e" path="res://scripts/animation_player.gd" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ntnnhpoxg6sd" path="res://obstacles/moving_platform.tscn" id="7_272bh"]
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paths/Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("paths/Path3D2/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("paths/Path3D4/PathFollow3D:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+resource_name = "pushblockanim"
+length = 60.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.40000004,
+"stream": ExtResource("5_7mycd")
+}],
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemies/BunnyEnemy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.72, 2.62, 3.3, 4.2, 4.97, 5.87, 6.55, 7.4500003, 8.23, 9.129999, 9.82, 10.719999, 11.46, 12.36, 13.07, 13.969999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}, {
+"args": [],
+"method": &"JUMP"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/2/use_blend = true
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("paths/Path3D/PathFollow3D:progress_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.13944446, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.13333334, 0.97, 1.76, 2.5333335, 3.3233335, 4.166667, 4.956667, 5.7300005, 6.5200005, 7.42, 8.21, 8.983334, 9.773334, 10.616667, 11.406667, 12.18, 12.97, 13.98, 14.7699995, 15.543333, 16.333332, 17.176666, 17.966667, 18.74, 19.529999, 20.43, 21.22, 21.993332, 22.783333, 23.626667, 24.416666, 25.189999, 25.98)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("paths/Path3D2/PathFollow3D:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0, 1, -0.25, 0, 0.25, 0, 0, -0.13833335, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0.14, 0.97, 1.78, 2.6100001, 3.34, 4.17, 4.9666667, 5.7966666, 6.54, 7.37, 8.233334, 9.0633335, 9.873334, 10.703334, 11.433333, 12.263334, 13.06, 13.89, 14.633333, 15.463333, 16.34, 17.17, 17.98, 18.81, 19.54, 20.37, 21.166668, 21.996666, 22.74, 23.57, 24.400002, 25.230001, 26.04, 26.87, 27.600002, 28.430002, 29.22667, 30.056667, 30.800001, 31.630001)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("paths/Path3D4/PathFollow3D:progress_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.9427778, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -0.9427778, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.13333334, 5.79, 12.255725, 18.82061, 25.286335)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(31.766666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"SwitchTrack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "yoshiversiom"
+length = 60.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.43,
+"stream": ExtResource("2_kek77")
+}],
+"times": PackedFloat32Array(0.03333333)
+}
+tracks/0/use_blend = true
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("paths/Path3D4/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -1.115, -0.16666666, 0, 0, 0, -0.25, 0, 0.25, 0, 1, -1.115, -0.16666666, 0, 0),
+"times": PackedFloat32Array(0, 6.69, 12.566667, 19.256668)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kek77"]
+_data = {
+&"RESET": SubResource("Animation_7mycd"),
+&"pushblockanim": SubResource("Animation_5vw27"),
+&"yoshiversiom": SubResource("Animation_4c57u")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kek77"]
+panorama = ExtResource("3_5vw27")
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("PanoramaSkyMaterial_kek77")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(6, 10, 12)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5vw27"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7dm0k"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ig7tw"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ig7tw"]
+
+[sub_resource type="Curve3D" id="Curve3D_4c57u"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5vw27"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_kek77"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 73.06, 5.95, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_efxa6"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kek77")
+}
+autoplay = "pushblockanim"
+script = ExtResource("7_5vw27")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.29552817, -0.039977014, 0.9544973, -0.40331525, 0.9005009, 0.16258857, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(6, 1, 6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 2, -5)
+size = Vector3(6, 1, 6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 2.0590687, 0, 3.9611816, -19.109451)
+size = Vector3(6, 1, 11.96582)
+
+[node name="GravityArea" type="Area3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.961182, -20.759022)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/GravityArea"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="GravityArea2" type="Area3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -1.0388184, -20.759022)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/GravityArea2"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="GravityArea3" type="Area3D" parent="CSGCombiner3D/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -5.430292, -2.9850283)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D3/GravityArea3"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(4.2936673, 0, 0, 0, 1.2967719, 0, 0, 0, 4.9121447, -2.466116, 3.9611816, -64.451965)
+size = Vector3(13.746216, 1, 11.96582)
+
+[node name="GravityArea2" type="Area3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(8.993969, 0, 0, 0, 0.99999994, 0, 0, 0, 5.1948705, 0, -1.0388184, -64.65956)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D4/GravityArea2"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="GravityArea" type="Area3D" parent="CSGCombiner3D/CSGBox3D4"]
+transform = Transform3D(2.0947056, 0, 0, 0, 0.77114564, 0, 0, 0, 1.0575566, 0.5743612, 3.8557281, -0.042262077)
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D4/GravityArea"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.9072322, 0, 0, 0, 1.8061093, -1.5113693, 0, 1.1921763, 2.2896762, 12.928077, 12.27701, -107.17612)
+size = Vector3(13.746216, 1, 11.96582)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(2.3191369, 0, 0, 0, 28.19379, 0, 0, 0, 2.1726403, -15.760363, 12.277012, -106.75997)
+size = Vector3(13.746216, 1, 11.96582)
+
+[node name="GravityArea3" type="Area3D" parent="CSGCombiner3D/CSGBox3D6"]
+transform = Transform3D(7.561708, 0, 0, 0, 0.95905143, 0, 0, 0, 4.6326723, -9.004242, 31.239788, -121.557556)
+top_level = true
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D6/GravityArea3"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(10.07, 0, 0, 0, 10.07, 0, 0, 0, 10.07, -57.840855, 8.297341, -74.076546)
+radial_segments = 24
+rings = 24
+
+[node name="GravityArea3" type="Area3D" parent="CSGCombiner3D/CSGSphere3D"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+type = 2
+gravity_value = Vector3(0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGSphere3D/GravityArea3"]
+shape = SubResource("SphereShape3D_5vw27")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.5867399, -0.8097755, 0, 0.8097755, 0.5867399, 0, 0, 0, 1, 0, 0.16860342, 5.704989)
+current = true
+script = ExtResource("2_0xm2m")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.617737, 30.500898, -109.88668)
+collision_layer = 3
+collision_mask = 3
+floor_snap_length = 0.5
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("SphereShape3D_7dm0k")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.99999994, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("SphereMesh_ig7tw")
+
+[node name="Nose" type="MeshInstance3D" parent="Player/Mesh"]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0.045690536, -0.535)
+mesh = SubResource("PrismMesh_ig7tw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MovingObjects" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="BunnyEnemy" parent="Enemies" instance=ExtResource("2_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7664299, 23.26113, -118.97794)
+
+[node name="paths" type="Node" parent="."]
+
+[node name="Path3D4" type="Path3D" parent="paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.97022, 7.6152525, -90.50866)
+curve = SubResource("Curve3D_4c57u")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D4"]
+transform = Transform3D(-4.3710447e-08, 0.9999724, -4.371016e-08, 0, -4.371018e-08, -0.99997187, -0.9999785, -4.371018e-08, 1.9106317e-15, 0, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D4/PathFollow3D"]
+remote_path = NodePath("../../MovingPlatform")
+
+[node name="MovingPlatform" parent="paths/Path3D4" instance=ExtResource("7_272bh")]
+transform = Transform3D(-4.3710447e-08, 0.9999724, -4.371016e-08, 0, -4.371018e-08, -0.99997187, -0.9999785, -4.371018e-08, 1.9106317e-15, 0, 0, 0)
+
+[node name="GravityArea4" type="Area3D" parent="paths/Path3D4/MovingPlatform"]
+transform = Transform3D(-2.6343121e-08, 3.01055e-23, -0.49893376, 0.6026638, -2.3706983e-08, -2.1809221e-08, -2.6343292e-08, -0.5423529, 9.533119e-16, -0.050209045, 0.9805908, 0.0031991005)
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+gravity_value = Vector3(-1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="paths/Path3D4/MovingPlatform/GravityArea4"]
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="Path3D" type="Path3D" parent="paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.585, 5.59, -92.97)
+curve = SubResource("Curve3D_5vw27")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D"]
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 12, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D/PathFollow3D"]
+remote_path = NodePath("../../MovingPlatform")
+
+[node name="MovingPlatform" parent="paths/Path3D" instance=ExtResource("7_272bh")]
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 12, 0, 0)
+
+[node name="Path3D2" type="Path3D" parent="paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.55809, 7.870591, -92.97)
+curve = SubResource("Curve3D_5vw27")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D2"]
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 0, 0, 0)
+progress = 12.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D2/PathFollow3D"]
+remote_path = NodePath("../../MovingPlatform")
+
+[node name="MovingPlatform" parent="paths/Path3D2" instance=ExtResource("7_272bh")]
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 0, 0, 0)
+
+[node name="Path3D3" type="Path3D" parent="paths"]
+curve = SubResource("Curve3D_kek77")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D3"]
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D3/PathFollow3D"]
+
+[node name="orbitpath" type="Path3D" parent="paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.585, 5.59, -92.97)
+curve = SubResource("Curve3D_efxa6")

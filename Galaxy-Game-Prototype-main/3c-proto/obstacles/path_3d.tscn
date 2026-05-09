@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://mbckeessc3pq"]
+
+[sub_resource type="Curve3D" id="Curve3D_qkoxo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00031742454, 0.00016203523, -0.0014948174, 0, 0, 0, 0, 0, 0, -0.0011711121, 2.533207, -0.00074005127, 0, 0, 0, 0, 0, 0, -0.0013084412, 2.9402428, -0.00061798096, 0, 0, 0, 0, 0, 0, -0.002, 7, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_7r2um"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rx8x7"]
+
+[node name="Path3D" type="Path3D"]
+curve = SubResource("Curve3D_qkoxo")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-4.3711236e-08, 0.999997, -4.3711275e-08, 0, -4.3711257e-08, -0.99999744, -0.9999965, -4.3711257e-08, 1.9106806e-15, -0.00031742454, 0.00016203523, -0.0014948174)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PathFollow3D"]
+remote_path = NodePath("../../block")
+
+[node name="block" type="AnimatableBody3D" parent="."]
+transform = Transform3D(-4.3711236e-08, 0.999997, -4.3711275e-08, 0, -4.3711257e-08, -0.99999744, -0.9999965, -4.3711257e-08, 1.9106806e-15, -0.00031742454, 0.00016203523, -0.0014948174)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="block"]
+mesh = SubResource("BoxMesh_7r2um")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block"]
+shape = SubResource("BoxShape3D_rx8x7")

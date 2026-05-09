@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6g60u6iinfpj"]
+
+[ext_resource type="Script" uid="uid://ygec74n7yvfw" path="res://scripts/pushblock.gd" id="1_xkvbo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_088f4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xkvbo"]
+
+[node name="PushBlock" type="AnimatableBody3D"]
+script = ExtResource("1_xkvbo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.650847, 0, 0, 0, 5.650847, 0, 0, 0, 5.650847, 0, 0, 0)
+layers = 3
+mesh = SubResource("BoxMesh_088f4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(5.66, 0, 0, 0, 5.66, 0, 0, 0, 5.66, 0, 0, 0)
+shape = SubResource("BoxShape3D_xkvbo")
