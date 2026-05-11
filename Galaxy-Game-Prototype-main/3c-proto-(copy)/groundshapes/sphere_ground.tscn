@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5ixnnuvr5ng"]
+[gd_scene format=3 uid="uid://b5ixnnuvr5ng"]
 
 [ext_resource type="Script" uid="uid://dw7b0jyuluyi4" path="res://scripts/gravity_area.gd" id="1_ht6fp"]
 
@@ -6,25 +6,24 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ht6fp"]
 
-[node name="SphereGround" type="CSGSphere3D"]
+[node name="SphereGround" type="CSGSphere3D" unique_id=499882917]
 transform = Transform3D(15.15148, 0, 0, 0, 15.15148, 0, 0, 0, 15.15148, 0, 0, 0)
 layers = 3
 radial_segments = 24
 rings = 24
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=348437433]
 script = ExtResource("1_ht6fp")
-player = 3
 type = 2
 gravity_value = Vector3(0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=426383334]
 transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0)
 shape = SubResource("SphereShape3D_raaaw")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=1229983412]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=427211940]
 shape = SubResource("SphereShape3D_ht6fp")

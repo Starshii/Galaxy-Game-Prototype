@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt5sjqihghyb0"
+path="res://.godot/imported/eterna forest first part loop.mp3-bb05a6b3d0034895db6d5bdfdf75a8dc.mp3str"
+
+[deps]
+
+source_file="res://audio/eterna forest first part loop.mp3"
+dest_files=["res://.godot/imported/eterna forest first part loop.mp3-bb05a6b3d0034895db6d5bdfdf75a8dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

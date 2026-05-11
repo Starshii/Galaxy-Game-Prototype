@@ -147,7 +147,7 @@ func _physics_process(delta: float) -> void:
 	facing_direction_smoothed = VectorUtil.make_perpendicular(facing_direction_smoothed, up_direction_linear).normalized()
 	global_basis = Basis(facing_direction_smoothed.cross(up_direction_linear).normalized(), up_direction_linear, -facing_direction_smoothed)
 
-	
+	state_machine.check_state(self)
 	state_machine.update(self, delta)
 	
 	if velocity.length_squared() > MAX_VELOCITY * MAX_VELOCITY:

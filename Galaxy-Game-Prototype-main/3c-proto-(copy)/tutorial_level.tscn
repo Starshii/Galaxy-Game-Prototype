@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://b5u752fetj84g"]
+
+[ext_resource type="AudioStream" uid="uid://dt5sjqihghyb0" path="res://audio/eterna forest first part loop.mp3" id="1_sp2du"]
+[ext_resource type="Script" uid="uid://dw5vfxoc03067" path="res://scripts/SwitchSong.gd" id="2_a5404"]
+[ext_resource type="Script" uid="uid://brulharhismkn" path="res://scripts/player.gd" id="3_2dagw"]
+[ext_resource type="Script" uid="uid://ht0m38ctmh81" path="res://scripts/gameplay_camera.gd" id="4_2dagw"]
+[ext_resource type="Texture2D" uid="uid://bbvnd6vovrk5m" path="res://panorama_image.png" id="4_7w0ls"]
+[ext_resource type="PackedScene" uid="uid://b5ixnnuvr5ng" path="res://groundshapes/sphere_ground.tscn" id="5_a5404"]
+[ext_resource type="Script" uid="uid://b4717sgqmrnju" path="res://playsecondpart.gd" id="7_ohhhg"]
+
+[sub_resource type="Animation" id="Animation_tfbhh"]
+resource_name = "first_part"
+length = 26.966667
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_sp2du")
+}],
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.10000038, 1.0523813, 2.0047622, 2.9571433, 3.9095242, 4.861905, 5.814286, 6.766667, 7.719048, 8.671429, 9.62381, 10.576191, 11.528572, 12.480953, 13.433333, 14.385715, 15.338096, 16.290476, 17.242857, 18.195238, 19.14762, 20.1, 21.052382, 22.004763, 22.957144, 23.909525, 24.861906, 25.814285, 26.766666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}, {
+"args": ["second_part"],
+"method": &"SwitchTrack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_a5404"]
+resource_name = "second_part"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hotv"]
+_data = {
+&"first_part": SubResource("Animation_tfbhh"),
+&"second_part": SubResource("Animation_a5404")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7w0ls"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_a5404"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ohhhg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ohhhg"]
+panorama = ExtResource("4_7w0ls")
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("PanoramaSkyMaterial_ohhhg")
+
+[sub_resource type="Environment" id="Environment_drjao"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_drjao"]
+
+[node name="TutorialLevel" type="Node3D" unique_id=105833570]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1149501405]
+libraries/ = SubResource("AnimationLibrary_3hotv")
+autoplay = &"first_part"
+script = ExtResource("2_a5404")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2094967807]
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1318355632 groups=["bounceable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04647541, 34.144028, 0.96209717)
+collision_layer = 3
+collision_mask = 3
+floor_snap_length = 0.5
+script = ExtResource("3_2dagw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=685456604 groups=["bounceable"]]
+shape = SubResource("SphereShape3D_7w0ls")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player" unique_id=1866593456]
+transform = Transform3D(0.99999994, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("SphereMesh_a5404")
+
+[node name="Nose" type="MeshInstance3D" parent="Player/Mesh" unique_id=357423023]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0.045690536, -0.535)
+mesh = SubResource("PrismMesh_ohhhg")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1005407208]
+transform = Transform3D(0.5867399, -0.8097755, 0, 0.8097755, 0.5867399, 0, 0, 0, 1, 0, 0.16860342, 5.704989)
+current = true
+script = ExtResource("4_2dagw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2074962347]
+transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.29552817, -0.039977014, 0.9544973, -0.40331525, 0.9005009, 0.16258857, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1687205787]
+environment = SubResource("Environment_drjao")
+
+[node name="SphereGround" parent="." unique_id=564109637 instance=ExtResource("5_a5404")]
+transform = Transform3D(66.50483, 0, 0, 0, 66.50483, 0, 0, 0, 66.50483, 0, 0, 0)
+
+[node name="SphereGround2" parent="." unique_id=1009882608 instance=ExtResource("5_a5404")]
+transform = Transform3D(66.50483, 0, 0, 0, 66.50483, 0, 0, 0, 66.50483, 0, 0, 79.56186)
+
+[node name="Area3D2" type="Area3D" parent="SphereGround2" unique_id=1976246037]
+script = ExtResource("7_ohhhg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SphereGround2/Area3D2" unique_id=530969782]
+shape = SubResource("SphereShape3D_drjao")
+
+[connection signal="body_entered" from="SphereGround2/Area3D2" to="SphereGround2/Area3D2" method="_on_body_entered"]

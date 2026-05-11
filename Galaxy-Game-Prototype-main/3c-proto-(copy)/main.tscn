@@ -269,7 +269,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Node3D" type="Node3D" unique_id=1796387279]
+[node name="TestEnvir" type="Node3D" unique_id=1796387279]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114390053]
 libraries/ = SubResource("AnimationLibrary_kek77")
