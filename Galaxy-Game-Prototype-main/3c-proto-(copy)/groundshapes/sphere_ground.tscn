@@ -13,9 +13,10 @@ radial_segments = 24
 rings = 24
 
 [node name="Area3D" type="Area3D" parent="." unique_id=348437433]
+collision_mask = 3
+gravity_space_override = 1
 script = ExtResource("1_ht6fp")
-type = 2
-gravity_value = Vector3(0, 0, 0)
+GravityType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=426383334]
 transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0)

@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	if linear_velocity.x > 0 or linear_velocity.y > 0 or linear_velocity.z > 0:
 		print(\"its trueeee\")
 		lastVelocity = linear_velocity
-	print(lastVelocity)
 	
 func MoveIt():
 	springTimer.start()
@@ -39,16 +38,13 @@ func MoveIt():
 func _on_spring_timer_timeout() -> void:
 	pass
 	
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group(\"bounceable\"):
-		isColliding = true
+func _on_area_3d_body_entered(body: Node3D) -> void: 
+	pass
 		
 	
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body.is_in_group(\"bounceable\"):
-		print(\"should jump\")
-		body.velocity += lastVelocity
+	pass
 		
 "
 

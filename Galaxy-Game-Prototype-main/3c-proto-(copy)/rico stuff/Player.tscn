@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ds6aq4lxh06tj"]
+
+[ext_resource type="PackedScene" uid="uid://bpmg4pbip3mcq" path="res://rico stuff/MainCam.tscn" id="1_55m5b"]
+[ext_resource type="Script" uid="uid://dom2wns65txfl" path="res://scripts/rico scripts/PlayerScripts.gd" id="1_rdmcm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vocxr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a13ad"]
+albedo_color = Color(0.9559625, 0.9559639, 0.9559631, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.5
+emission_operator = 1
+texture_filter = 0
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_a13ad"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_un37i"]
+
+[sub_resource type="Gradient" id="Gradient_a13ad"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 0.8, 0, 0, 0, 0.4, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 5
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_un37i"]
+gradient = SubResource("Gradient_a13ad")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a13ad"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1005209781 groups=["Player"]]
+collision_layer = 2
+floor_snap_length = 0.3
+safe_margin = 0.01
+script = ExtResource("1_rdmcm")
+
+[node name="MainCollision" type="CollisionShape3D" parent="." unique_id=1656566551]
+shape = SubResource("SphereShape3D_vocxr")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1327966202]
+layers = 2
+material_override = SubResource("StandardMaterial3D_a13ad")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_a13ad")
+
+[node name="Nose" type="MeshInstance3D" parent="Mesh" unique_id=454590744]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0.045690536, -0.535)
+material_override = SubResource("StandardMaterial3D_a13ad")
+cast_shadow = 0
+mesh = SubResource("PrismMesh_un37i")
+
+[node name="Decal" type="Decal" parent="." unique_id=1591566872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+size = Vector3(1, 5, 1)
+texture_albedo = SubResource("GradientTexture2D_un37i")
+upper_fade = 0.01
+lower_fade = 1.0
+
+[node name="Raycasts" type="Node3D" parent="." unique_id=1341045770]
+
+[node name="NearFloor" type="RayCast3D" parent="Raycasts" unique_id=1588421854]
+target_position = Vector3(0, -2, 0)
+debug_shape_thickness = 5
+
+[node name="NearWall" type="ShapeCast3D" parent="Raycasts" unique_id=1615574879]
+shape = SubResource("SphereShape3D_a13ad")
+target_position = Vector3(0, 0, -0.2)
+
+[node name="CamPos" parent="." unique_id=1132223926 instance=ExtResource("1_55m5b")]
+top_level = true

@@ -1,22 +1,22 @@
 @abstract class_name State extends RefCounted
 
-@abstract func check_state(this : Node) -> State
-@abstract func update(this : Node, delta : float)
-@abstract func on_enter(this : Node)
-@abstract func on_exit(this : Node)
+@abstract func check_state(this : Player) -> State
+@abstract func update(this : Player, delta : float)
+@abstract func on_enter(this : Player)
+@abstract func on_exit(this : Player)
 
 
 class NullState extends State:
 	var name := "NullState"
 	
-	func check_state(_this : Node) -> State:
+	func check_state(_this : Player) -> State:
 		return null
 	
-	func on_enter(_this : Node):
+	func on_enter(_this : Player):
 		pass
 	
-	func on_exit(_this : Node):
+	func on_exit(_this : Player):
 		pass
 	
-	func update(_this : Node, _delta : float):
+	func update(_this : Player, _delta : float):
 		pass

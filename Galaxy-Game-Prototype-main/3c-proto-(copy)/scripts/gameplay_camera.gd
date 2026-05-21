@@ -10,7 +10,7 @@ const ROTATION_SMOOTH_FACTOR : float = 7
 const POSITION_LINEAR_SPEED  : float = 100
 const POSITION_SMOOTH_FACTOR : float = 6
 
-var player : Player
+var Player : Player
 
 var look_at_point : Vector3
 var target_point_instant  : Vector3
@@ -23,37 +23,37 @@ var up_direction_smoothed : Vector3
 
 
 func _ready() -> void:
-	player = get_tree().current_scene.find_child("Player")
+	Player = get_tree().current_scene.find_child("Player")
 	up_direction_instant = global_basis.y
 	up_direction_linear = up_direction_instant
 	up_direction_smoothed = up_direction_instant
 
 
 func _physics_process(delta: float) -> void:
-	if player == null:
+	if Player == null:
 		return
 	  	
-	if len(player.gravity_areas) == 0 || player.gravity_areas[0].type == GravityArea.Type.DirectionalGlobal:
-		up_direction_instant = player.up_direction
+	if len(Player.gravity_areas) == 0 || Player.gravity_areas[0].type == GravityArea.Type.DirectionalGlobal:
+		up_direction_instant = Player.up_direction
 	else:
 		up_direction_instant = global_basis.y
 	
-	var height := VectorUtil.get_axis(global_position - player.global_position, player.up_direction)
+	var height := VectorUtil.get_axis(global_position - Player.global_position, Player.up_direction)
 	if height < MIN_HEIGHT:
-		global_position += player.up_direction * (MIN_HEIGHT - height)
+		global_position += Player.up_direction * (MIN_HEIGHT - height)
 		height = MIN_HEIGHT
 	if height > MAX_HEIGHT:
-		global_position += player.up_direction * (MAX_HEIGHT - height)
+		global_position += Player.up_direction * (MAX_HEIGHT - height)
 		height = MAX_HEIGHT
 	
-	var horizontal_offset := VectorUtil.remove_axis(global_position - player.global_position, player.up_direction)
+	var horizontal_offset := VectorUtil.remove_axis(global_position - Player.global_position, Player.up_direction)
 	if horizontal_offset.length_squared() > MAX_HORIZONTAL_DISTANCE * MAX_HORIZONTAL_DISTANCE:
 		horizontal_offset = horizontal_offset.normalized() * MAX_HORIZONTAL_DISTANCE
 	elif horizontal_offset.length_squared() < MIN_HORIZONTAL_DISTANCE * MIN_HORIZONTAL_DISTANCE:
 		horizontal_offset = horizontal_offset.normalized() * MIN_HORIZONTAL_DISTANCE
 	
-	target_point_instant = player.global_position + horizontal_offset + height * player.up_direction
-	look_at_point = player.global_position
+	target_point_instant = Player.global_position + horizontal_offset + height * Player.up_direction
+	look_at_point = Player.global_position
 	
 	target_point_linear = target_point_linear.move_toward(target_point_instant, POSITION_LINEAR_SPEED * delta)
 	target_point_smoothed = target_point_smoothed.lerp(target_point_linear, POSITION_SMOOTH_FACTOR * delta)

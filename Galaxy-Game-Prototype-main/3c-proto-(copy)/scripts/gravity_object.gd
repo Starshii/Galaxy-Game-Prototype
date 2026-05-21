@@ -1,85 +1,152 @@
 class_name GravityObject extends CharacterBody3D
 
-const MAX_VELOCITY : float = 80.0
-const DEFAULT_GRAVITY : float = 40.0
+# GENERAL /////////////////////////////////////////////////////////////////////////////////////////
 
-const UP_DIRECTION_LINEAR_SPEED : float = deg_to_rad(360 * 2)
-const UP_DIRECTION_SMOOTH_SPEED  : float = 5
+# SET PLAYER UP SMOOTHLY
+const UpDirLinSpd : float = TAU * 2
+const UpDirLerp   : float = 15.0
 
-var up_direction_visual_instant  : Vector3
-var up_direction_visual_linear   : Vector3
-var up_direction_visual_smoothed : Vector3
+var UpDirLinVec  : Vector3
 
-var on_ground     : bool
-var last_velocity : Vector3
 
-var update_up_direction : bool = true
-var update_basis        : bool = true
+# DIRECTION
+var DirInput   : Vector2
+var SkateInput : Vector2
 
-var gravity_area_changed : bool
-var current_gravity_area : GravityArea
-var gravity_areas : Array[GravityArea]
-var gravity : float = DEFAULT_GRAVITY
+var DirInputCam    : Vector3
+var DirInputPlayer : Vector3
+
+var FacingDir         : Vector3
+var FacingDirSmoothed : Vector3
+
+var DirInputLength : float
+var UpdateUpDir : bool = true
+
+# GRAVITY
+const BaseTermVel     : float = 90.0   # Max velocity the player can move in any direction
+const BaseFallTermVel : float = 30.0
+const BaseGrav        : float = 40.0
+const SkateGrav       : float = 60.0
+const GravRampStr     : float = 0.3    # Used to make it harder for the player to get into orbit
+const OrbitalLimit    : float = 2.0
+
+var GravStr        : float = 1.0   # Some places might have more gravity than others
+var CurGrav        : float = BaseGrav
+var CurFallTermVel : float = BaseFallTermVel
+
+var GravAreaArray : Array[GravityArea]
+var update_basis   : bool = true
 
 func _ready() -> void:
-	pass
+	DirInput.x =1
+	visible           = true
+	UpDirLinVec       = up_direction
+	FacingDir         = -global_basis.z
+	FacingDirSmoothed = -global_basis.z
+	DirInputPlayer    = -global_basis.z
+	SkateInput        = Vector2.DOWN
 
+## ////////////////////////////////////////////////////////////////////////////////////////////////
+## GRAVITY AREAS
+## ////////////////////////////////////////////////////////////////////////////////////////////////
 
-func add_gravity_area(gravity_area : GravityArea) -> void:
-	gravity_areas.push_front(gravity_area)
-	var new_area_index : int = 0
-	while len(gravity_areas) > new_area_index + 1 && gravity_areas[new_area_index].priority < gravity_areas[new_area_index + 1].priority:
-		var swap : GravityArea = gravity_areas[new_area_index + 1]
-		gravity_areas[new_area_index + 1] = gravity_areas[new_area_index]
-		gravity_areas[new_area_index] = swap
+# Correctly decide the priority of a gravity area when it is entered
+func AddGravityArea(EnteredGravArea : GravityArea, MainField : bool = false) -> void:
+	
+	
+	
+	var NewAreaInt : int = 0
+	GravAreaArray.erase(EnteredGravArea)
+	GravAreaArray.push_front(EnteredGravArea)
+	
+	if MainField:
+		while len(GravAreaArray) > NewAreaInt + 1 and \
+		GravAreaArray[NewAreaInt].TruePriority < GravAreaArray[NewAreaInt + 1].TruePriority:
+			var Swap : GravityArea = GravAreaArray[NewAreaInt + 1]
+			GravAreaArray[NewAreaInt + 1] = GravAreaArray[NewAreaInt]
+			GravAreaArray[NewAreaInt] = Swap
+			NewAreaInt += 1
+	
+	else:
+		while len(GravAreaArray) > NewAreaInt + 1 and \
+		GravAreaArray[NewAreaInt].TruePriority <= GravAreaArray[NewAreaInt + 1].TruePriority:
+			var Swap : GravityArea = GravAreaArray[NewAreaInt + 1]
+			GravAreaArray[NewAreaInt + 1] = GravAreaArray[NewAreaInt]
+			GravAreaArray[NewAreaInt] = Swap
+			NewAreaInt += 1
 
+# Push an area to the front ignoring its priority
+func AddGravityAreaToFirst(EnteredGravArea : GravityArea) -> void:
+	GravAreaArray.erase(EnteredGravArea)
+	GravAreaArray.push_front(EnteredGravArea)
 
-func remove_gravity_area(gravity_area : GravityArea) -> void:
-	gravity_areas.erase(gravity_area)
+func RemoveGravityArea(EnteredGravArea : GravityArea) -> void:
+	GravAreaArray.erase(EnteredGravArea)
 
 
 func _physics_process(delta: float) -> void:
-	gravity_area_changed = false
-	if len(gravity_areas) > 0:
-		if gravity_areas[0] != current_gravity_area:
-			gravity_area_changed = true
-			current_gravity_area = gravity_areas[0]
-	
-	if update_up_direction && current_gravity_area != null:
-		match current_gravity_area.type:
-			GravityArea.Type.DirectionalGlobal:
-				up_direction = -current_gravity_area.gravity_value.normalized()
-			GravityArea.Type.DirectionalLocal:
-				up_direction = current_gravity_area.global_basis * -current_gravity_area.gravity_value
-			GravityArea.Type.ToPoint:
-			
-				var gravity_middle := current_gravity_area.to_global(current_gravity_area.gravity_value)
-				up_direction = (global_position - gravity_middle).normalized()
-			GravityArea.Type.FromPoint:
-				var gravity_middle := current_gravity_area.to_global(current_gravity_area.gravity_value)
-				up_direction = -(global_position - gravity_middle).normalized()
-			GravityArea.Type.FromLine: 
-				var line_vector_global := current_gravity_area.global_basis * current_gravity_area.gravity_value
-				var gravity_middle := VectorUtil.project_on_line(current_gravity_area.global_position, line_vector_global, global_position)
-				up_direction = (gravity_middle - global_position).normalized()
-			_: assert(false, "Gravity area \"%s\" is not yet implemented" % GravityArea.Type.find_key(current_gravity_area.type))
-	#DebugDraw3D.draw_line(global_position, global_position + up_direction, Color.GREEN)
-	
-	velocity -= up_direction * gravity * delta
-	
+	# UP DIRECTION LINEAR /////////////////////////////////////////////////////////////////////////
 	if update_basis:
 		global_basis.y = up_direction
 		global_basis.z = VectorUtil.make_perpendicular(global_basis.z, up_direction)
 		global_basis.x = up_direction.cross(global_basis.z)
+	# Used for smooth changes to player's basis
+	var UpDirLinAxis := UpDirLinVec.cross(up_direction)
+	if UpDirLinAxis.length_squared() > 0.01:
+		UpDirLinAxis = UpDirLinAxis.normalized()
+		UpDirLinVec = VectorUtil.smove_toward(UpDirLinVec, up_direction, UpDirLinAxis, delta * UpDirLinSpd)
+	else:
+		UpDirLinVec = up_direction
 	
-	if velocity.length_squared() > MAX_VELOCITY * MAX_VELOCITY:
-		velocity = velocity.normalized() * MAX_VELOCITY
 	
-	last_velocity = velocity
+	# TRUE FACING DIRECTION ///////////////////////////////////////////////////////////////////////
+	
+	FacingDirSmoothed = VectorUtil.make_perpendicular(FacingDirSmoothed, UpDirLinVec).normalized()
+	if FacingDirSmoothed.cross(UpDirLinVec) != Vector3.ZERO:
+		global_basis = Basis.looking_at(FacingDirSmoothed, UpDirLinVec)
+# /////////////////////////////////////////////////////////////////////////////////////////////
+	# GRAVITY AREA SORTING AND UP-DIRECTION
+	# /////////////////////////////////////////////////////////////////////////////////////////////
+	
+	# GRAVITY AREAS ///////////////////////////////////////////////////////////////////////////////
+	if len(GravAreaArray) > 0:
+		
+		# Get the first gravity area and check its type
+		var GravArea := GravAreaArray[0]
+		match GravArea.GravityType:
+			GravityArea.Type.Directional:
+				up_direction = -GravArea.gravity_direction
+			GravityArea.Type.ToPoint:
+				up_direction = (global_position - GravArea.global_position).normalized()
+			GravityArea.Type.FromPoint:
+				up_direction = -(global_position - GravArea.global_position).normalized()
+			GravityArea.Type.ToLine: 
+				var LineVectorGlobal := GravArea.global_basis * GravArea.gravity_point_center
+				var GravityMiddle := VectorUtil.project_on_line(GravArea.global_position, LineVectorGlobal, global_position)
+				up_direction = -(GravityMiddle - global_position).normalized()
+			GravityArea.Type.FromLine: 
+				var LineVectorGlobal := GravArea.global_basis * GravArea.gravity_point_center
+				var GravityMiddle := VectorUtil.project_on_line(GravArea.global_position, LineVectorGlobal, global_position)
+				up_direction = (GravityMiddle - global_position).normalized()
+		
+		# Set the facing direction of the player correctly with the new gravity field
+		FacingDir = VectorUtil.make_perpendicular(FacingDir, up_direction)
+	
+	
+	# GRAVITY AND TERMINAL VELOCITY ///////////////////////////////////////////////////////////////
+	
+	# Certain planets might have a stronger gravity, GravStr is used in that case
+	velocity -= up_direction * CurGrav * GravStr * delta
+	
+	# The player can only move at a certain speed towards the ground
+	if VectorUtil.get_axis(velocity, -up_direction) > CurFallTermVel:
+		var VelHor : float = VectorUtil.get_axis(velocity, FacingDir)
+		velocity = VelHor * FacingDir + CurFallTermVel * -up_direction
+	
+	# The player can't exceed terminal velocity
+	if velocity.length() > BaseTermVel:
+		velocity = velocity.normalized() * BaseTermVel
+	
+	FacingDirSmoothed = FacingDirSmoothed.slerp(FacingDir, 30 * delta).normalized()
+	
 	move_and_slide()
-	on_ground = is_on_floor()
-	
-	#DebugDraw3D.draw_line(global_position, global_position + velocity, Color.YELLOW)
-	#DebugDraw3D.draw_line(global_position, global_position + global_basis.x, Color.RED)
-	#DebugDraw3D.draw_line(global_position, global_position + global_basis.y, Color.GREEN)
-	#DebugDraw3D.draw_line(global_position, global_position + global_basis.z, Color.BLUE)

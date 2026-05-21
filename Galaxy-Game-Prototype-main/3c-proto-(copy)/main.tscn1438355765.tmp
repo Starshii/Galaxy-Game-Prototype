@@ -232,19 +232,14 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 size = Vector3(6, 10, 12)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5vw27"]
+
 [sub_resource type="Curve3D" id="Curve3D_4c57u"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_ycdy4"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18.514305, 0, 0, 0, 0, 0, 0, 9.077562, 0.29649448, 30.836895, 0, 0, 0, 0, 0, 0, 18.569277, 0.3630724, 18.195068, 0, 0, 0, 0, 0, 0, 13.225691, -2.2476459, 48.511665),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [sub_resource type="Curve3D" id="Curve3D_5vw27"]
 _data = {
@@ -376,6 +371,20 @@ script = ExtResource("1_h2yge")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGBox3D6/GravityArea3" unique_id=2005890349]
 shape = SubResource("BoxShape3D_0xm2m")
 
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D" unique_id=729783200]
+transform = Transform3D(26.5, 0, 0, 0, 26.5, 0, 0, 0, 26.5, -51.015198, 9.0143585, -74.076546)
+radial_segments = 24
+rings = 24
+
+[node name="GravityArea3" type="Area3D" parent="CSGCombiner3D/CSGSphere3D" unique_id=1558523276]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+gravity_space_override = 3
+gravity_point_unit_distance = 1024.0
+script = ExtResource("1_h2yge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/CSGSphere3D/GravityArea3" unique_id=1325454628]
+shape = SubResource("SphereShape3D_5vw27")
+
 [node name="Control" type="Control" parent="." unique_id=1476221698]
 layout_mode = 3
 anchors_preset = 15
@@ -419,30 +428,30 @@ shape = SubResource("BoxShape3D_0xm2m")
 
 [node name="Path3D" type="Path3D" parent="paths" unique_id=680482602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.585, 5.59, -92.97)
-curve = SubResource("Curve3D_ycdy4")
+curve = SubResource("Curve3D_5vw27")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D" unique_id=1494649649]
-transform = Transform3D(-0.83912706, 0, 0.543875, 0, 0.9999724, 0, -0.54387826, 0, -0.83912194, 12, 0, 0)
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 12, 0, 0)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D/PathFollow3D" unique_id=865244206]
 remote_path = NodePath("../../MovingPlatform")
 
 [node name="MovingPlatform" parent="paths/Path3D" unique_id=1016718162 instance=ExtResource("7_272bh")]
-transform = Transform3D(-0.83912706, 0, 0.543875, 0, 0.9999724, 0, -0.54387826, 0, -0.83912194, 12, 0, 0)
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 12, 0, 0)
 
 [node name="Path3D2" type="Path3D" parent="paths" unique_id=452768868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.55809, 7.870591, -92.97)
 curve = SubResource("Curve3D_5vw27")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D2" unique_id=1368418062]
-transform = Transform3D(-4.3710177e-08, 0, 0.99996513, 0, 0.9999724, 0, -0.9999723, 0, -4.3709864e-08, 0, 0, 0)
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 0, 0, 0)
 progress = 12.0
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D2/PathFollow3D" unique_id=687985352]
 remote_path = NodePath("../../MovingPlatform")
 
 [node name="MovingPlatform" parent="paths/Path3D2" unique_id=1822530816 instance=ExtResource("7_272bh")]
-transform = Transform3D(-4.3710177e-08, 0, 0.99996513, 0, 0.9999724, 0, -0.9999723, 0, -4.3709864e-08, 0, 0, 0)
+transform = Transform3D(-4.3710447e-08, 0, 0.99997187, 0, 0.9999724, 0, -0.9999785, 0, -4.371016e-08, 0, 0, 0)
 
 [node name="Path3D3" type="Path3D" parent="paths" unique_id=1357652342]
 curve = SubResource("Curve3D_kek77")
@@ -468,9 +477,6 @@ remote_path = NodePath("../../../../ReactionPillar")
 
 [node name="SphereGround" parent="." unique_id=1853626261 instance=ExtResource("10_4c57u")]
 transform = Transform3D(15.15148, 0, 0, 0, 15.15148, 0, 0, 0, 15.15148, -14.62402, 0, -16.499304)
-
-[node name="SphereGround2" parent="." unique_id=499882917 instance=ExtResource("10_4c57u")]
-transform = Transform3D(35.279053, 0, 0, 0, 35.279053, 0, 0, 0, 35.279053, -52.433937, 2.5108376, -76.51985)
 
 [node name="ReactionPillar" parent="." unique_id=2086427758 node_paths=PackedStringArray("pathfollow") instance=ExtResource("11_efxa6")]
 transform = Transform3D(-4.371139e-08, -8.742278e-08, -1, 0, -1, 8.742278e-08, -1, 3.821371e-15, 4.371139e-08, -11.385273, 26.011044, -112.92087)

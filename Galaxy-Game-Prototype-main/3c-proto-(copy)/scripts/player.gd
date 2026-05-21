@@ -1,4 +1,4 @@
-class_name Player extends CharacterBody3D
+class_name player extends CharacterBody3D
 
 const MAX_VELOCITY : float = 80.0
 const DEFAULT_GRAVITY : float = 40.0

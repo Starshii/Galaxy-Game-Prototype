@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpmg4pbip3mcq"]
+
+[ext_resource type="Script" uid="uid://bht5j70ngnred" path="res://rico stuff/Camerascript.gd" id="1_611cw"]
+[ext_resource type="Script" uid="uid://bo2xcjt7qgn5l" path="res://rico stuff/camerasmoothing.gd" id="2_8vaa5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g0pj6"]
+radius = 0.3
+
+[node name="CamPos" type="Node3D" unique_id=1132223926]
+script = ExtResource("1_611cw")
+
+[node name="RotatePoint" type="Node3D" parent="." unique_id=1362806735]
+
+[node name="CamDis" type="SpringArm3D" parent="RotatePoint" unique_id=2110998327]
+shape = SubResource("SphereShape3D_g0pj6")
+spring_length = 8.0
+script = ExtResource("2_8vaa5")
+
+[node name="Cam" type="Camera3D" parent="RotatePoint/CamDis" unique_id=1656040524]

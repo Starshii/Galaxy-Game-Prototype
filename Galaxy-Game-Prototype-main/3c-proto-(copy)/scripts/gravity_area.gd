@@ -1,28 +1,36 @@
 class_name GravityArea extends Area3D
 
 enum Type {
-	DirectionalGlobal,
-	DirectionalLocal,
+	Directional,
 	ToPoint,
 	FromPoint,
-	FromLine,
+	ToLine,
+	FromLine
 }
 
-@export_flags_3d_physics var player : int = 2
-@export var type          : Type
-@export var gravity_value : Vector3 = Vector3.DOWN
+@export var GravityType  : Type
+@export var PriorityLink : GravityArea = self
+
+var TruePriority : int
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	collision_mask = player
+	
+	TruePriority = priority
 
 
 func _on_body_entered(body : Node3D):
-	if body.has_method("add_gravity_area"):
-		body.add_gravity_area(self)
+	if body.is_in_group("Player"):
+		TruePriority = priority
+		if PriorityLink != self:
+			body.AddGravityArea(self, true)
+			PriorityLink.TruePriority = priority
+			body.AddGravityAreaToFirst(PriorityLink)
+		else:
+			body.AddGravityArea(self, false)
 
 
 func _on_body_exited(body : Node3D):
-	if body.has_method("remove_gravity_area"):
-		body.remove_gravity_area(self)
+	if body.is_in_group("Player"):
+		body.RemoveGravityArea(self)
