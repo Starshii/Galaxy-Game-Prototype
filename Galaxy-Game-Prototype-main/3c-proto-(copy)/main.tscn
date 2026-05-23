@@ -7,11 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://c8iphkv2rxlgt" path="res://audio/Super Mario Galaxy 2 Soundtrack - Sweet Mystery Galaxy.mp3" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://bavt8xns8ax2e" path="res://scripts/animation_player.gd" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ntnnhpoxg6sd" path="res://obstacles/moving_platform.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://xfua16n0tmdo" path="res://obstacles/treetest.tscn" id="7_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b5ixnnuvr5ng" path="res://groundshapes/sphere_ground.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://ds6aq4lxh06tj" path="res://rico stuff/Player.tscn" id="10_efxa6"]
 [ext_resource type="PackedScene" uid="uid://b7k0oaiesji85" path="res://obstacles/reaction_pillar.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://d36bymsp7d4ya" path="res://rico stuff/GameManager.tscn" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://du83kholpyl5e" path="res://rico stuff/MainScript.gd" id="13_w48qg"]
+[ext_resource type="Script" uid="uid://b7des35hfep0y" path="res://sphere_glue.gd" id="14_w48qg"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 length = 0.001
@@ -277,7 +279,7 @@ autoplay = &"pushblockanim"
 script = ExtResource("7_5vw27")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2133081414]
-transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.29552817, -0.039977014, 0.9544973, -0.40331525, 0.9005009, 0.16258857, 0, 0, 0)
+transform = Transform3D(-0.90675664, -0.41717944, 0.061269287, 0.12300166, -0.12271741, 0.9847899, -0.40331525, 0.90050083, 0.16258854, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=874450468]
@@ -338,7 +340,7 @@ size = Vector3(13.746216, 1, 11.96582)
 [node name="GravityArea2" type="Area3D" parent="CSGCombiner3D/CSGBox3D4" unique_id=406436040]
 transform = Transform3D(8.993969, 0, 0, 0, 0.99999994, 0, 0, 0, 5.1948705, 0, -1.0388184, -64.65956)
 top_level = true
-gravity_space_override = 3
+gravity_space_override = 1
 gravity_point_unit_distance = 1024.0
 gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
@@ -348,7 +350,7 @@ script = ExtResource("1_h2yge")
 shape = SubResource("BoxShape3D_0xm2m")
 
 [node name="GravityArea" type="Area3D" parent="CSGCombiner3D/CSGBox3D4" unique_id=1255133588]
-transform = Transform3D(2.0947056, 0, 0, 0, 0.77114564, 0, 0, 0, 1.0575566, 0.5743612, 3.8557281, -0.042262077)
+transform = Transform3D(2.4760706, 0, 0, 0, 0.77114564, 0, 0, 0, 1.0575566, 0.5743612, 3.8557281, -0.042262077)
 gravity_space_override = 3
 gravity_point_unit_distance = 1024.0
 script = ExtResource("1_h2yge")
@@ -391,7 +393,10 @@ grow_vertical = 2
 [node name="Enemies" type="Node" parent="." unique_id=2050820268]
 
 [node name="BunnyEnemy" parent="Enemies" unique_id=736980119 groups=["Player"] instance=ExtResource("2_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.555317, 22.90435, -78.602684)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.18686, 19.36918, -78.602684)
+
+[node name="Tree" parent="Enemies" unique_id=855218902 instance=ExtResource("7_ycdy4")]
+transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, -75.31362, 5.7979107, 13.673186)
 
 [node name="paths" type="Node" parent="." unique_id=1305707707]
 
@@ -469,7 +474,11 @@ remote_path = NodePath("../../../../ReactionPillar")
 [node name="SphereGround" parent="." unique_id=1853626261 instance=ExtResource("10_4c57u")]
 transform = Transform3D(15.15148, 0, 0, 0, 15.15148, 0, 0, 0, 15.15148, -14.62402, 0, -16.499304)
 
-[node name="SphereGround2" parent="." unique_id=499882917 instance=ExtResource("10_4c57u")]
+[node name="SphereGround3" parent="." unique_id=499882917 instance=ExtResource("10_4c57u")]
+transform = Transform3D(218.65883, 0, 0, 0, 218.32097, 0, 0, 0, 218.65883, 119.543365, -73.5975, -90.90109)
+radius = 0.53753036
+
+[node name="SphereGround2" parent="." unique_id=903927510 instance=ExtResource("10_4c57u")]
 transform = Transform3D(35.279053, 0, 0, 0, 35.279053, 0, 0, 0, 35.279053, -52.433937, 2.5108376, -76.51985)
 
 [node name="ReactionPillar" parent="." unique_id=2086427758 node_paths=PackedStringArray("pathfollow") instance=ExtResource("11_efxa6")]
@@ -481,3 +490,52 @@ script = ExtResource("13_w48qg")
 
 [node name="Player" parent="." unique_id=1005209781 instance=ExtResource("10_efxa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13756841, 5.500002, -0.50356865)
+
+[node name="Tree" type="CSGCombiner3D" parent="." unique_id=1954574554]
+transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, 115.08887, -68.97997, -93.55557)
+use_collision = true
+
+[node name="treetrunk" type="CSGCylinder3D" parent="Tree" unique_id=1656031720]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 0, 91.199524, 0)
+radius = 11.848633
+height = 76.63608
+sides = 24
+smooth_faces = false
+
+[node name="firstplatform" type="CSGBox3D" parent="Tree" unique_id=780388887]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 12.58083, 57.331203, 5.874466)
+size = Vector3(9.192383, 8.512207, 3.6386108)
+
+[node name="firstplatform3" type="CSGBox3D" parent="Tree" unique_id=182674858]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 14.257249, 55.776443, 1.3180847)
+size = Vector3(8.091248, 5.40271, 7.360901)
+
+[node name="firstplatform2" type="CSGBox3D" parent="Tree" unique_id=1160170287]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 15.101822, 57.331203, -6.820984)
+size = Vector3(4.1503906, 8.512207, 1.1713257)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Tree" unique_id=1678155262]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 16.875893, 56.455845, 6.0432873)
+radius = 2.008789
+height = 10.217705
+smooth_faces = false
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Tree" unique_id=1049928720]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 16.875893, 56.455845, -7.577957)
+radius = 2.008789
+height = 10.217705
+smooth_faces = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Tree" unique_id=2039416889]
+transform = Transform3D(0.84498096, 0.5347945, 0, -0.5347945, 0.84498096, 0, 0, 0, 0.9999993, 21.1309, 52.04608, 1.5284271)
+size = Vector3(2.097168, 4.194641, 5.682251)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Tree" unique_id=2110962002 node_paths=PackedStringArray("target_sphere")]
+transform = Transform3D(0.06324581, -0.26559788, 0.40030238, 0, 0.40375656, 0.26788974, -0.48040003, -0.034966595, 0.052700758, 50.658882, 34.014538, 7.670738)
+size = Vector3(10.1970215, 12.240677, 23.911438)
+script = ExtResource("14_w48qg")
+target_sphere = NodePath("../../SphereGround3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Tree" unique_id=1867229634]
+transform = Transform3D(0.84498096, 0.5347945, 0, -0.5347945, 0.84498096, 0, 0, 0, 0.9999993, 23.445107, 50.234577, 1.5284271)
+size = Vector3(2.097168, 3.3258057, 5.682251)
