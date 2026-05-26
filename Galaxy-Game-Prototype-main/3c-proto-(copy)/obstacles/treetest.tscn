@@ -1,5 +1,13 @@
 [gd_scene format=3 uid="uid://xfua16n0tmdo"]
 
+[ext_resource type="Texture2D" uid="uid://b817kr2614tcq" path="res://materials/checkeredtexture.png" id="1_j00lm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edtb3"]
+albedo_color = Color(0.49019608, 1, 1, 1)
+albedo_texture = ExtResource("1_j00lm")
+uv1_triplanar = true
+texture_filter = 0
+
 [node name="Node3D" type="CSGCombiner3D" unique_id=1226170157]
 use_collision = true
 
@@ -19,6 +27,7 @@ size = Vector3(1.9057178, 0.26416016, 1.8651342)
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=639398277]
 transform = Transform3D(1.5739653, 0, 0, 0, 1.5739653, 0, 0, 0, 1.5739653, -2.6762042, 12.418258, 35.300144)
 size = Vector3(4.1993885, 0.26416016, 4.0901318)
+material = SubResource("StandardMaterial3D_edtb3")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1209908994]
 transform = Transform3D(1.4635067, 0, 0.5792364, 0, 1.5739653, 0, -0.5792364, 0, 1.4635067, 4.4306383, 13.554673, 34.802757)

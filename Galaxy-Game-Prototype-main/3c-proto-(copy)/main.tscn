@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://b7k0oaiesji85" path="res://obstacles/reaction_pillar.tscn" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://d36bymsp7d4ya" path="res://rico stuff/GameManager.tscn" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://du83kholpyl5e" path="res://rico stuff/MainScript.gd" id="13_w48qg"]
-[ext_resource type="Script" uid="uid://b7des35hfep0y" path="res://sphere_glue.gd" id="14_w48qg"]
+[ext_resource type="Texture2D" uid="uid://b817kr2614tcq" path="res://materials/checkeredtexture.png" id="14_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://cxylps3afwiun" path="res://obstacles/vine.tscn" id="14_w48qg"]
+[ext_resource type="Material" uid="uid://c3ity7rg3gdln" path="res://materials/blocktexture.material" id="14_yaehf"]
+[ext_resource type="Texture2D" uid="uid://ctnnc53pcbpxq" path="res://materials/blocktexture.tres" id="16_yaehf"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 length = 0.001
@@ -271,6 +274,91 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_074og"]
+albedo_color = Color(0.320856, 0.25065085, 0, 1)
+albedo_texture = ExtResource("14_2cqfq")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yaehf"]
+load_path = "res://.godot/imported/checkeredtexture.png-88843926307c0b78f3d5bf3e9e3675cd.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82xsv"]
+albedo_color = Color(0.54032654, 0.29529592, 0.07145894, 1)
+albedo_texture = SubResource("CompressedTexture2D_yaehf")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cegan"]
+albedo_color = Color(0.7634623, 0.7191634, 0.25007194, 1)
+albedo_texture = ExtResource("14_2cqfq")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="Curve3D" id="Curve3D_vivmo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.06704712, -1.0041237, -0.51007843, -12.805, 0, 0, 4.665, 0, 0, 19.789078, -0.52342606, -0.42921448, 0.415, 0, 0, 0, 0, 0, 21.96785, -0.20520782, -13.317322),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vivmo"]
+size = Vector3(6.632477, 1.6962891, 3.4838867)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w48qg"]
+height = 23.676607
+radius = 4.73291
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yaehf"]
+height = 23.509155
+radius = 5.2265625
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_074og"]
+height = 13.406372
+radius = 3.067871
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vivmo"]
+height = 7.445801
+radius = 3.631836
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w48qg"]
+size = Vector3(3.1827393, 5.1951294, 8.532242)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cegan"]
+size = Vector3(11.036743, 1, 16.057617)
+
+[sub_resource type="Curve3D" id="Curve3D_w48qg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 1.99, 0, 0, 6.0796738e-05, 0.0069447756, -0.002050519, 0, 0, 0, 0, 0, 0, 7.5489197, 2.1137695, 4.0864563, -1.6346436, -0.45596313, -4.234062, 1.6346436, 0.45596313, 4.234062, 13.913223, 4.8763275, 12.699783, 0.9500885, -1.4848022, -3.913826, -0.9500885, 1.4848022, 3.913826, 15.165176, 6.922989, 25.846558, 2.9794312, -0.90130615, -4.0545883, -2.9794312, 0.90130615, 4.0545883, 10.5289, 9.721741, 35.18666, 7.5130157, -1.3043518, -2.7108383, -7.5130157, 1.3043518, 2.7108383, -1.4636078, 13.447937, 43.879646, 0, 0, 0, -2.4851456, 0.94171906, -1.0355759, -19.147072, 16.998344, 40.583755),
+"tilts": PackedFloat32Array(0, 0, -0.11376889, -0.21317488, -0.2870911, -0.49330562, -0.7319643)
+}
+point_count = 7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getpj"]
+albedo_texture = ExtResource("16_yaehf")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2cqfq"]
+height = 23.342346
+radius = 48.64502
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cegan"]
+height = 9.554749
+radius = 39.208008
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_82xsv"]
+height = 37.311447
+radius = 27.84961
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ryguw"]
+height = 9.672363
+radius = 17.310547
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_getpj"]
+height = 29.509424
+radius = 15.499512
+
 [node name="TestEnvir" type="Node3D" unique_id=1796387279]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114390053]
@@ -474,10 +562,6 @@ remote_path = NodePath("../../../../ReactionPillar")
 [node name="SphereGround" parent="." unique_id=1853626261 instance=ExtResource("10_4c57u")]
 transform = Transform3D(15.15148, 0, 0, 0, 15.15148, 0, 0, 0, 15.15148, -14.62402, 0, -16.499304)
 
-[node name="SphereGround3" parent="." unique_id=499882917 instance=ExtResource("10_4c57u")]
-transform = Transform3D(218.65883, 0, 0, 0, 218.32097, 0, 0, 0, 218.65883, 119.543365, -73.5975, -90.90109)
-radius = 0.53753036
-
 [node name="SphereGround2" parent="." unique_id=903927510 instance=ExtResource("10_4c57u")]
 transform = Transform3D(35.279053, 0, 0, 0, 35.279053, 0, 0, 0, 35.279053, -52.433937, 2.5108376, -76.51985)
 
@@ -489,53 +573,474 @@ pathfollow = NodePath("../paths/PillarPAth/PathFollow3D")
 script = ExtResource("13_w48qg")
 
 [node name="Player" parent="." unique_id=1005209781 instance=ExtResource("10_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13756841, 5.500002, -0.50356865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.23764, 42.982285, -61.068825)
 
 [node name="Tree" type="CSGCombiner3D" parent="." unique_id=1954574554]
 transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, 115.08887, -68.97997, -93.55557)
 use_collision = true
 
-[node name="treetrunk" type="CSGCylinder3D" parent="Tree" unique_id=1656031720]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 0, 91.199524, 0)
-radius = 11.848633
-height = 76.63608
-sides = 24
-smooth_faces = false
-
 [node name="firstplatform" type="CSGBox3D" parent="Tree" unique_id=780388887]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 12.58083, 57.331203, 5.874466)
-size = Vector3(9.192383, 8.512207, 3.6386108)
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 12.580826, 57.31893, 5.9506226)
+size = Vector3(9.192383, 8.487671, 3.4862976)
+material = ExtResource("14_yaehf")
 
 [node name="firstplatform3" type="CSGBox3D" parent="Tree" unique_id=182674858]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 14.257249, 55.776443, 1.3180847)
-size = Vector3(8.091248, 5.40271, 7.360901)
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 14.257248, 53.12146, 1.3180847)
+size = Vector3(8.091248, 2.7427673, 7.360901)
+material = ExtResource("14_yaehf")
 
-[node name="firstplatform2" type="CSGBox3D" parent="Tree" unique_id=1160170287]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 15.101822, 57.331203, -6.820984)
-size = Vector3(4.1503906, 8.512207, 1.1713257)
+[node name="firstplatform4" type="CSGBox3D" parent="Tree" unique_id=1016304913]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 15.302628, 56.3199, 3.6135063)
+size = Vector3(1.8761444, 9.139671, 4.9094543)
+material = ExtResource("14_yaehf")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Tree" unique_id=1678155262]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 16.875893, 56.455845, 6.0432873)
+[node name="sidepillardown" type="CSGCylinder3D" parent="Tree" unique_id=1678155262]
+transform = Transform3D(0.971279, 0, -0.23794, 0, 0.9999993, 0, 0.23794, 0, 0.971279, 16.8759, 56.45584, 6.0432854)
 radius = 2.008789
 height = 10.217705
+sides = 12
 smooth_faces = false
+material = ExtResource("14_yaehf")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Tree" unique_id=1049928720]
-transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 16.875893, 56.455845, -7.577957)
-radius = 2.008789
-height = 10.217705
-smooth_faces = false
+[node name="trunk" type="CSGCylinder3D" parent="Tree" unique_id=439644321]
+transform = Transform3D(0.9482063, 0, -0.317652, 0, 0.9999993, 0, 0.317652, 0, 0.9482063, 1.8524475, 73.13019, 1.8542786)
+radius = 9.151855
+height = 46.28621
+sides = 32
+material = SubResource("StandardMaterial3D_074og")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Tree" unique_id=2039416889]
-transform = Transform3D(0.84498096, 0.5347945, 0, -0.5347945, 0.84498096, 0, 0, 0, 0.9999993, 21.1309, 52.04608, 1.5284271)
-size = Vector3(2.097168, 4.194641, 5.682251)
+[node name="hollowtrunkbot" type="CSGCylinder3D" parent="Tree" unique_id=864034158]
+transform = Transform3D(0.8403427, 0, -0.27816805, 0, 0.6628916, 0, 0.2815177, 0, 0.83034474, 1.8524475, 52.075012, 1.8542786)
+operation = 2
+radius = 9.151855
+height = 25.62209
+sides = 32
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Tree" unique_id=2110962002 node_paths=PackedStringArray("target_sphere")]
-transform = Transform3D(0.06324581, -0.26559788, 0.40030238, 0, 0.40375656, 0.26788974, -0.48040003, -0.034966595, 0.052700758, 50.658882, 34.014538, 7.670738)
-size = Vector3(10.1970215, 12.240677, 23.911438)
-script = ExtResource("14_w48qg")
-target_sphere = NodePath("../../SphereGround3")
+[node name="hollowtrunktop" type="CSGCylinder3D" parent="Tree" unique_id=1152066916]
+transform = Transform3D(0.8403427, 0, -0.27816805, 0, 0.6628916, 0, 0.2815177, 0, 0.83034474, 1.8524475, 95.60475, 1.8542786)
+operation = 2
+radius = 9.151855
+height = 2.3254442
+sides = 32
+material = SubResource("StandardMaterial3D_82xsv")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Tree" unique_id=1867229634]
-transform = Transform3D(0.84498096, 0.5347945, 0, -0.5347945, 0.84498096, 0, 0, 0, 0.9999993, 23.445107, 50.234577, 1.5284271)
-size = Vector3(2.097168, 3.3258057, 5.682251)
+[node name="vine" parent="Tree" unique_id=226001790 instance=ExtResource("14_w48qg")]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 6.4979935, 55.46467, 8.4616585)
+
+[node name="vinepoly2" type="CSGPolygon3D" parent="Tree" unique_id=261218234]
+transform = Transform3D(0.48454535, 0, 0, 0, 0.48454535, 0, 0, 0, 0.48454535, -55.82245, 33.336224, 45.251247)
+polygon = PackedVector2Array(-0.22059138, -1.3823988, -1.0853032, 0.5503345, 2.4732468, 0.6926817, 1.7248468, -1.5303535)
+mode = 2
+path_node = NodePath("../vine")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_cegan")
+
+[node name="vinepoly" type="CSGPolygon3D" parent="Tree" unique_id=621372931]
+transform = Transform3D(0.48454538, 0, 0, 0, 0.48454538, 0, 0, 0, 0.48454538, -55.822453, 33.336227, 45.251247)
+polygon = PackedVector2Array(-0.22059138, -1.3823988, -1.0853032, 0.5503345, 2.4732468, 0.6926817, 1.7248468, -1.5303535)
+mode = 2
+path_node = NodePath("../vine")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="vinedown" type="Path3D" parent="Tree" unique_id=1107789398]
+transform = Transform3D(0.48454538, 0, 0, 0, 0.48454538, 0, 0, 0, 0.48454538, 8.162937, 57.048264, 8.22467)
+curve = SubResource("Curve3D_vivmo")
+
+[node name="vinedownpoly" type="CSGPolygon3D" parent="Tree" unique_id=1821702591]
+transform = Transform3D(0.48454538, 0, 0, 0, 0.48454538, 0, 0, 0, 0.48454538, -55.765778, 33.423927, 45.33192)
+polygon = PackedVector2Array(0, 0, -0.7144346, 1.5301495, 1.4398866, 1.5213456, 1, 0)
+mode = 2
+path_node = NodePath("../vinedown")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("14_yaehf")
+
+[node name="vinegravity" type="Area3D" parent="Tree" unique_id=714464611]
+collision_layer = 3
+collision_mask = 3
+priority = 2
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/vinegravity" unique_id=755480396]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9897855, 0.14255972, 0, -0.14255972, 0.9897855, 7.538349, 59.64674, 9.161156)
+shape = SubResource("BoxShape3D_vivmo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tree/vinegravity" unique_id=145949136]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9897855, 0.14255972, 0, -0.14255972, 0.9897855, 5.5199547, 60.36106, 11.884933)
+shape = SubResource("BoxShape3D_vivmo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Tree/vinegravity" unique_id=117828520]
+transform = Transform3D(0.96703047, 0.25205103, 0.036303166, -0.25465238, 0.957154, 0.13785991, 0, -0.14255974, 0.9897856, -0.8963661, 61.79478, 11.855553)
+shape = SubResource("BoxShape3D_vivmo")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Tree/vinegravity" unique_id=1749993537]
+transform = Transform3D(0.76469314, 0.2865767, -0.5771611, -0.25465238, 0.957154, 0.13785994, 0.5919394, 0.041554503, 0.804909, -5.5933304, 63.126663, 8.582661)
+shape = SubResource("BoxShape3D_vivmo")
+
+[node name="bottombranch" type="CSGCylinder3D" parent="Tree" unique_id=495741527]
+transform = Transform3D(0.20835985, -0.74878407, 0.6292107, 0.96339566, 0.26807913, 4.762582e-09, -0.16867836, 0.60618, 0.7772324, -11.280102, 65.4514, 14.26552)
+radius = 1.7553711
+height = 22.41034
+sides = 16
+material = ExtResource("14_yaehf")
+
+[node name="GravityArea" type="Area3D" parent="Tree/bottombranch" unique_id=2069275631]
+collision_mask = 3
+priority = 2
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/bottombranch/GravityArea" unique_id=1323298776]
+transform = Transform3D(1.0000007, 3.7252903e-07, 1.5214086e-05, -1.3783574e-06, 0.99999917, 4.23193e-06, -4.172325e-07, -4.7683716e-07, 0.9999999, 3.4332275e-05, -0.3992424, -5.722046e-06)
+shape = SubResource("CylinderShape3D_w48qg")
+
+[node name="bottombranch2" type="CSGCylinder3D" parent="Tree" unique_id=912586759]
+transform = Transform3D(-0.49855882, -0.5107961, -0.70037204, 0.8096065, 0.014368241, -0.5867937, 0.30979615, -0.85957813, 0.40638167, -9.060596, 84.990005, -15.137333)
+radius = 1.7553711
+height = 23.64853
+material = ExtResource("14_yaehf")
+
+[node name="GravityArea" type="Area3D" parent="Tree/bottombranch2" unique_id=120232927]
+collision_mask = 3
+priority = 2
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/bottombranch2/GravityArea" unique_id=1567674964]
+transform = Transform3D(0.99997807, -4.7683716e-07, -8.046627e-07, 4.61936e-06, 0.9999684, -3.874302e-07, 3.1292439e-07, 2.8014183e-06, 0.99999833, -1.9073486e-06, -0.02590561, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_yaehf")
+
+[node name="bottombranch6" type="CSGCylinder3D" parent="Tree" unique_id=1127432196]
+transform = Transform3D(0.99999857, 0, 0, 0, 0.9999973, 0, 0, 0, 0.99999744, -13.789093, 77.377014, -23.890064)
+radius = 0.83691406
+height = 16.962225
+material = ExtResource("14_yaehf")
+
+[node name="GravityArea" type="Area3D" parent="Tree/bottombranch6" unique_id=1310591954]
+collision_mask = 3
+priority = 2
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/bottombranch6/GravityArea" unique_id=1576482347]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000018, 0, -1.5818405, 0)
+shape = SubResource("CylinderShape3D_074og")
+
+[node name="bottombranch7" type="CSGCylinder3D" parent="Tree" unique_id=1977256741]
+transform = Transform3D(0.99999857, 0, 0, 0, 0.9999973, 0, 0, 0, 0.99999744, -7.373657, 77.31797, -12.385376)
+radius = 0.83691406
+height = 17.080267
+material = ExtResource("14_yaehf")
+
+[node name="bottombranch4" type="CSGCylinder3D" parent="Tree" unique_id=899030112]
+transform = Transform3D(0.09946712, -0.7076412, 0.6995325, 0.98725194, 0.1579689, 0.019421706, -0.12424813, 0.68868405, 0.7143333, -6.9972153, 84.88646, 10.563564)
+radius = 1.0302734
+height = 12.761322
+material = ExtResource("14_yaehf")
+
+[node name="GravityArea" type="Area3D" parent="Tree/bottombranch4" unique_id=1109582065]
+collision_mask = 3
+priority = 2
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/bottombranch4/GravityArea" unique_id=1649380871]
+transform = Transform3D(1.0000011, 0, -2.734363e-06, 5.2154064e-08, 0.9999999, -1.0728836e-06, 0, 0, 1.0000001, 3.8146973e-06, 2.7526855, -1.9073486e-06)
+shape = SubResource("CylinderShape3D_vivmo")
+
+[node name="resetvinegrav" type="Area3D" parent="Tree" unique_id=2051783905]
+transform = Transform3D(0.6367643, 0, 0.7710575, 0, 0.9999993, 0, -0.7710575, 0, 0.6367643, -5.399452, 65.95961, 9.678093)
+collision_mask = 3
+priority = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/resetvinegrav" unique_id=1470224882]
+transform = Transform3D(0.9999989, 0, -3.874302e-07, 0, 0.9999987, 0, 3.874302e-07, 0, 0.9999989, 0.07915497, 1.8246689, 0.28207588)
+shape = SubResource("BoxShape3D_w48qg")
+
+[node name="resetvinegrav3" type="Area3D" parent="Tree" unique_id=1603560505]
+transform = Transform3D(0.8569598, 0, 0.5153817, 0, 0.99999917, 0, -0.5153817, 0, 0.8569598, -10.513203, 69.578636, -18.464695)
+collision_mask = 3
+priority = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/resetvinegrav3" unique_id=1692877009]
+transform = Transform3D(0.99933994, 0, -0.036329776, 0, 1.0000347, 0, 0.036329776, 0, 0.99933994, 0.04424286, 0, 0.08129883)
+shape = SubResource("BoxShape3D_cegan")
+
+[node name="resetvinegrav2" type="Area3D" parent="Tree" unique_id=1790136184]
+transform = Transform3D(0.6367643, 0, 0.7710575, 0, 0.9999993, 0, -0.7710575, 0, 0.6367643, -4.922779, 85.15698, 9.783012)
+collision_mask = 3
+priority = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/resetvinegrav2" unique_id=764240595]
+transform = Transform3D(0.9999989, 0, -3.874302e-07, 0, 0.9999987, 0, 3.874302e-07, 0, 0.9999989, 0.07915497, 0.83140945, -0.7535591)
+shape = SubResource("BoxShape3D_w48qg")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Tree" unique_id=1148118070]
+transform = Transform3D(0.48454538, 0, 0, 0, 0.48454538, 0, 0, 0, 0.48454538, -55.765778, 33.423927, 45.33192)
+polygon = PackedVector2Array(-1.5095634, 0.7502098, -1.6666412, 4.411331, 4.163006, 4.483326, 2.676628, 0.92946625)
+mode = 2
+path_node = NodePath("../vineboom")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("14_yaehf")
+
+[node name="vineboom" type="Path3D" parent="Tree" unique_id=1622577638]
+transform = Transform3D(0.030433362, 0, -0.48358843, 0, 0.4845451, 0, 0.48358843, 0, 0.030433362, 12.644356, 78.0435, 4.8363876)
+curve = SubResource("Curve3D_w48qg")
+
+[node name="boxtovineboom" type="CSGBox3D" parent="Tree" unique_id=80643672]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 11.487961, 77.29106, 2.8735542)
+size = Vector3(1.4077148, 1.5050049, 1.7618408)
+material = ExtResource("14_yaehf")
+
+[node name="boxtovineboom3" type="CSGBox3D" parent="Tree" unique_id=117061934]
+transform = Transform3D(0.93706095, 0, -0.3491606, 0, 0.9999993, 0, 0.3491606, 0, 0.93706095, 12.873482, 79.55109, 4.6433983)
+size = Vector3(1.4077148, 2.159195, 1.7618408)
+material = ExtResource("14_yaehf")
+
+[node name="boxtovineboom5" type="CSGBox3D" parent="Tree" unique_id=2037940147]
+transform = Transform3D(0.9901858, 0, -0.13974355, 0, 0.99999917, 0, 0.13974355, 0, 0.9901858, 10.41674, 79.99432, 3.5963707)
+size = Vector3(1.1130371, 2.159195, 1.7618408)
+material = ExtResource("14_yaehf")
+
+[node name="boxtovineboom4" type="CSGBox3D" parent="Tree" unique_id=1833988787]
+transform = Transform3D(0.9928868, 0, -0.11904532, 0, 0.99999917, 0, 0.11904532, 0, 0.9928868, 13.849396, 78.26622, 2.71072)
+size = Vector3(1.4077148, 2.603302, 1.7618408)
+material = ExtResource("14_yaehf")
+
+[node name="boxtovineboom2" type="CSGBox3D" parent="Tree" unique_id=1983061763]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 11.762291, 76.75629, 1.9410858)
+size = Vector3(1.8687744, 1.1743164, 1.4345703)
+material = ExtResource("14_yaehf")
+
+[node name="hangingcityground" type="CSGBox3D" parent="Tree" unique_id=1469356718]
+transform = Transform3D(0.48740184, 0, -0.8731763, 0, 0.99999917, 0, 0.8731763, 0, 0.48740184, -10.424927, 68.776474, -18.37246)
+size = Vector3(16.011475, 1, 11.038521)
+material = ExtResource("14_yaehf")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Tree" unique_id=263982214]
+transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 10.295448, 55.22586, 0.66479874)
+operation = 2
+radius = 1.6454947
+
+[node name="planet" type="CSGCylinder3D" parent="." unique_id=1535873895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.38956, 29.611393, -90.56851)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 39.4292
+height = 23.477905
+sides = 32
+material = SubResource("StandardMaterial3D_getpj")
+
+[node name="side" type="Area3D" parent="planet" unique_id=1746605996]
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet/side" unique_id=85857418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024505615, 0)
+shape = SubResource("CylinderShape3D_2cqfq")
+
+[node name="top" type="Area3D" parent="planet" unique_id=331112611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.741188, 0)
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet/top" unique_id=1095684096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
+shape = SubResource("CylinderShape3D_cegan")
+
+[node name="bottom" type="Area3D" parent="planet" unique_id=354112164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.603176, 0)
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet/bottom" unique_id=2004134438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
+shape = SubResource("CylinderShape3D_cegan")
+
+[node name="tempplanet" type="CSGCylinder3D" parent="." unique_id=1750710148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.57626, 29.611393, -90.56851)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 39.4292
+height = 23.477905
+sides = 32
+material = SubResource("StandardMaterial3D_getpj")
+
+[node name="side" type="Area3D" parent="tempplanet" unique_id=1993407917]
+collision_mask = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempplanet/side" unique_id=1398166423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024505615, 0)
+shape = SubResource("CylinderShape3D_2cqfq")
+
+[node name="top" type="Area3D" parent="tempplanet" unique_id=1977182133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.741188, 0)
+collision_mask = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempplanet/top" unique_id=837120872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7773743, 0)
+shape = SubResource("CylinderShape3D_cegan")
+
+[node name="bottom" type="Area3D" parent="tempplanet" unique_id=1017448427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.603176, 0)
+collision_mask = 3
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempplanet/bottom" unique_id=543547664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
+shape = SubResource("CylinderShape3D_cegan")
+
+[node name="tower" type="CSGCombiner3D" parent="." unique_id=2062346985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 372.83115, 63.767677, -90.56851)
+use_collision = true
+collision_mask = 3
+
+[node name="towercil" type="CSGCylinder3D" parent="tower" unique_id=68365571]
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 16.183594
+height = 48.206554
+sides = 32
+material = SubResource("StandardMaterial3D_getpj")
+
+[node name="towercil2" type="CSGCylinder3D" parent="tower/towercil" unique_id=1666444029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2423706, 0)
+operation = 2
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 13.515137
+height = 49.65076
+sides = 32
+material = SubResource("StandardMaterial3D_getpj")
+
+[node name="outsidesidegrav" type="Area3D" parent="tower" unique_id=1359373966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 4.730835, 0)
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/outsidesidegrav" unique_id=1698473765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7168579, 0)
+shape = SubResource("CylinderShape3D_82xsv")
+
+[node name="outsidesidegrav2" type="Area3D" parent="tower" unique_id=435997089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 4.730835, 0)
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/outsidesidegrav2" unique_id=1501920226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.522198, 0)
+shape = SubResource("CylinderShape3D_ryguw")
+
+[node name="insidesidegrav" type="Area3D" parent="tower" unique_id=356149204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 4.730835, 0)
+collision_mask = 3
+priority = 2
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+GravityType = 4
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/insidesidegrav" unique_id=1426673296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74108887, 4.487114, 0.18508148)
+shape = SubResource("CylinderShape3D_getpj")
+
+[node name="topgrav" type="Area3D" parent="tower" unique_id=1357005313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 11.945473, 0)
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/topgrav" unique_id=1408978492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.745636, 18.28328, 0)
+shape = SubResource("CylinderShape3D_getpj")
