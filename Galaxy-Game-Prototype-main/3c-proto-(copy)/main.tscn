@@ -56,18 +56,6 @@ tracks/2/keys = {
 "points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Tree/swingaround:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.7853982)]
-}
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 resource_name = "pushblockanim"
@@ -198,18 +186,6 @@ tracks/5/keys = {
 "args": [],
 "method": &"SwitchTrack"
 }]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Tree/swingaround:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.14, 1.04, 1.94, 2.84, 3.74, 4.64, 5.54, 6.44, 7.34, 8.24, 9.14, 10.04, 10.94, 11.84, 12.74, 13.64, 14.54, 15.44, 16.34, 17.24, 18.14, 19.04, 19.94, 20.84, 21.74, 22.64, 23.54, 24.44, 25.34, 26.24, 27.14, 28.04, 28.94, 29.84, 30.74, 31.64, 32.54, 33.44, 34.34, 35.24, 36.14, 37.04, 37.94, 38.84, 39.74, 40.64, 41.54, 42.44, 43.34, 44.24, 45.14, 46.04, 46.94, 47.84, 48.74, 49.64, 50.54, 51.44, 52.34, 53.24, 54.14, 55.04, 55.94, 56.84, 57.74, 58.64, 59.54),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982), Vector3(0, 0, -0.7853982), Vector3(0, 0, 0.7853982)]
 }
 
 [sub_resource type="Animation" id="Animation_4c57u"]
@@ -361,6 +337,12 @@ radius = 5.2265625
 height = 13.406372
 radius = 3.067871
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_82xsv"]
+size = Vector3(16.000732, 1, 10.999237)
+
+[sub_resource type="BoxMesh" id="BoxMesh_82xsv"]
+size = Vector3(16.07, 1, 11.115)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_getpj"]
 albedo_texture = ExtResource("16_yaehf")
 uv1_triplanar = true
@@ -378,15 +360,23 @@ radius = 39.208008
 size = Vector3(1.7432251, 7.196533, 6)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_82xsv"]
-height = 45.815655
+height = 46.585358
 radius = 39.30664
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ryguw"]
+height = 46.007797
+radius = 12.066895
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d13ii"]
-height = 46.537407
+height = 47.074856
 radius = 8.793457
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0odxb"]
+height = 46.80075
+radius = 8.808594
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_getpj"]
-height = 29.779474
+height = 28.680708
 radius = 11.413574
 
 [sub_resource type="Curve3D" id="Curve3D_074og"]
@@ -416,6 +406,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1u8w0"]
+height = 10.791748
+radius = 38.657715
 
 [node name="MovingPlatform" type="Node3D" unique_id=1796387279]
 
@@ -573,13 +567,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.585, 5.59, -92.97)
 curve = SubResource("Curve3D_ycdy4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="paths/Path3D" unique_id=1494649649]
-transform = Transform3D(-0.8391066, 0, 0.5438754, 0, 0.99997115, 0, -0.543865, 0, -0.8391226, 12, 0, 0)
+transform = Transform3D(-0.8391008, 0, 0.5438754, 0, 0.9999709, 0, -0.54386127, 0, -0.83912265, 12, 0, 0)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="paths/Path3D/PathFollow3D" unique_id=865244206]
 remote_path = NodePath("../../MovingPlatform")
 
 [node name="MovingPlatform" parent="paths/Path3D" unique_id=1016718162 instance=ExtResource("7_272bh")]
-transform = Transform3D(-0.8391066, 0, 0.5438754, 0, 0.99997115, 0, -0.543865, 0, -0.8391226, 12, 0, 0)
+transform = Transform3D(-0.8391008, 0, 0.5438754, 0, 0.9999709, 0, -0.54386127, 0, -0.83912265, 12, 0, 0)
 
 [node name="Path3D2" type="Path3D" parent="paths" unique_id=452768868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.55809, 7.870591, -92.97)
@@ -631,7 +625,7 @@ pathfollow = NodePath("../paths/PillarPAth/PathFollow3D")
 script = ExtResource("13_w48qg")
 
 [node name="Player" parent="." unique_id=1005209781 instance=ExtResource("10_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 367.4445, 43.137924, -60.230633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.75221, 43.137924, -122.6478)
 
 [node name="Tree" type="CSGCombiner3D" parent="." unique_id=1954574554]
 transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, 115.08887, -68.97997, -93.55557)
@@ -874,7 +868,7 @@ operation = 2
 radius = 1.6454947
 
 [node name="swingaround" type="Node3D" parent="Tree" unique_id=900851485]
-transform = Transform3D(0.7071061, 0.7071063, 0, -0.7071061, 0.7071063, 0, 0, 0, 0.99999905, 2.4276085, 87.21895, -22.04249)
+transform = Transform3D(0.99999905, 0, 0, 0, 0.9999993, 0, 0, 0, 0.99999905, 2.4276085, 87.21895, -19.971722)
 
 [node name="swing" type="CSGCombiner3D" parent="Tree/swingaround" unique_id=2003054957]
 transform = Transform3D(0.8711716, 0, -0.49098012, 0, 1.0000007, 0, 0.49098012, 0, 0.8711716, 0.39063263, -85.448586, 21.172289)
@@ -888,7 +882,7 @@ script = ExtResource("1_h2yge")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/swingaround/swing/resetgravswing" unique_id=1692877009]
-transform = Transform3D(0.99933994, 0, -0.036329776, 0, 1.0000347, 0, 0.036329776, 0, 0.99933994, 0.04424286, 0, 0.08129883)
+transform = Transform3D(0.9993399, 0, -0.036329772, 0, 1, 0, 0.036329772, 0, 0.9993399, 0.04424286, 0, 0.08129883)
 shape = SubResource("BoxShape3D_cegan")
 
 [node name="swingbranch" type="CSGCylinder3D" parent="Tree/swingaround/swing" unique_id=912586759]
@@ -906,7 +900,6 @@ GravityType = 3
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/swingaround/swing/swingbranch/GravityArea" unique_id=1567674964]
-transform = Transform3D(0.99997807, -4.7683716e-07, -8.046627e-07, 4.61936e-06, 0.9999684, -3.874302e-07, 3.1292439e-07, 2.8014183e-06, 0.99999833, -1.9073486e-06, -0.02590561, -1.5258789e-05)
 shape = SubResource("CylinderShape3D_yaehf")
 
 [node name="rope1" type="CSGCylinder3D" parent="Tree/swingaround/swing" unique_id=1127432196]
@@ -935,8 +928,20 @@ material = ExtResource("14_yaehf")
 
 [node name="hangingcityground" type="CSGBox3D" parent="Tree/swingaround/swing" unique_id=1469356718]
 transform = Transform3D(0.48740184, 0, -0.8731762, 0, 0.99999917, 0, 0.8731762, 0, 0.48740184, -10.424927, 68.776474, -18.37246)
+visible = false
 size = Vector3(16.011475, 1, 11.038521)
 material = ExtResource("14_yaehf")
+
+[node name="hangingcitygroundanim" type="AnimatableBody3D" parent="Tree/swingaround/swing" unique_id=1563532788]
+transform = Transform3D(0.48740178, 0, -0.8731761, 0, 0.99999905, 0, 0.8731761, 0, 0.4874018, -10.424927, 68.77647, -18.372456)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/swingaround/swing/hangingcitygroundanim" unique_id=932977845]
+transform = Transform3D(1, 0, -1.2246892e-07, 0, 1.0000001, 0, 4.656613e-10, 0, 1, 0.030403137, 0, 0.009038448)
+shape = SubResource("BoxShape3D_82xsv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree/swingaround/swing/hangingcitygroundanim" unique_id=1567305085]
+mesh = SubResource("BoxMesh_82xsv")
 
 [node name="planet" type="CSGCylinder3D" parent="." unique_id=1535873895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.38956, 29.611393, -90.56851)
@@ -988,6 +993,7 @@ shape = SubResource("CylinderShape3D_cegan")
 
 [node name="tempplanet" type="CSGCylinder3D" parent="." unique_id=1750710148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.57626, 29.611393, -90.56851)
+visible = false
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -1031,16 +1037,12 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
 shape = SubResource("CylinderShape3D_cegan")
 
-[node name="tower" type="CSGCombiner3D" parent="." unique_id=2062346985]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 372.83115, 63.767677, -90.56851)
+[node name="rootpoly" type="CSGPolygon3D" parent="." unique_id=1409686639]
 use_collision = true
 collision_mask = 3
-
-[node name="rootpoly" type="CSGPolygon3D" parent="tower" unique_id=1409686639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.83115, -63.767677, 90.56851)
 polygon = PackedVector2Array(0.71056426, -1.2022657, 1.9293249, -0.7445626, 2.2124326, 0.41001153, 2.0970895, 1.5263003, 1.1368436, 2.2444067, 0.13395691, 2.0776296, -0.658004, 1.4613549, -0.76948047, 0.4493604, -0.47636366, -0.7919327)
 mode = 2
-path_node = NodePath("../root")
+path_node = NodePath("../tower/root")
 path_interval_type = 0
 path_interval = 1.0
 path_simplify_angle = 0.0
@@ -1052,11 +1054,12 @@ path_u_distance = 1.0
 path_joined = false
 material = ExtResource("18_cegan")
 
-[node name="rootpoly2" type="CSGPolygon3D" parent="tower" unique_id=591623778]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.83115, -63.767677, 90.56851)
+[node name="rootpoly2" type="CSGPolygon3D" parent="." unique_id=591623778]
+use_collision = true
+collision_mask = 3
 polygon = PackedVector2Array(0.71056426, -1.2022657, 1.9293249, -0.7445626, 2.2124326, 0.41001153, 2.0970895, 1.5263003, 1.1368436, 2.2444067, 0.13395691, 2.0776296, -0.658004, 1.4613549, -0.76948047, 0.4493604, -0.47636366, -0.7919327)
 mode = 2
-path_node = NodePath("../root2")
+path_node = NodePath("../tower/root2")
 path_interval_type = 0
 path_interval = 1.0
 path_simplify_angle = 0.0
@@ -1068,11 +1071,12 @@ path_u_distance = 1.0
 path_joined = false
 material = ExtResource("18_cegan")
 
-[node name="rootpoly3" type="CSGPolygon3D" parent="tower" unique_id=1090232444]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.83115, -63.767677, 90.56851)
+[node name="rootpoly3" type="CSGPolygon3D" parent="." unique_id=1090232444]
+use_collision = true
+collision_mask = 3
 polygon = PackedVector2Array(0.71056426, -1.2022657, 1.9293249, -0.7445626, 2.2124326, 0.41001153, 2.0970895, 1.5263003, 1.1368436, 2.2444067, 0.13395691, 2.0776296, -0.658004, 1.4613549, -0.76948047, 0.4493604, -0.47636366, -0.7919327)
 mode = 2
-path_node = NodePath("../root3")
+path_node = NodePath("../tower/root3")
 path_interval_type = 0
 path_interval = 1.0
 path_simplify_angle = 0.0
@@ -1084,11 +1088,12 @@ path_u_distance = 1.0
 path_joined = false
 material = ExtResource("18_cegan")
 
-[node name="rootpoly4" type="CSGPolygon3D" parent="tower" unique_id=744830687]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.83115, -63.767677, 90.56851)
+[node name="rootpoly4" type="CSGPolygon3D" parent="." unique_id=744830687]
+use_collision = true
+collision_mask = 3
 polygon = PackedVector2Array(0.71056426, -1.2022657, 1.9293249, -0.7445626, 2.2124326, 0.41001153, 2.0970895, 1.5263003, 1.1368436, 2.2444067, 0.13395691, 2.0776296, -0.658004, 1.4613549, -0.76948047, 0.4493604, -0.47636366, -0.7919327)
 mode = 2
-path_node = NodePath("../root4")
+path_node = NodePath("../tower/root4")
 path_interval_type = 0
 path_interval = 1.0
 path_simplify_angle = 0.0
@@ -1100,11 +1105,12 @@ path_u_distance = 1.0
 path_joined = false
 material = ExtResource("18_cegan")
 
-[node name="rootpoly5" type="CSGPolygon3D" parent="tower" unique_id=1470212516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -372.83115, -63.767677, 90.56851)
+[node name="rootpoly5" type="CSGPolygon3D" parent="." unique_id=1470212516]
+use_collision = true
+collision_mask = 3
 polygon = PackedVector2Array(0.71056426, -1.2022657, 1.9293249, -0.7445626, 2.2124326, 0.41001153, 2.0970895, 1.5263003, 1.1368436, 2.2444067, 0.13395691, 2.0776296, -0.658004, 1.4613549, -0.76948047, 0.4493604, -0.47636366, -0.7919327)
 mode = 2
-path_node = NodePath("../root5")
+path_node = NodePath("../tower/root5")
 path_interval_type = 0
 path_interval = 1.0
 path_simplify_angle = 0.0
@@ -1115,6 +1121,11 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 material = ExtResource("18_cegan")
+
+[node name="tower" type="CSGCombiner3D" parent="." unique_id=2062346985]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 119.81937, -4.7755747, -90.56851)
+use_collision = true
+collision_mask = 3
 
 [node name="towercil" type="CSGCylinder3D" parent="tower" unique_id=68365571]
 use_collision = true
@@ -1214,13 +1225,27 @@ GravityType = 3
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower/outsidesidegrav" unique_id=1698473765]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4202423, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.035391, 0)
 shape = SubResource("CylinderShape3D_82xsv")
+
+[node name="outsidesidegrav2" type="Area3D" parent="tower" unique_id=1120266631 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 4.730835, 0)
+collision_mask = 3
+priority = 5
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+PriorityLink = NodePath("../outsidesidegrav")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/outsidesidegrav2" unique_id=1126170877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8893509, -4.3122377, 0)
+shape = SubResource("CylinderShape3D_ryguw")
 
 [node name="insidesidegrav" type="Area3D" parent="tower" unique_id=356149204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 4.730835, 0)
 collision_mask = 3
-priority = 2
+priority = 7
 gravity_space_override = 3
 gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
@@ -1229,19 +1254,37 @@ GravityType = 4
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower/insidesidegrav" unique_id=1515999877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7719116, -4.5539246, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7719116, -4.2852, 0)
 shape = SubResource("CylinderShape3D_d13ii")
+
+[node name="insidesidegrav2" type="Area3D" parent="tower" unique_id=1086036279 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 4.730835, 0)
+collision_mask = 3
+priority = 8
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+GravityType = 4
+PriorityLink = NodePath("../insidesidegrav")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/insidesidegrav2" unique_id=1510348072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7416382, -3.9634247, 0)
+shape = SubResource("CylinderShape3D_0odxb")
 
 [node name="topgrav" type="Area3D" parent="tower" unique_id=1357005313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 11.945473, 0)
 collision_mask = 3
 priority = 1
 gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
 script = ExtResource("1_h2yge")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower/topgrav" unique_id=1408978492]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.745636, 27.01944, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7456207, 26.466204, 0)
 shape = SubResource("CylinderShape3D_getpj")
 
 [node name="liltree" type="CSGCylinder3D" parent="tower" unique_id=1417322614]
@@ -1304,3 +1347,31 @@ curve = SubResource("Curve3D_yaehf")
 [node name="root5" type="Path3D" parent="tower" unique_id=1242562100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.654724, -22.443264, 31.666924)
 curve = SubResource("Curve3D_getpj")
+
+[node name="downgroundgrav" type="Area3D" parent="tower" unique_id=2098596463]
+collision_mask = 3
+priority = 4
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/downgroundgrav" unique_id=1559207879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86846924, -17.048737, 0)
+shape = SubResource("CylinderShape3D_1u8w0")
+
+[node name="downgroundgrav2" type="Area3D" parent="tower" unique_id=1949929639 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.590942, 0)
+collision_mask = 3
+priority = 7
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+PriorityLink = NodePath("../downgroundgrav")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tower/downgroundgrav2" unique_id=2087218832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3802948, -17.048738, 0)
+shape = SubResource("CylinderShape3D_1u8w0")

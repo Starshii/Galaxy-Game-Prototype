@@ -7,8 +7,10 @@ class_name Player extends CharacterBody3D
 
 @onready var MainCam: Node3D = $CamPos
 
-@onready var NearFloor: RayCast3D = $Raycasts/NearFloor
-@onready var NearWall: ShapeCast3D = $Raycasts/NearWall
+@onready var NearFloor: RayCast3D = $NearFloor
+@onready var NearWall: ShapeCast3D = $NearWall
+@onready var LHDis: ShapeCast3D = $LedgeHopDis
+
 
 
 
@@ -176,18 +178,23 @@ var DiveBufferTime : float
 var DiveAmount     : int
 var ValidDive      : bool
 
-# WALLSLIDE
-const WSGrav       : float = 5.0
-const WSTermVel    : float = 8.0
+#WALLCLIMB
+const ClimbSpd     : float = 10.0
+const WCGrav       : float = 20.0
 const WallAngle    : float = 0.3
 const WallStickStr : float = 3.0
+
+#WALLSLIDE
+const WSGrav       : float = 5.0
+const WSTermVel    : float = 8.0
 
 var UpdateUpDir : bool = true
 
 
-# WALLJUMP
+#WALLJUMP
 const WallVer     : float = 10.0
-const WallHor     : float = 5.0
+const WallHor     : float = 8.0
+const WallBonus   : float = 3.0
 const WJGrav      : float = 15.0
 const WJAcc       : float = 15.0
 const WJDec       : float = 10.0
@@ -198,7 +205,13 @@ const BaseWall    : float = 1.0
 
 var WallTime     : float
 var SavedWallVec : Vector3 = Vector3.ZERO
+var SameWall     : bool    = false
 
+
+#LEDGEHOP
+const LHHor : float = 3.0
+const LHVer : float = 10.0
+const LHAcc : float = 10.0
 
 # CAMERA VARIABLES ////////////////////////////////////////////////////////////////////////////////
 
@@ -523,12 +536,14 @@ class PlayerAirState extends State:
 		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0:
 			return PlayerDiveState.new()
 		
-		# Wall slide state
-		if This.is_on_wall_only() and This.get_wall_normal().dot(This.SavedWallVec) < ValidWAngle:
-			if VectorUtil.make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
-				if This.velocity.dot(This.up_direction) < 0:
+		#Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+			if This.velocity.dot(This.up_direction) < 0:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
 					return PlayerWallSlideState.new()
-		
+				return PlayerWallClimbState.new()
 		return null
 	
 	
@@ -732,7 +747,14 @@ class PlayerDashJumpState extends State:
 		if !Input.is_action_pressed("Skate"):
 			This.InSkate = false
 			return PlayerAirState.new()
-		
+			
+		#Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
+					return PlayerWallSlideState.new()
+				return PlayerWallClimbState.new()
 		return null
 	
 	
@@ -792,7 +814,15 @@ class PlayerBackFlipState extends State:
 		# Dive state
 		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0:
 			return PlayerDiveState.new()
-		
+			
+		#Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+			if This.velocity.dot(This.up_direction) < 0:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
+					return PlayerWallSlideState.new()
+				return PlayerWallClimbState.new()
 		return null
 	
 	
@@ -958,12 +988,14 @@ class PlayerSpinAirState extends State:
 		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0:
 			return PlayerDiveState.new()
 		
-		# Wall slide state
-		if This.is_on_wall_only() and This.get_wall_normal().dot(This.SavedWallVec) < ValidWAngle:
-			if VectorUtil.make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
-				if This.velocity.dot(This.up_direction) < 0:
+			#Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+			if This.velocity.dot(This.up_direction) < 0:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
 					return PlayerWallSlideState.new()
-		
+				return PlayerWallClimbState.new()
 		return null
 	
 	
@@ -1119,11 +1151,14 @@ class PlayerDiveState extends State:
 			This.DashBufferTime = BaseDashBuffer
 			return PlayerFastFallState.new()
 		
-		# Wall slide state
-		if This.is_on_wall_only() and This.get_wall_normal().dot(This.SavedWallVec) < ValidWAngle:
-			if VectorUtil.make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
-				return PlayerWallSlideState.new()
-		
+			
+		#Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
+					return PlayerWallSlideState.new()
+				return PlayerWallClimbState.new()
 		return null
 	
 	
@@ -1154,6 +1189,68 @@ class PlayerDiveState extends State:
 # WALLSLIDE STATE
 # ////////////////////////////////////////////////////////////////////////////////////////////////
 
+class PlayerWallClimbState extends State:
+	var Name = "WallClimb"
+	
+	var OnWall : bool = true
+	
+	
+	func on_enter(This : Player):
+		This.CurGrav        = WCGrav
+		This.DiveAmount     = BaseDiveAmount
+		This.UpdateUpDir    = false
+		This.SavedWallVec   = This.get_wall_normal()
+		
+		This.up_direction      = VectorUtil.make_perpendicular(This.up_direction, This.get_wall_normal())
+		This.FacingDir         = -This.get_wall_normal()
+		This.FacingDirSmoothed = This.FacingDir
+		This.velocity          = This.up_direction * ClimbSpd
+	
+	
+	func check_state(This : Player) -> State:
+		
+		# Wall slide state
+		if This.velocity.normalized().dot(This.up_direction) < 0.0:
+			return PlayerWallSlideState.new()
+		
+		# Wall jump state
+		if Input.is_action_just_pressed("Jump") or This.JumpBufferTime > 0.0:
+			return PlayerWallJumpState.new()
+		
+		# Ledge hop state
+		if !This.LHDis.is_colliding() and !This.FirstFrameSkip:
+			return PlayerLedgeHopState.new()
+		This.FirstFrameSkip = false
+		
+		# Air state
+		if !OnWall:
+			return PlayerAirState.new()
+		
+		return null
+	
+	
+	func update(This : Player, Delta : float):
+		
+		This.velocity += This.FacingDir * WallStickStr * Delta
+		
+		# Stick the player to a nearby wall
+		if !This.NearWall.is_colliding():
+			OnWall = false
+		
+		if OnWall:
+			var WallNormal : Vector3 = This.NearWall.get_collision_normal(0)
+			This.up_direction      = VectorUtil.make_perpendicular(This.up_direction, WallNormal)
+			This.FacingDir         = -WallNormal
+			This.FixFacingDir()
+			This.FacingDirSmoothed = This.FacingDirSmoothed.slerp(This.FacingDir, AirTurnLerp * Delta).normalized()
+	
+	
+	func on_exit(This : Player):
+		This.CurGrav        = BaseGrav
+		This.CurFallTermVel = BaseFallTermVel
+		This.UpdateUpDir    = true
+		This.JumpBufferTime = 0
+
 class PlayerWallSlideState extends State:
 	var Name = "WallSlide"
 	
@@ -1179,14 +1276,28 @@ class PlayerWallSlideState extends State:
 		if This.is_on_floor():
 			return PlayerGroundState.new()
 		
+		# Weak Wall jump state
+		if Input.is_action_just_pressed("Jump") and This.SameWall:
+			return PlayerWallJumpWeakState.new()
+		
 		# Wall jump state
-		if Input.is_action_just_pressed("Jump") or This.JumpBufferTime > 0:
+		if Input.is_action_just_pressed("Jump"):
 			return PlayerWallJumpState.new()
+		
+		# Ledge hop state
+		if !This.LHDis.is_colliding() and !This.FirstFrameSkip:
+			return PlayerLedgeHopState.new()
+		This.FirstFrameSkip = false
+		
+		# Ledge hop state
+		if !This.LHDis.is_colliding() and !This.FirstFrameSkip:
+			return PlayerLedgeHopState.new()
+		This.FirstFrameSkip = false
 		
 		# Air state
 		if !OnWall:
 			return PlayerAirState.new()
-		
+	
 		return null
 	
 	
@@ -1194,7 +1305,7 @@ class PlayerWallSlideState extends State:
 		
 		This.velocity += This.FacingDir * WallStickStr * Delta
 		
-		# Stick the Player to a nearby wall
+		# Stick the player to a nearby wall
 		if !This.NearWall.is_colliding():
 			OnWall = false
 		
@@ -1211,6 +1322,7 @@ class PlayerWallSlideState extends State:
 		This.CurFallTermVel = BaseFallTermVel
 		This.UpdateUpDir    = true
 		This.JumpBufferTime = 0
+		This.SameWall       = false
 
 
 # ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1226,15 +1338,21 @@ class PlayerWallJumpState extends State:
 	
 	func on_enter(This : Player):
 		This.MaxAirSpd      = WallHor
-		EnteredUpSpd        = WallVer
 		This.CurGrav        = WJGrav
 		This.WallTime       = BaseWall
 		This.JumpBufferTime = 0
 		
 		This.FacingDir        *= -1
 		This.FacingDirSmoothed = This.FacingDir
-		This.velocity          = This.FacingDir * WallHor
-		This.velocity         += This.up_direction * WallVer
+		
+		if VectorUtil.get_axis(This.velocity, This.up_direction) < WallVer + WallBonus:
+			EnteredUpSpd   = WallVer
+			This.velocity += This.up_direction * (WallVer + WallBonus)
+		else:
+			EnteredUpSpd   = VectorUtil.get_axis(This.velocity, This.up_direction) + WallBonus
+			This.velocity += This.up_direction * (VectorUtil.get_axis(This.velocity, This.up_direction) + WallBonus)
+		
+		This.velocity += This.FacingDir * WallHor
 	
 	
 	func check_state(This : Player) -> State:
@@ -1251,6 +1369,88 @@ class PlayerWallJumpState extends State:
 		# Dive state
 		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0:
 			return PlayerDiveState.new()
+		
+		# Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+			if This.velocity.dot(This.up_direction) < 0:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
+					return PlayerWallSlideState.new()
+				return PlayerWallClimbState.new()
+		
+		# Air state
+		if This.WallTime <= 0:
+			return PlayerAirState.new()
+		return null
+	
+	
+	func update(This : Player, Delta : float):
+		
+		This.AirMovement(WJAcc, WJDec, Delta)
+		
+		# Activate Jump buffer
+		if Input.is_action_just_pressed("Jump"):
+			InJumpBuffer        = true
+			This.JumpBufferTime = BaseJumpBuffer
+		if InJumpBuffer:
+			This.JumpBufferTime -= Delta
+		
+		# Gradually increase the fall-speed of the WallJump
+		This.CurGrav = move_toward(This.CurGrav, WJMaxGrav, WJGravMT * Delta)
+		
+		# Limit insane upwards momentum
+		if VectorUtil.get_axis(This.velocity, This.up_direction) > EnteredUpSpd:
+			This.velocity = VectorUtil.set_axis(This.velocity, EnteredUpSpd * This.up_direction)
+		
+		# Count down the wall jump time
+		This.WallTime -= Delta
+	
+	
+	func on_exit(This : Player):
+		This.WallTime = 0
+
+class PlayerWallJumpWeakState extends State:
+	var Name = "WallJumpWeak"
+	
+	var InJumpBuffer : bool  = false
+	var EnteredUpSpd : float
+	
+	
+	func on_enter(This : Player):
+		This.MaxAirSpd      = WallHor
+		This.CurGrav        = WJGrav
+		This.WallTime       = BaseWall
+		This.JumpBufferTime = 0
+		
+		This.FacingDir        *= -1
+		This.FacingDirSmoothed = This.FacingDir
+		This.velocity         += This.FacingDir * WallHor
+	
+	
+	func check_state(This : Player) -> State:
+		
+		# Ground state
+		if This.is_on_floor():
+			return PlayerGroundState.new()
+		
+		# Fastfall state
+		if Input.is_action_just_pressed("Skate"):
+			This.DashBufferTime = BaseDashBuffer
+			return PlayerFastFallState.new()
+		
+		# Dive state
+		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0:
+			return PlayerDiveState.new()
+		
+		# Wall climb state
+		if This.is_on_wall_only() and VectorUtil.\
+		make_perpendicular(This.get_wall_normal(), This.up_direction).dot(-This.DirInputPlayer) > WallAngle:
+			if This.velocity.dot(This.up_direction) < 0:
+				if This.get_wall_normal().dot(This.SavedWallVec) > ValidWAngle:
+					This.SameWall = true
+					return PlayerWallSlideState.new()
+				return PlayerWallClimbState.new()
 		
 		# Air state
 		if This.WallTime <= 0:
@@ -1283,6 +1483,57 @@ class PlayerWallJumpState extends State:
 	
 	func on_exit(This : Player):
 		This.WallTime = 0
+		
+
+
+# ////////////////////////////////////////////////////////////////////////////////////////////////
+# LEDGEHOP STATE
+# ////////////////////////////////////////////////////////////////////////////////////////////////
+
+class PlayerLedgeHopState extends State:
+	var Name = "LedgeHop"
+	
+	var InJumpBuffer : bool = false
+	
+	func on_enter(This : Player):
+		This.velocity     = LHVer * This.up_direction
+		This.velocity    += LHHor * This.FacingDir
+		This.SavedWallVec = Vector3.ZERO
+	
+	
+	func check_state(This : Player) -> State:
+		
+		# Air state
+		if This.velocity.normalized().dot(This.up_direction) < 0.0:
+			return PlayerAirState.new()
+		
+		# Fastfall state
+		if Input.is_action_just_pressed("Skate"):
+			return PlayerFastFallState.new()
+		
+		# Dive state
+		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0:
+			return PlayerDiveState.new()
+		
+		return null
+	
+	
+	func update(This : Player, Delta : float):
+		if This.is_on_wall_only():
+			This.velocity  = LHVer * This.up_direction
+		
+		This.velocity = VectorUtil.set_except_axis(This.velocity, LHHor * This.FacingDir, This.up_direction)
+		
+		# Activate Jump buffer
+		if Input.is_action_just_pressed("Jump"):
+			InJumpBuffer        = true
+			This.JumpBufferTime = BaseJumpBuffer
+		if InJumpBuffer:
+			This.JumpBufferTime -= Delta
+	
+	
+	func on_exit(_This : Player):
+		pass
 
 
 ## ////////////////////////////////////////////////////////////////////////////////////////////////

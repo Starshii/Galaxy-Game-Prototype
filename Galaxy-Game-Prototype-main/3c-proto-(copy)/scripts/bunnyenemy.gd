@@ -4,6 +4,7 @@ var CurWalkSpd : float = 1
 var BaseWalkSpd : float = 10
 
 
+
 func _ready() -> void:
 	super._ready()
 	CurGrav = 80
