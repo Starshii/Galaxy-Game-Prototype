@@ -20,6 +20,9 @@ class_name Player extends CharacterBody3D
 
 # GENERAL /////////////////////////////////////////////////////////////////////////////////////////
 
+# Player Health
+var PlayerHealth
+
 # SET Player UP SMOOTHLY
 const UpDirLinSpd : float = TAU * 2
 const UpDirLerp   : float = 15.0
