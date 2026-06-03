@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dy17ilo1t7ufx"]
+
+[ext_resource type="Script" uid="uid://byniccrw7dhjc" path="res://obstacles/beetle_enemy.gd" id="1_bf16p"]
+[ext_resource type="Material" uid="uid://dcmmjcg3fjtd" path="res://materials/enemymat.material" id="2_tfa4j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_32o7e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_s7s5k"]
+material = ExtResource("2_tfa4j")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bf16p"]
+height = 0.830307
+radius = 0.50390625
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tfa4j"]
+height = 0.38734436
+radius = 0.46826172
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tfa4j"]
+radius = 14.347814
+
+[node name="BeetleEnemy" type="CharacterBody3D" unique_id=1078201018 groups=["Player"]]
+collision_layer = 3
+script = ExtResource("1_bf16p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975087811]
+shape = SubResource("SphereShape3D_32o7e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1119771549]
+mesh = SubResource("SphereMesh_s7s5k")
+
+[node name="HitBox" type="Area3D" parent="." unique_id=956766504 groups=["HitBox"]]
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=1493487379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.091423035, 0)
+shape = SubResource("CylinderShape3D_bf16p")
+
+[node name="TopHitBox" type="Area3D" parent="." unique_id=719921462 groups=["HurtBox"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopHitBox" unique_id=790957044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3449908, 0)
+shape = SubResource("CylinderShape3D_tfa4j")
+
+[node name="AggroRange" type="Area3D" parent="." unique_id=324346836]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroRange" unique_id=66854862]
+shape = SubResource("SphereShape3D_tfa4j")
+
+[node name="Timer" type="Timer" parent="." unique_id=1062038509]
+autostart = true
+
+[connection signal="area_entered" from="TopHitBox" to="." method="_on_top_hit_box_area_entered"]
+[connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="AggroRange" to="." method="_on_aggro_range_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

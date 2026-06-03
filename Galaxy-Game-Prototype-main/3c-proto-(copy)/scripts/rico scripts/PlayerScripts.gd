@@ -11,6 +11,8 @@ class_name Player extends CharacterBody3D
 @onready var NearWall: ShapeCast3D = $NearWall
 @onready var LHDis: ShapeCast3D = $LedgeHopDis
 
+@onready var HitTimer: Timer = $HitTimer
+@onready var HitBox: Area3D = $HitBox
 
 
 
@@ -216,6 +218,22 @@ const LHHor : float = 3.0
 const LHVer : float = 10.0
 const LHAcc : float = 10.0
 
+#HIT
+var GotHit : bool
+var IsHit : bool
+var HitPos : Vector3
+var HealthAmnt : int = 3
+var DmgAmnt : int
+signal ChangeHealth
+const KnockBackVecV : float = 10
+const KnockBackVecH : float = 10
+
+#BOUNCE
+var CanBounce : bool
+var BounceBool : bool
+
+var BounceVer : float
+var BounceHor : float
 # CAMERA VARIABLES ////////////////////////////////////////////////////////////////////////////////
 
 const PositionStr  : float = 5.0
@@ -238,7 +256,6 @@ func _ready() -> void:
 	FacingDirSmoothed = -global_basis.z
 	DirInputPlayer    = -global_basis.z
 	SkateInput        = Vector2.DOWN
-	
 	# Camera
 	MainCam.position = position
 
@@ -428,7 +445,11 @@ class PlayerGroundState extends State:
 		This.velocity = VectorUtil.remove_axis(This.velocity, This.up_direction)
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: 
+			return HitState.new() 
+		if This.CanBounce: 
+			return BounceState.new()
 		
 		# Air state
 		if This.CoyoteTimer <= 0:
@@ -524,7 +545,9 @@ class PlayerAirState extends State:
 		This.DiveBufferTime = DiveBuffer
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -612,7 +635,9 @@ class PlayerJumpState extends State:
 		This.velocity += JumpHeight * This.up_direction
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Air state
 		if This.JumpTimer <= 0:
@@ -668,7 +693,9 @@ class PlayerSkateDashState extends State:
 		This.FOVEffect()
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor() and This.SkateDashTime <= 0:
@@ -740,7 +767,9 @@ class PlayerDashJumpState extends State:
 		This.FOVEffect(12.0)
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -798,7 +827,9 @@ class PlayerBackFlipState extends State:
 		EnteredDir              = This.DirInput
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -853,7 +884,9 @@ class PlayerTripleJumpState extends State:
 		This.LandTime     = 0
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Air state
 		if This.velocity.normalized().dot(This.up_direction) < 0.0:
@@ -895,7 +928,9 @@ class PlayerSpinGroundState extends State:
 		This.LandTime     = 0
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if !Input.is_action_pressed("Skate"):
@@ -941,7 +976,9 @@ class PlayerSpinJumpState extends State:
 		This.CurGrav   = SpinGrav
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Spin air state
 		if This.velocity.normalized().dot(This.up_direction) < 0.0:
@@ -976,7 +1013,9 @@ class PlayerSpinAirState extends State:
 		This.CurGrav        = SpinGrav
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -1031,7 +1070,9 @@ class PlayerFastFallState extends State:
 			InDashBuffer = true
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground stun state
 		if This.is_on_floor():
@@ -1078,7 +1119,9 @@ class PlayerGroundStunState extends State:
 		This.ThumpCamEffect()
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.StunTime <= 0:
@@ -1143,7 +1186,9 @@ class PlayerDiveState extends State:
 		EnteredUpSpd        = BaseDiveVer
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -1210,7 +1255,9 @@ class PlayerWallClimbState extends State:
 		This.velocity          = This.up_direction * ClimbSpd
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Wall slide state
 		if This.velocity.normalized().dot(This.up_direction) < 0.0:
@@ -1273,7 +1320,9 @@ class PlayerWallSlideState extends State:
 		This.FacingDirSmoothed = This.FacingDir
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -1358,7 +1407,9 @@ class PlayerWallJumpState extends State:
 		This.velocity += This.FacingDir * WallHor
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -1431,7 +1482,9 @@ class PlayerWallJumpWeakState extends State:
 		This.velocity         += This.FacingDir * WallHor
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Ground state
 		if This.is_on_floor():
@@ -1504,7 +1557,9 @@ class PlayerLedgeHopState extends State:
 		This.SavedWallVec = Vector3.ZERO
 	
 	
-	func check_state(This : Player) -> State:
+	func check_state(This : Player) -> State: 
+		if This.GotHit: return HitState.new() 
+		if This.CanBounce: return BounceState.new()
 		
 		# Air state
 		if This.velocity.normalized().dot(This.up_direction) < 0.0:
@@ -1538,6 +1593,78 @@ class PlayerLedgeHopState extends State:
 	func on_exit(_This : Player):
 		pass
 
+## ////////////////////////////////////////////////////////////////////////////////////////////////
+## HIT STATE
+## ////////////////////////////////////////////////////////////////////////////////////////////////
+
+class HitState extends State:
+	var Name = "Hit"
+	
+	
+	func on_enter(This : Player):
+		This.velocity = VectorUtil.make_perpendicular(This.HitPos - This.global_position, This.up_direction) * -KnockBackVecH + This.up_direction * KnockBackVecV
+		This.HealthAmnt -= This.DmgAmnt
+		This.ChangeHealth.emit(-This.DmgAmnt)
+		print("yooo we got there")
+		This.IsHit = true
+		This.HitTimer.start()
+		pass
+		
+	func check_state(This : Player) -> State: 
+		
+		if This.velocity.normalized().dot(This.up_direction) < 0.0 and !This.IsHit:
+			return PlayerAirState.new()
+		
+		# Fastfall state
+		if Input.is_action_just_pressed("Skate") and !This.IsHit:
+			return PlayerFastFallState.new()
+		
+		# Dive state
+		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0 and !This.IsHit:
+			return PlayerDiveState.new()
+		return null
+		
+	func update(This : Player, Delta : float):
+		pass
+	
+	func on_exit(This : Player):
+		pass
+	
+
+## ////////////////////////////////////////////////////////////////////////////////////////////////
+## BOUNCE STATE
+## ////////////////////////////////////////////////////////////////////////////////////////////////
+
+class BounceState extends State:
+	var Name = "Bounce"
+	
+	
+	func on_enter(This : Player):
+		This.CanBounce = false
+		This.velocity = This.FacingDir * This.BounceHor + This.up_direction * This.BounceVer
+		
+		pass
+		
+	func check_state(This : Player) -> State: 
+		
+		if This.velocity.normalized().dot(This.up_direction) < 0.0 and !This.CanBounce:
+			return PlayerAirState.new()
+		
+		# Fastfall state
+		if Input.is_action_just_pressed("Skate") and !This.CanBounce:
+			return PlayerFastFallState.new()
+		
+		# Dive state
+		if Input.is_action_just_pressed("Jump") and This.ValidDive and This.DiveAmount > 0 and !This.CanBounce:
+			return PlayerDiveState.new()
+		return null
+		
+	func update(This : Player, Delta : float):
+		pass
+	
+	func on_exit(This : Player):
+		pass
+	
 
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
 ## GRAVITY AREAS
@@ -1690,3 +1817,33 @@ func FixFacingDir() -> void:
 	if FacingDirSmoothed == Vector3.ZERO: 
 		FacingDirSmoothed = Vector3.FORWARD
 		FacingDirSmoothed = VectorUtil.make_perpendicular(FacingDirSmoothed, up_direction)
+
+
+func _on_hit_box_area_entered(area: Area3D) -> void:
+		
+	if area.is_in_group("HitBox"):
+		print("got hit")
+		HitPos = area.global_position 
+		GotHit = true
+		DmgAmnt = 1
+		
+	if area.is_in_group("HitBox2"):
+		print("got hit")
+		HitPos = area.global_position 
+		GotHit = true
+		DmgAmnt = 2
+		
+	if area.is_in_group("HitBox3"):
+		print("got hit")
+		HitPos = area.global_position 
+		GotHit = true
+		DmgAmnt = 3
+
+func _on_hit_timer_timeout() -> void:
+		GotHit = false
+		IsHit = false
+
+func Bounce(Hor : float, Ver : float):
+	BounceHor = Hor
+	BounceVer = Ver
+	CanBounce = true

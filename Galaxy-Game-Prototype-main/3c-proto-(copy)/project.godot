@@ -31,6 +31,8 @@ enabled=PackedStringArray("res://addons/dupeanimkeys/plugin.cfg")
 
 bounceable=""
 Player=""
+HurtBox=""
+HitBox=""
 
 [input]
 

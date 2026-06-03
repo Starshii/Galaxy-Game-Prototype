@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://cvo6vr17oipg" path="res://UI/texturesUI/health1.tres" id="21_d13ii"]
 [ext_resource type="Texture2D" uid="uid://br4h5mlctel6y" path="res://UI/texturesUI/health3.tres" id="21_getpj"]
 [ext_resource type="Texture2D" uid="uid://bd0t6ixptjop2" path="res://UI/texturesUI/health2.tres" id="22_1u8w0"]
-[ext_resource type="PackedScene" uid="uid://b2j2n3a3btf2d" path="res://obstacles/boalb.tscn" id="25_0odxb"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 length = 0.001
@@ -731,7 +730,7 @@ transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, -196.03409,
 script = ExtResource("13_w48qg")
 
 [node name="Player" parent="." unique_id=1005209781 instance=ExtResource("10_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.64865, 46.97896, -61.51998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.995686, 127.04818, 85.202576)
 
 [node name="Tree" type="CSGCombiner3D" parent="." unique_id=1954574554]
 transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, 115.08887, -68.97997, -93.55557)
@@ -1630,7 +1629,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86846924, -17.048737, 0)
 shape = SubResource("CylinderShape3D_1u8w0")
 
 [node name="downgroundgrav2" type="Area3D" parent="tower" unique_id=1949929639 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.748028, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.590942, 0)
 collision_mask = 3
 priority = 4
 gravity_space_override = 3
@@ -1675,7 +1674,7 @@ transform = Transform3D(1, -5.684342e-14, 0, 5.684342e-14, 1, 0, 0, 0, 1, 0, 2.1
 shape = SubResource("CylinderShape3D_d13ii")
 
 [node name="BeetleEnemy" parent="." unique_id=1078201018 instance=ExtResource("20_82xsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.07391, 44.0141, -64.47856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.80785, 42.717644, -66.03596)
 
 [node name="ChapelNode1" type="Node3D" parent="." unique_id=832749039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.596958, 78.03987, 81.23187)
@@ -1794,10 +1793,6 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChapelNode1/chapelmiddleinnerpriorgrav2" unique_id=96814444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50780106, 0.9484558, 0)
 shape = SubResource("CylinderShape3D_jq2sk")
-
-[node name="deathsphere" type="CSGSphere3D" parent="ChapelNode1" unique_id=1966044156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6902962, 17.31218, 0)
-radius = 18.536972
 
 [node name="ChapelNode2" type="Node3D" parent="." unique_id=877490822]
 transform = Transform3D(0.615, 0, 0, 0, 0.615, 0, 0, 0, 0.615, 13.525635, 75.133644, 121.49179)
@@ -2125,33 +2120,30 @@ offset_bottom = 40.0
 script = ExtResource("21_1u8w0")
 
 [node name="1health" type="NinePatchRect" parent="UI" unique_id=1913894703]
+visible = false
 layout_mode = 0
-offset_left = 984.0
-offset_top = 11.0
-offset_right = 1094.0
-offset_bottom = 126.0
-scale = Vector2(1.311073, 1.282265)
+offset_left = 1041.0
+offset_top = 10.0
+offset_right = 1151.0
+offset_bottom = 125.0
 texture = ExtResource("21_d13ii")
 
 [node name="2health" type="NinePatchRect" parent="UI" unique_id=390612580]
+visible = false
 layout_mode = 0
-offset_left = 984.0
-offset_top = 11.0
-offset_right = 1094.0
-offset_bottom = 126.0
-scale = Vector2(1.311073, 1.282265)
+offset_left = 1041.0
+offset_top = 10.0
+offset_right = 1151.0
+offset_bottom = 125.0
 texture = ExtResource("22_1u8w0")
 
 [node name="3health" type="NinePatchRect" parent="UI" unique_id=983570572]
+visible = false
 layout_mode = 0
-offset_left = 984.0
-offset_top = 11.0
-offset_right = 1094.0
-offset_bottom = 126.0
-scale = Vector2(1.311073, 1.282265)
+offset_left = 1041.0
+offset_top = 10.0
+offset_right = 1151.0
+offset_bottom = 125.0
 texture = ExtResource("21_getpj")
-
-[node name="boalb" parent="." unique_id=326290794 instance=ExtResource("25_0odxb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.78124, 42.871906, -57.152523)
 
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]

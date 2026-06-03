@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bpmg4pbip3mcq" path="res://rico stuff/MainCam.tscn" id="1_55m5b"]
 [ext_resource type="Script" uid="uid://dom2wns65txfl" path="res://scripts/rico scripts/PlayerScripts.gd" id="1_rdmcm"]
+[ext_resource type="Script" uid="uid://seuk1mpcps3p" path="res://rico stuff/HitBoxScript.gd" id="3_rdmcm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vocxr"]
 
@@ -38,6 +39,10 @@ metadata/_snap_enabled = true
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dujps"]
 height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rdmcm"]
+height = 0.9797821
+radius = 0.50927734
 
 [node name="Player" type="CharacterBody3D" unique_id=1005209781 groups=["Player"]]
 collision_layer = 2
@@ -82,3 +87,18 @@ target_position = Vector3(0, 0, -0.2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_dujps")
 target_position = Vector3(0, 0, -0.5)
+
+[node name="HitBox" type="Area3D" parent="." unique_id=1548390959]
+transform = Transform3D(1.06, 0, 0, 0, 1.06, 0, 0, 0, 1.06, 0, 0, 0)
+collision_layer = 56
+collision_mask = 56
+script = ExtResource("3_rdmcm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=989817954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013633741, 0)
+shape = SubResource("CylinderShape3D_rdmcm")
+
+[node name="HitTimer" type="Timer" parent="." unique_id=575058386]
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
