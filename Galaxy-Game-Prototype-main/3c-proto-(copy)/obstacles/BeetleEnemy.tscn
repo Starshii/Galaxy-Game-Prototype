@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://byniccrw7dhjc" path="res://obstacles/beetle_enemy.gd" id="1_bf16p"]
 [ext_resource type="Material" uid="uid://dcmmjcg3fjtd" path="res://materials/enemymat.material" id="2_tfa4j"]
+[ext_resource type="Script" uid="uid://c0tirjue0d3g4" path="res://obstacles/EnemyHitBox.gd" id="3_tfa4j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_32o7e"]
 
@@ -31,6 +32,8 @@ mesh = SubResource("SphereMesh_s7s5k")
 
 [node name="HitBox" type="Area3D" parent="." unique_id=956766504 groups=["HitBox"]]
 collision_layer = 9
+script = ExtResource("3_tfa4j")
+DmgAmnt = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=1493487379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.091423035, 0)

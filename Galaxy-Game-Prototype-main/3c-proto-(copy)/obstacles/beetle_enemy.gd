@@ -46,8 +46,9 @@ func Jump():
 
 
 func _on_timer_timeout() -> void:
-	targetTransform = targetArea3D.global_position
-	Jump()
+	if targetTransform:
+		targetTransform = targetArea3D.global_position
+		Jump()
 
 
 func _on_aggro_range_area_exited(area: Area3D) -> void:

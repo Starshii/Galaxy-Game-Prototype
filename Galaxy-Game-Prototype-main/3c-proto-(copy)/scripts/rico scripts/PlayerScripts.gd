@@ -225,13 +225,14 @@ var HitPos : Vector3
 var HealthAmnt : int = 3
 var DmgAmnt : int
 signal ChangeHealth
+signal BoalbSignal
 const KnockBackVecV : float = 10
 const KnockBackVecH : float = 10
 
 #BOUNCE
 var CanBounce : bool
 var BounceBool : bool
-
+signal BounceSignal
 var BounceVer : float
 var BounceHor : float
 # CAMERA VARIABLES ////////////////////////////////////////////////////////////////////////////////
@@ -1821,23 +1822,14 @@ func FixFacingDir() -> void:
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 		
+	if area.is_in_group("Boalb"):
+		BoalbSignal.emit(area.BoalbAmount)
+		print(area.BoalbAmount)
+	
 	if area.is_in_group("HitBox"):
-		print("got hit")
 		HitPos = area.global_position 
+		DmgAmnt = area.DmgAmnt
 		GotHit = true
-		DmgAmnt = 1
-		
-	if area.is_in_group("HitBox2"):
-		print("got hit")
-		HitPos = area.global_position 
-		GotHit = true
-		DmgAmnt = 2
-		
-	if area.is_in_group("HitBox3"):
-		print("got hit")
-		HitPos = area.global_position 
-		GotHit = true
-		DmgAmnt = 3
 
 func _on_hit_timer_timeout() -> void:
 		GotHit = false

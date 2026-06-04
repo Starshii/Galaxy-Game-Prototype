@@ -1,6 +1,6 @@
 shader_type spatial;
 
-uniform vec4 color1 : source_color;
+uniform vec4 color : source_color;
 
 void vertex() {
 	VERTEX += sin(TIME * 2.0) * 0.001;
@@ -12,10 +12,5 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = color1.rgb;
+	ALBEDO = color.rgb;
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}

@@ -24,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://cvo6vr17oipg" path="res://UI/texturesUI/health1.tres" id="21_d13ii"]
 [ext_resource type="Texture2D" uid="uid://br4h5mlctel6y" path="res://UI/texturesUI/health3.tres" id="21_getpj"]
 [ext_resource type="Texture2D" uid="uid://bd0t6ixptjop2" path="res://UI/texturesUI/health2.tres" id="22_1u8w0"]
-[ext_resource type="PackedScene" uid="uid://b2j2n3a3btf2d" path="res://obstacles/boalb.tscn" id="25_0odxb"]
+[ext_resource type="PackedScene" uid="uid://b2j2n3a3btf2d" path="res://obstacles/boalb1.tscn" id="25_0odxb"]
+[ext_resource type="Texture2D" uid="uid://0p0ybgnwbxdt" path="res://UI/texturesUI/boalbimg.tres" id="25_lswn8"]
+[ext_resource type="PackedScene" uid="uid://ygp3pddcfuhr" path="res://obstacles/boalb2.tscn" id="27_a6jrf"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 length = 0.001
@@ -1174,10 +1176,6 @@ transform = Transform3D(0.9999993, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 10.29
 operation = 2
 radius = 1.6454947
 
-[node name="leaves" type="CSGSphere3D" parent="Tree" unique_id=780641087]
-transform = Transform3D(0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 99.84454, -9.3083725)
-radius = 4.207741
-
 [node name="hangingcitypath" type="Path3D" parent="Tree" unique_id=276456668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.852, 1.952591, 1.854)
 curve = SubResource("Curve3D_cegan")
@@ -1219,7 +1217,7 @@ script = ExtResource("1_h2yge")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="swinggroundgravcoll" type="CollisionShape3D" parent="Tree/hangingcitypath/hangingcitypathfollow/swing/swinggroundgrav" unique_id=399001502]
-transform = Transform3D(1.0000002, 0, 1.7881393e-07, 0, 0.9999994, 0, -1.7881393e-07, 0, 1.0000002, 0, 1.5812683, 0)
+transform = Transform3D(1.0000005, 0, 2.682209e-07, 0, 0.99999946, 0, -2.0861626e-07, 0, 1.0000004, 0, 1.5812683, 0)
 shape = SubResource("CylinderShape3D_xuqvo")
 
 [node name="swinggroundcoll" type="CollisionShape3D" parent="Tree/hangingcitypath/hangingcitypathfollow/swing" unique_id=1960319389]
@@ -1675,7 +1673,7 @@ transform = Transform3D(1, -5.684342e-14, 0, 5.684342e-14, 1, 0, 0, 0, 1, 0, 2.1
 shape = SubResource("CylinderShape3D_d13ii")
 
 [node name="BeetleEnemy" parent="." unique_id=1078201018 instance=ExtResource("20_82xsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.07391, 44.0141, -64.47856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.07391, 93.51421, -82.37353)
 
 [node name="ChapelNode1" type="Node3D" parent="." unique_id=832749039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.596958, 78.03987, 81.23187)
@@ -2151,7 +2149,31 @@ offset_bottom = 126.0
 scale = Vector2(1.311073, 1.282265)
 texture = ExtResource("21_getpj")
 
-[node name="boalb" parent="." unique_id=326290794 instance=ExtResource("25_0odxb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.78124, 42.871906, -57.152523)
+[node name="BoalbImg" type="NinePatchRect" parent="UI" unique_id=1504010694]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 1.0
+offset_right = 153.0
+offset_bottom = 133.0
+texture = ExtResource("25_lswn8")
 
+[node name="BoalbCount" type="RichTextLabel" parent="UI" unique_id=904706195]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 48.0
+offset_right = 242.0
+offset_bottom = 97.0
+text = "Energy: 0"
+
+[node name="BeetleEnemy2" parent="." unique_id=1810464084 instance=ExtResource("20_82xsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.77655, 41.850346, -60.878483)
+
+[node name="boalb" parent="." unique_id=326290794 instance=ExtResource("25_0odxb")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 117.38644, 42.048115, -56.58789)
+
+[node name="boalb2" parent="." unique_id=1240864264 instance=ExtResource("27_a6jrf")]
+transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 116.595085, 41.96777, -55.666412)
+
+[connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
+[connection signal="BounceSignal" from="Player" to="UI" method="_on_player_bounce_signal"]
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]

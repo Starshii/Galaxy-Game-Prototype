@@ -33,6 +33,7 @@ bounceable=""
 Player=""
 HurtBox=""
 HitBox=""
+Boalb=""
 
 [input]
 

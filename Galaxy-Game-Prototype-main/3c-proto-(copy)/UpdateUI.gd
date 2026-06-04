@@ -4,6 +4,9 @@ var healthInt : int = 3
 
 var healthArray : Array
 
+var boalbCount : int
+@onready var BoalbCounter: RichTextLabel = $BoalbCount
+
 func _ready() -> void:
 	healthArray = get_children()
 	healthInt = 3
@@ -39,3 +42,13 @@ func UpdateHealth(amount :int):
 	if healthInt > 3:
 		healthInt = 3
 		UpdateHealth(healthInt)
+
+func _on_player_bounce_signal() -> void:
+	pass
+	
+func _on_player_boalb_signal(amnt : int) -> void:
+	boalbCount += amnt
+	UpdateBoalb()
+	
+func UpdateBoalb():
+	BoalbCounter.text = "Energy: " + str(boalbCount)
