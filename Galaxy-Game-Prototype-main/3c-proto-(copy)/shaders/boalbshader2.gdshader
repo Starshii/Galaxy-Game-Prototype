@@ -9,8 +9,15 @@ void vertex() {
 	vec2 OriginalPos = vec2(VERTEX.x, VERTEX.z);
 	mat2 Angle = mat2(vec2(cos(TIME), -sin(TIME)), vec2(sin(TIME), cos(TIME)));
 	VERTEX.xz = Angle * OriginalPos;
+	
+
+}
+
+
+vec3 srgb_to_linear(vec3 col) {
+    return pow(col, vec3(2.2));
 }
 
 void fragment() {
-	ALBEDO = color.rgb;
+  ALBEDO.rgb = srgb_to_linear(NORMAL * 0.5 + 0.5);
 }

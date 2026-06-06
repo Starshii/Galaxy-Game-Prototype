@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://b2j2n3a3btf2d" path="res://obstacles/boalb1.tscn" id="25_0odxb"]
 [ext_resource type="Texture2D" uid="uid://0p0ybgnwbxdt" path="res://UI/texturesUI/boalbimg.tres" id="25_lswn8"]
 [ext_resource type="PackedScene" uid="uid://ygp3pddcfuhr" path="res://obstacles/boalb2.tscn" id="27_a6jrf"]
-[ext_resource type="PackedScene" uid="uid://bs2hgmmr2j06x" path="res://obstacles/spike.tscn" id="29_qsp4k"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
 length = 0.001
@@ -534,7 +533,7 @@ height = 28.680708
 radius = 11.413574
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1u8w0"]
-height = 23.847534
+height = 10.791748
 radius = 38.657715
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_82xsv"]
@@ -787,7 +786,7 @@ transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, -196.03409,
 script = ExtResource("13_w48qg")
 
 [node name="Player" parent="." unique_id=1005209781 instance=ExtResource("10_efxa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.76285, 45.090816, -61.51998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.51339, 75.44055, -61.51998)
 
 [node name="Tree" type="CSGCombiner3D" parent="." unique_id=1954574554]
 transform = Transform3D(2.06379, 0, 0, 0, 2.06379, 0, 0, 0, 2.06379, 115.08887, -68.97997, -93.55557)
@@ -1264,11 +1263,10 @@ curve = SubResource("Curve3D_cegan")
 script = ExtResource("17_xuqvo")
 
 [node name="hangingcitypathfollow" type="PathFollow3D" parent="Tree/hangingcitypath" unique_id=1809920650]
-transform = Transform3D(0.9720482, 0, -0.23422901, 0, 0.999992, 0, 0.2342285, 0, 0.9720503, 0, 0, 0)
+transform = Transform3D(0.9720491, 0, -0.23422912, 0, 0.999992, 0, 0.23422873, 0, 0.9720507, 0, 0, 0)
 
 [node name="swing" type="AnimatableBody3D" parent="Tree/hangingcitypath/hangingcitypathfollow" unique_id=426207839]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 1.4901161e-08, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 collision_mask = 3
 
 [node name="ropegrav" type="Area3D" parent="Tree/hangingcitypath/hangingcitypathfollow/swing" unique_id=1310591954 node_paths=PackedStringArray("PriorityLink")]
@@ -1342,17 +1340,11 @@ shape = SubResource("CylinderShape3D_qsp4k")
 remote_path = NodePath("../swing")
 
 [node name="swingingcityanim" type="AnimationPlayer" parent="Tree/hangingcitypath" unique_id=545969135]
-physics_interpolation_mode = 1
 libraries/ = SubResource("AnimationLibrary_seu75")
 autoplay = &"swinginganim"
 
-[node name="treeplanet" type="CSGCombiner3D" parent="." unique_id=1867616020]
+[node name="planet" type="CSGCylinder3D" parent="." unique_id=1535873895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.38956, 29.611393, -90.56851)
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-
-[node name="planet" type="CSGCylinder3D" parent="treeplanet" unique_id=1535873895]
 use_collision = true
 collision_layer = 3
 collision_mask = 3
@@ -1361,7 +1353,7 @@ height = 23.477905
 sides = 32
 material = SubResource("StandardMaterial3D_getpj")
 
-[node name="side" type="Area3D" parent="treeplanet/planet" unique_id=1746605996 node_paths=PackedStringArray("PriorityLink")]
+[node name="side" type="Area3D" parent="planet" unique_id=1746605996 node_paths=PackedStringArray("PriorityLink")]
 collision_mask = 3
 priority = 1
 gravity_space_override = 3
@@ -1370,11 +1362,11 @@ GravityType = 3
 PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="treeplanet/planet/side" unique_id=85857418]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet/side" unique_id=85857418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024505615, 0)
 shape = SubResource("CylinderShape3D_2cqfq")
 
-[node name="top" type="Area3D" parent="treeplanet/planet" unique_id=331112611 node_paths=PackedStringArray("PriorityLink")]
+[node name="top" type="Area3D" parent="planet" unique_id=331112611 node_paths=PackedStringArray("PriorityLink")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.741188, 0)
 collision_mask = 3
 priority = 1
@@ -1383,7 +1375,56 @@ script = ExtResource("1_h2yge")
 PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="treeplanet/planet/top" unique_id=1095684096]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planet/top" unique_id=1095684096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
+shape = SubResource("CylinderShape3D_cegan")
+
+[node name="tempplanet" type="CSGCylinder3D" parent="." unique_id=1750710148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.57626, 29.611393, -90.56851)
+visible = false
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 39.4292
+height = 23.477905
+sides = 32
+material = SubResource("StandardMaterial3D_getpj")
+
+[node name="side" type="Area3D" parent="tempplanet" unique_id=1993407917 node_paths=PackedStringArray("PriorityLink")]
+collision_mask = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+GravityType = 3
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempplanet/side" unique_id=1398166423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024505615, 0)
+shape = SubResource("CylinderShape3D_2cqfq")
+
+[node name="top" type="Area3D" parent="tempplanet" unique_id=1977182133 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.741188, 0)
+collision_mask = 3
+gravity_space_override = 3
+script = ExtResource("1_h2yge")
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempplanet/top" unique_id=837120872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7773743, 0)
+shape = SubResource("CylinderShape3D_cegan")
+
+[node name="bottom" type="Area3D" parent="tempplanet" unique_id=1017448427 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.603176, 0)
+collision_mask = 3
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+script = ExtResource("1_h2yge")
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempplanet/bottom" unique_id=543547664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
 shape = SubResource("CylinderShape3D_cegan")
 
@@ -1684,7 +1725,7 @@ PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower/downgroundgrav" unique_id=1559207879]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86846924, -10.5208435, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86846924, -17.048737, 0)
 shape = SubResource("CylinderShape3D_1u8w0")
 
 [node name="downgroundgrav2" type="Area3D" parent="tower" unique_id=1949929639 node_paths=PackedStringArray("PriorityLink")]
@@ -2240,234 +2281,6 @@ transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 117.38644, 42.048
 
 [node name="boalb2" parent="." unique_id=1240864264 instance=ExtResource("27_a6jrf")]
 transform = Transform3D(0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 116.595085, 41.96777, -55.666412)
-
-[node name="Spike" parent="." unique_id=281123623 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6256468, 0.43282747, -7.450581e-09, 0.08532069, -0.25604987, -0.75276923, -0.2880194, 0.8643544, -0.22299469, 123.861755, -11.660991, -78.580666)
-
-[node name="Spike2" parent="." unique_id=1647151145 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.67079484, -0.23953602, 0.07213662, 0.12729694, 0.3947662, -0.7068197, 0.12449317, 0.88701284, 0.33405152, 117.00135, -16.211298, -77.74413)
-
-[node name="Spike9" parent="." unique_id=241954927 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.67079484, -0.23953602, 0.07213662, 0.12729694, 0.3947662, -0.7068197, 0.12449317, 0.88701284, 0.33405152, 111.43552, 5.1258993, -76.99152)
-
-[node name="Spike19" parent="." unique_id=531489160 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.67079484, -0.23953602, 0.07213662, 0.12729694, 0.3947662, -0.7068197, 0.12449317, 0.88701284, 0.33405152, 123.1659, -1.865727, -76.55894)
-
-[node name="Spike26" parent="." unique_id=910992998 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6418771, 0.33190137, 0.14576353, 0.120241, 0.066879414, -0.7714464, -0.23495677, 0.94094545, 0.0034166945, 121.78597, 5.307124, -76.45799)
-
-[node name="Spike65" parent="." unique_id=557117524 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.66198766, -0.23604906, 0.14576353, 0.1258174, -0.040301166, -0.7714464, 0.16616595, 0.9709101, 0.003416699, 117.78204, 13.53532, -75.78221)
-
-[node name="Spike66" parent="." unique_id=894115460 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.68195677, -0.0011626482, 0.14576353, 0.1288557, 0.004209049, -0.77144647, 0.00025056303, 0.99999535, 0.0034167038, 127.125465, 13.786745, -75.76603)
-
-[node name="Spike21" parent="." unique_id=588972809 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.67079484, -0.23953602, 0.07213662, 0.12729694, 0.3947662, -0.7068197, 0.12449317, 0.88701284, 0.33405152, 131.75476, 4.252383, -71.369095)
-
-[node name="Spike22" parent="." unique_id=1769271965 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6251807, 0.34650147, -0.20546101, -0.034501165, -0.51643074, -0.67117476, -0.2993788, 0.7831001, -0.35170814, 138.30154, 3.7751353, -74.21473)
-
-[node name="Spike25" parent="." unique_id=1297681789 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.39874876, 0.77551, -0.20546103, 0.1630685, -0.4625633, -0.67117476, -0.5441296, 0.4296849, -0.3517081, 143.54338, 3.2714317, -79.37893)
-
-[node name="Spike59" parent="." unique_id=146231507 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.39874876, 0.77551, -0.20546103, 0.1630685, -0.4625633, -0.67117476, -0.5441296, 0.4296849, -0.3517081, 141.24004, 13.330759, -84.06401)
-
-[node name="Spike60" parent="." unique_id=1750022778 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.39874876, 0.4112, -0.5556033, 0.16306849, -0.9111115, -0.26586813, -0.5441296, 0.02828744, -0.4868341, 137.75992, 9.681572, -72.12665)
-
-[node name="Spike61" parent="." unique_id=1573074322 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.30673188, 0.8169514, -0.29087728, -0.1260511, -0.32297432, -0.72921824, -0.6096684, 0.47779486, 0.0044243867, 140.2474, 13.948047, -63.05679)
-
-[node name="Spike24" parent="." unique_id=129528440 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.29770213, 0.8645935, -0.205461, 0.36006883, -0.0013620743, -0.6711747, -0.513218, -0.50247973, -0.3517081, 145.52512, 1.9481554, -87.142784)
-
-[node name="Spike56" parent="." unique_id=1559133860 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.29770213, 0.8645935, -0.205461, 0.36006883, -0.0013620743, -0.6711747, -0.513218, -0.50247973, -0.3517081, 132.55089, 2.5471418, -93.64699)
-
-[node name="Spike23" parent="." unique_id=521940025 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.2842603, -0.91020477, -0.048250824, -0.461012, -0.34373266, 0.5211387, -0.4339734, -0.23105136, -0.5852134, 142.41115, 3.2835653, -81.630875)
-
-[node name="Spike20" parent="." unique_id=380936186 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.4918067, -0.69174457, -0.10917198, -0.47395197, -0.62285024, -0.29968232, 0.1231443, 0.36545417, -0.7173982, 114.56814, -1.77454, -77.486244)
-
-[node name="Spike57" parent="." unique_id=686715706 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.0755257, -0.9842921, -0.10917197, -0.6406034, -0.048124854, -0.2996823, 0.25610912, 0.16989048, -0.7173983, 105.09468, 1.0743965, -89.932434)
-
-[node name="Spike28" parent="." unique_id=693685353 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.576426, 0.16805041, -0.4168707, -0.3236651, -0.31130198, -0.6500737, -0.21128821, 0.9353394, -0.14146075, 111.40637, -7.6356916, -77.486244)
-
-[node name="Spike10" parent="." unique_id=1364161199 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.49334845, -0.6973171, 0.07213661, 0.24882574, 0.24686188, -0.7068197, 0.4199546, 0.67291737, 0.33405155, 100.98372, 10.889521, -87.02775)
-
-[node name="Spike11" parent="." unique_id=323359707 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.14123204, -0.97475934, 0.072136596, 0.27851167, -0.16864185, -0.7068198, 0.6198013, -0.14633483, 0.3340516, 94.40507, 8.523234, -96.69346)
-
-[node name="Spike15" parent="." unique_id=921779689 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.14123204, -0.97475934, 0.072136596, 0.27851167, -0.16864185, -0.7068198, 0.6198013, -0.14633483, 0.3340516, 95.403336, 7.6000175, -76.321304)
-
-[node name="Spike18" parent="." unique_id=429882488 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.19253051, -0.93712676, -0.16625725, 0.31210473, 0.3214364, -0.654254, 0.58922935, 0.13594654, 0.40087187, 95.984375, 12.536973, -83.32074)
-
-[node name="Spike16" parent="." unique_id=922608076 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6317302, 0.18294543, 0.29164144, 0.27851164, -0.16864184, -0.7068197, -0.07083066, 0.9685558, -0.17815557, 105.102165, 11.624333, -73.5823)
-
-[node name="Spike17" parent="." unique_id=1753282032 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6223757, -0.18034872, 0.3172517, 0.1934055, 0.93952024, -0.15633364, -0.23856091, 0.29117823, 0.7009273, 99.305305, 8.170355, -73.101746)
-
-[node name="Spike62" parent="." unique_id=1888400553 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6223757, -0.18034872, 0.3172517, 0.1934055, 0.93952024, -0.15633364, -0.23856091, 0.29117823, 0.7009273, 119.44353, 14.145852, -63.10343)
-
-[node name="Spike63" parent="." unique_id=1220315498 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6635082, -0.07946243, -0.22162952, -0.10411311, -0.9596337, -0.18679371, -0.17488794, 0.26980996, -0.72964126, 112.77915, 12.918383, -60.279392)
-
-[node name="Spike64" parent="." unique_id=1105255259 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.6635081, 0.2838313, -0.05792892, -0.1041131, 0.2571181, -0.74951154, -0.17488793, 0.9237633, 0.22641662, 107.125374, 15.32873, -58.06454)
-
-[node name="Spike12" parent="." unique_id=1516185491 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.14123206, -0.95059425, 0.18406965, 0.2785117, -0.29940796, -0.67960906, 0.6198013, -0.08206784, 0.34733012, 95.75111, 11.618738, -108.0362)
-
-[node name="Spike14" parent="." unique_id=2003464364 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.101622075, 0.9827188, -0.08893851, -0.29527655, 0.16594669, 0.69845545, 0.6198013, -0.08206784, 0.34733015, 98.282715, 10.382501, -102.99899)
-
-[node name="Spike13" parent="." unique_id=611425928 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.62506914, 0.36588466, 0.18406966, -0.2531094, -0.34304845, -0.67960906, -0.16399139, -0.8651335, 0.34733012, 94.64036, 15.57629, -114.586136)
-
-[node name="Spike3" parent="." unique_id=1580035998 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.5788544, -0.50612366, -0.1723524, 0.36808679, 0.8451585, 0.05223003, 0.10539778, -0.1719175, 0.76416945, 112.01801, -19.4792, -79.620224)
-
-[node name="Spike29" parent="." unique_id=1159619708 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.11610069, -0.98583305, -0.00985755, 0.6788643, 0.16755225, -0.09658594, 0.085631, 0.008298874, 0.77907777, 109.51279, -12.242364, -81.13021)
-
-[node name="Spike31" parent="." unique_id=654547188 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.11610069, -0.98583305, -0.00985755, 0.6788643, 0.16755225, -0.09658594, 0.085631, 0.008298874, 0.77907777, 99.33605, -15.745441, -89.69729)
-
-[node name="Spike45" parent="." unique_id=2096512458 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.11610069, -0.98583305, -0.00985755, 0.6788643, 0.16755225, -0.09658594, 0.085631, 0.008298874, 0.77907777, 107.99884, -6.8679066, -92.24284)
-
-[node name="Spike46" parent="." unique_id=653393861 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.036859162, -0.4680502, -0.6925448, 0.6897111, -0.06175597, 0.07270149, -0.06788715, -0.88154674, 0.3626079, 111.831314, -5.0013504, -100.70528)
-
-[node name="Spike48" parent="." unique_id=1022972831 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.036859162, -0.4680502, -0.6925448, 0.6897111, -0.06175597, 0.07270149, -0.06788715, -0.88154674, 0.3626079, 115.31296, 11.028808, -102.513306)
-
-[node name="Spike58" parent="." unique_id=853545201 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.016037583, -0.08054699, -0.78234273, 0.607437, -0.4800672, 0.046400044, -0.33530837, -0.87353134, 0.04663837, 105.62326, 7.645231, -97.29895)
-
-[node name="Spike49" parent="." unique_id=1096216013 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.036859162, -0.15207407, -0.7748516, 0.6897111, -0.0887639, 0.05272354, -0.06788715, -0.98437995, 0.114950255, 125.914, 15.962155, -104.62003)
-
-[node name="Spike50" parent="." unique_id=1815944420 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.08822042, -0.09893884, -0.7748517, 0.16212058, -0.9700167, 0.052723538, -0.66903114, -0.22200944, 0.114950255, 135.62971, 17.058418, -104.667564)
-
-[node name="Spike51" parent="." unique_id=2008590005 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.08822042, -0.09893884, -0.7748517, 0.16212058, -0.9700167, 0.052723538, -0.66903114, -0.22200944, 0.114950255, 135.5452, 8.895511, -101.49325)
-
-[node name="Spike53" parent="." unique_id=56626182 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.13216096, 0.3293387, -0.7260725, 0.102710314, -0.94091785, -0.23914173, -0.6735375, -0.078861535, -0.178937, 153.20544, 12.153295, -103.71032)
-
-[node name="Spike52" parent="." unique_id=182830770 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.08419084, -0.10597768, -0.7748516, 0.63008887, 0.41382182, 0.05272352, 0.27851105, -0.9041734, 0.114950255, 144.53241, 10.993243, -104.252396)
-
-[node name="Spike47" parent="." unique_id=752601434 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.31926903, -0.4668508, -0.59296316, 0.028830707, -0.86100554, 0.39797145, -0.6155523, 0.20181488, 0.32619256, 114.032036, 3.8554153, -100.763115)
-
-[node name="Spike32" parent="." unique_id=1958704600 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.11610068, -0.4727689, -0.6792429, 0.6788643, 0.1894081, 0.06723126, 0.085631, -0.8605949, 0.38793972, 102.167885, -17.315971, -99.50118)
-
-[node name="Spike5" parent="." unique_id=2117211824 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.48410237, -0.68210256, -0.1723524, 0.4915283, 0.7028441, 0.052230034, 0.07559013, -0.20188114, 0.76416945, 104.995384, -27.66604, -90.12386)
-
-[node name="Spike6" parent="." unique_id=1424940994 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.07309991, -0.9699086, -0.1723524, 0.6894829, 0.09282845, 0.052230045, -0.030638196, -0.22509971, 0.76416945, 103.35413, -25.521423, -98.47246)
-
-[node name="Spike33" parent="." unique_id=692457941 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.07309991, -0.66293895, -0.5819429, 0.6894829, 0.03705784, 0.08481124, -0.030638196, -0.74776214, 0.5201324, 112.88546, -18.214024, -102.29465)
-
-[node name="Spike34" parent="." unique_id=310871558 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.10135257, 0.21713322, -0.7577481, 0.40896985, 0.80274713, 0.071783826, 0.5514891, -0.5553914, -0.1924918, 123.11148, -16.685143, -105.61777)
-
-[node name="Spike35" parent="." unique_id=1270756724 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.101352565, 0.58015585, -0.6291105, 0.40896988, 0.7016325, 0.31450582, 0.5514891, -0.41369116, -0.34884703, 132.88725, -17.521599, -100.50494)
-
-[node name="Spike37" parent="." unique_id=1771376609 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.3795721, -0.24246424, -0.6291106, 0.13152003, -0.8964498, 0.31450585, -0.5659474, -0.3709424, -0.34884703, 128.83987, -23.280134, -101.02055)
-
-[node name="Spike67" parent="." unique_id=542190031 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.5772543, -0.29000348, -0.37165397, 0.27788174, -0.277296, 0.6856945, -0.26688594, -0.91597724, -0.08991462, 123.35968, -15.30451, -86.6022)
-
-[node name="Spike74" parent="." unique_id=1287419957 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.3795721, -0.24246424, -0.6291106, 0.13152003, -0.8964498, 0.31450585, -0.5659474, -0.3709424, -0.34884703, 127.5779, -24.41628, -88.94938)
-
-[node name="Spike68" parent="." unique_id=645969576 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.37957212, 0.39084327, -0.5812563, 0.13152002, -0.9191825, -0.27106005, -0.5659474, 0.04852423, -0.45283103, 115.78634, 1.5466448, -84.679665)
-
-[node name="Spike69" parent="." unique_id=1645464131 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.19036376, 0.6137113, -0.5812562, 0.65134466, 0.002952531, -0.27106, -0.1455364, -0.78953105, -0.452831, 113.64896, -9.071349, -87.05207)
-
-[node name="Spike71" parent="." unique_id=990933218 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.19036376, 0.6137113, -0.5812562, 0.65134466, 0.002952531, -0.27106, -0.1455364, -0.78953105, -0.452831, 116.771164, 13.34694, -84.541306)
-
-[node name="Spike72" parent="." unique_id=673105468 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.17523599, -0.95012975, -0.14371806, 0.66686, 0.22391975, 0.12806544, -0.07911448, -0.2170784, 0.761139, 125.85295, 10.063446, -90.68708)
-
-[node name="Spike73" parent="." unique_id=517371449 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.17523599, 0.3265681, 0.7150922, 0.6668599, 0.026275665, -0.21651906, -0.07911447, 0.9448134, -0.24114472, 119.15836, -16.083626, -97.04564)
-
-[node name="Spike75" parent="." unique_id=634332185 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.17523599, -0.59345436, 0.60000736, 0.6668599, 0.24683392, -0.09875143, -0.07911445, 0.7660903, 0.4966159, 116.78092, -27.847109, -97.59104)
-
-[node name="Spike76" parent="." unique_id=1620100112 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.43844375, -0.1297706, 0.60000736, 0.035638064, -0.9907328, -0.098751426, 0.5368109, -0.04021728, 0.4966159, 124.02432, -30.946012, -96.557594)
-
-[node name="Spike70" parent="." unique_id=1493864355 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.19036375, 0.18315548, -0.7411728, 0.65134466, -0.16308773, -0.23892374, -0.14553638, -0.9694668, -0.09983283, 111.70666, -2.542912, -89.525734)
-
-[node name="Spike38" parent="." unique_id=806501554 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.29591522, 0.82217795, -0.29609218, 0.6056074, -0.264043, 0.32260537, 0.16535647, -0.50429577, -0.6516466, 129.76634, -9.840648, -100.26198)
-
-[node name="Spike42" parent="." unique_id=1515219890 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.29591522, 0.82217795, -0.29609218, 0.6056074, -0.264043, 0.32260537, 0.16535647, -0.50429577, -0.6516466, 124.16842, 4.5248437, -113.81944)
-
-[node name="Spike55" parent="." unique_id=363100213 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.42964947, 0.78530735, 0.005562559, 0.38498914, 0.43087766, 0.55882186, 0.38581553, 0.4445744, -0.5514303, 124.733986, -1.5768731, -105.86943)
-
-[node name="Spike54" parent="." unique_id=796314932 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.3297255, 0.18050998, -0.67614865, 0.61029017, -0.061705686, 0.37069458, 0.022269204, -0.98164046, -0.14763653, 125.197426, 10.953834, -118.311424)
-
-[node name="Spike43" parent="." unique_id=1898868704 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.29591522, 0.82217795, -0.29609218, 0.6056074, -0.264043, 0.32260537, 0.16535647, -0.50429577, -0.6516466, 136.31912, 11.494863, -119.30601)
-
-[node name="Spike44" parent="." unique_id=991913356 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.40379083, 0.7025676, -0.32169983, 0.49772194, -0.2055085, 0.5228206, 0.26626062, -0.6813036, -0.4894446, 129.76373, 15.640087, -124.88738)
-
-[node name="Spike39" parent="." unique_id=1816856106 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.29591522, 0.83569735, 0.27176422, 0.6056074, -0.4808104, 0.06747769, 0.16535646, 0.26540694, -0.7334706, 132.6559, -6.1493936, -91.704865)
-
-[node name="Spike36" parent="." unique_id=248768672 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.25900146, 0.6714852, -0.502615, 0.6351724, -0.15331978, 0.2925998, 0.105561554, -0.7249896, -0.52740085, 137.77776, -24.295485, -99.62571)
-
-[node name="Spike40" parent="." unique_id=1807429245 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.06584552, 0.53451097, 0.65934694, 0.6468491, 0.24870129, -0.20693594, -0.24273352, 0.80774677, -0.3725953, 139.15343, -22.00495, -91.967094)
-
-[node name="Spike41" parent="." unique_id=1782795420 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.015583724, 0.6872236, 0.5700654, 0.5927707, -0.3642965, 0.29143107, 0.360623, 0.6285068, -0.45440227, 134.24385, -23.147476, -89.3035)
-
-[node name="Spike7" parent="." unique_id=677503981 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.01727686, -0.108268365, -0.78024423, 0.33608642, -0.8683946, 0.08379749, -0.6069732, -0.48391968, 0.024190553, 104.63866, -29.98407, -97.3731)
-
-[node name="Spike4" parent="." unique_id=164987945 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.5588305, 0.0674361, 0.46254513, 0.21272115, -0.80318433, 0.40106142, 0.35231692, 0.59190965, 0.49151802, 106.73877, -26.476116, -83.35574)
-
-[node name="Spike30" parent="." unique_id=21574339 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(-0.5588305, -0.32708526, 0.38833952, 0.21272112, -0.9436265, -0.098162994, 0.35231695, 0.05093202, 0.6752368, 106.61229, -16.88024, -87.747246)
-
-[node name="Spike8" parent="." unique_id=390088191 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.016845286, 0.8076621, 0.46254516, -0.5452509, -0.3490262, 0.40106142, 0.42905334, -0.4752603, 0.49151802, 129.14513, -6.6689205, -82.66338)
-
-[node name="Spike27" parent="." unique_id=563989263 instance=ExtResource("29_qsp4k")]
-transform = Transform3D(0.4019676, 0.76874655, -0.21296379, -0.5394149, 0.6211118, 0.07905805, 0.17065343, 0.15250637, 0.7515214, 127.00514, -0.64805007, -80.29293)
 
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
 [connection signal="BounceSignal" from="Player" to="UI" method="_on_player_bounce_signal"]
