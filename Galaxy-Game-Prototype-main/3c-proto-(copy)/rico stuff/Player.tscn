@@ -2,22 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bpmg4pbip3mcq" path="res://rico stuff/MainCam.tscn" id="1_55m5b"]
 [ext_resource type="Script" uid="uid://dom2wns65txfl" path="res://scripts/rico scripts/PlayerScripts.gd" id="1_rdmcm"]
+[ext_resource type="PackedScene" uid="uid://cfpn3u5rcf5kw" path="res://particle/regular_jump_particle.tscn" id="2_kq3ra"]
 [ext_resource type="Script" uid="uid://seuk1mpcps3p" path="res://rico stuff/HitBoxScript.gd" id="3_rdmcm"]
+[ext_resource type="PackedScene" uid="uid://c0kms32kgwdwf" path="res://player/playermodel.tscn" id="5_kq3ra"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vocxr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a13ad"]
-albedo_color = Color(0.9559625, 0.9559639, 0.9559631, 1)
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.5
-emission_operator = 1
-texture_filter = 0
-disable_receive_shadows = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_a13ad"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_un37i"]
 
 [sub_resource type="Gradient" id="Gradient_a13ad"]
 interpolation_mode = 1
@@ -44,26 +33,27 @@ height = 0.1
 height = 0.9797821
 radius = 0.50927734
 
+[sub_resource type="Animation" id="Animation_kq3ra"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_nn261"]
+resource_name = "regularjump"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpmhu"]
+_data = {
+&"RESET": SubResource("Animation_kq3ra"),
+&"regularjump": SubResource("Animation_nn261")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=1005209781 groups=["Player"]]
 collision_layer = 2
 floor_snap_length = 0.3
 safe_margin = 0.01
 script = ExtResource("1_rdmcm")
+RegularJumpParticle = ExtResource("2_kq3ra")
 
 [node name="MainCollision" type="CollisionShape3D" parent="." unique_id=1656566551]
 shape = SubResource("SphereShape3D_vocxr")
-
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1327966202]
-layers = 2
-material_override = SubResource("StandardMaterial3D_a13ad")
-cast_shadow = 0
-mesh = SubResource("SphereMesh_a13ad")
-
-[node name="Nose" type="MeshInstance3D" parent="Mesh" unique_id=454590744]
-transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, 0.045690536, -0.535)
-material_override = SubResource("StandardMaterial3D_a13ad")
-cast_shadow = 0
-mesh = SubResource("PrismMesh_un37i")
 
 [node name="Decal" type="Decal" parent="." unique_id=1591566872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
@@ -99,6 +89,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013633741, 0)
 shape = SubResource("CylinderShape3D_rdmcm")
 
 [node name="HitTimer" type="Timer" parent="." unique_id=575058386]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2036572720]
+libraries/ = SubResource("AnimationLibrary_tpmhu")
+
+[node name="playermodel" parent="." unique_id=68381412 instance=ExtResource("5_kq3ra")]
+transform = Transform3D(-1.6572985e-08, 0, 0.3791457, 0, 0.39384437, 0, -0.3791457, 0, -1.6572985e-08, 0.004868135, -0.06970414, -0.014268011)
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

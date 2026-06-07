@@ -266,8 +266,8 @@ sky_material = SubResource("PanoramaSkyMaterial_kek77")
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
 sky = SubResource("Sky_ig7tw")
-ambient_light_source = 2
-ambient_light_color = Color(0.5148701, 0.49611002, 0.50084335, 1)
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 ssao_enabled = true
 ssao_intensity = 1.7
@@ -2468,6 +2468,8 @@ transform = Transform3D(0.016845286, 0.8076621, 0.46254516, -0.5452509, -0.34902
 
 [node name="Spike27" parent="." unique_id=563989263 instance=ExtResource("29_qsp4k")]
 transform = Transform3D(0.4019676, 0.76874655, -0.21296379, -0.5394149, 0.6211118, 0.07905805, 0.17065343, 0.15250637, 0.7515214, 127.00514, -0.64805007, -80.29293)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=51523138]
 
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
 [connection signal="BounceSignal" from="Player" to="UI" method="_on_player_bounce_signal"]

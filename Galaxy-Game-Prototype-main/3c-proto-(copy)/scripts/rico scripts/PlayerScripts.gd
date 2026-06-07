@@ -13,6 +13,7 @@ class_name Player extends CharacterBody3D
 
 @onready var HitTimer: Timer = $HitTimer
 @onready var HitBox: Area3D = $HitBox
+@onready var AnimatorP: AnimationPlayer = $AnimationPlayer
 
 
 
@@ -245,6 +246,9 @@ const CamHeight    : float = 0.0
 
 var CurrentState : State = PlayerGroundState.new()
 
+# PARTICLES ///////////////////////////////////////////////////////////////////////////////////////
+
+@export var RegularJumpParticle : PackedScene 
 
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
 ## READY
@@ -612,6 +616,10 @@ class PlayerJumpState extends State:
 	
 	
 	func on_enter(This : Player):
+		#particle animation
+		var regularjumpparticle : Node3D = This.RegularJumpParticle.instantiate()
+		This.add_child(regularjumpparticle)
+		
 		This.MaxAirSpd      = maxf(VectorUtil.get_axis(This.velocity, This.DirInputPlayer), BaseAirSpd)
 		This.CurGrav        = 0
 		This.JumpTimer      = BaseJump
@@ -1117,6 +1125,7 @@ class PlayerGroundStunState extends State:
 		This.StunTime   = Stun
 		This.DiveAmount = BaseDiveAmount
 		
+		This.SavedWallVec = Vector3.ZERO
 		This.ThumpCamEffect()
 	
 	

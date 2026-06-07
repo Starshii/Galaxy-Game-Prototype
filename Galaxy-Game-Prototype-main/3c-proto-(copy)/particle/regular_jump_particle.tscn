@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cfpn3u5rcf5kw"]
+
+[ext_resource type="Material" uid="uid://y4tkrap3l5ct" path="res://materials/regularjumpparticlemat.material" id="2_0sl56"]
+[ext_resource type="Script" uid="uid://7cmymfmhkfqy" path="res://particle/regular_jump_particle.gd" id="2_lpccw"]
+
+[sub_resource type="Animation" id="Animation_0sl56"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:draw_pass_1:inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:draw_pass_1:outer_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+
+[sub_resource type="Animation" id="Animation_lpccw"]
+resource_name = "regularparticle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:draw_pass_1:inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:draw_pass_1:outer_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.99]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0sl56"]
+_data = {
+&"RESET": SubResource("Animation_0sl56"),
+&"regularparticle": SubResource("Animation_lpccw")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kenwj"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_tduhm"]
+material = ExtResource("2_0sl56")
+inner_radius = 1.0
+outer_radius = 0.6
+rings = 12
+ring_segments = 6
+
+[node name="RegularJumpParticle" type="Node3D" unique_id=20006337]
+script = ExtResource("2_lpccw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1882962843]
+libraries/ = SubResource("AnimationLibrary_0sl56")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=69772516]
+amount = 1
+speed_scale = 0.0
+process_material = SubResource("ParticleProcessMaterial_kenwj")
+draw_pass_1 = SubResource("TorusMesh_tduhm")
