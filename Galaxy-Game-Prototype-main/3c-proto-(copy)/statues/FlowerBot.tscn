@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://8nxg2c4eam6p"]
+
+[ext_resource type="PackedScene" uid="uid://ctmxbn6vmtbsk" path="res://models/flower_bot.glb" id="1_s85ll"]
+
+[node name="FlowerBot" type="Node3D" unique_id=1780974161]
+
+[node name="flower_bot" parent="." unique_id=992565992 instance=ExtResource("1_s85ll")]
+transform = Transform3D(2.832551, 0, 0, 0, 2.832551, 0, 0, 0, 2.832551, 0.07329363, -0.23965669, 0.2922938)

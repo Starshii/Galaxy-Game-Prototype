@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxi6amp8kmr2t"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rnobp"]
+load_path = "res://.godot/imported/checkeredtexture.png-88843926307c0b78f3d5bf3e9e3675cd.s3tc.ctex"
+
+[resource]
+albedo_color = Color(0, 0.23921569, 0.5019608, 1)
+albedo_texture = SubResource("CompressedTexture2D_rnobp")
+clearcoat_enabled = true
+clearcoat_roughness = 0.46
+anisotropy_enabled = true
+anisotropy = 0.69
+uv1_triplanar = true
+texture_filter = 0

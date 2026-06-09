@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dif8l0oibo5jy"]
+
+[ext_resource type="Script" uid="uid://bjxbq6ne1off7" path="res://levels/buttonscript.gd" id="1_vssqe"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qqsd3"]
+height = 0.02
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j77gf"]
+height = 0.03857422
+radius = 0.4921875
+
+[node name="Button" type="Node3D" unique_id=1432588608]
+transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 0, 0, 0)
+script = ExtResource("1_vssqe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=537760244]
+mesh = SubResource("CylinderMesh_qqsd3")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1905685845]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=801998466]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.0026855466, 0)
+shape = SubResource("CylinderShape3D_j77gf")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

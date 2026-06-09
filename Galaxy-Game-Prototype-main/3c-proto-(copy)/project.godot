@@ -19,6 +19,10 @@ run/main_scene="uid://bbbelf003rey0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Levelmanager="*uid://bwkdg23q2uqq6"
+
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"

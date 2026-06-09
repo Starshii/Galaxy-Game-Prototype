@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dw5vfxoc03067" path="res://scripts/SwitchSong.gd" id="2_a5404"]
 [ext_resource type="Script" uid="uid://brulharhismkn" path="res://scripts/player.gd" id="3_2dagw"]
 [ext_resource type="Script" uid="uid://ht0m38ctmh81" path="res://scripts/gameplay_camera.gd" id="4_2dagw"]
-[ext_resource type="Texture2D" uid="uid://bbvnd6vovrk5m" path="res://panorama_image.png" id="4_7w0ls"]
+[ext_resource type="Texture2D" uid="uid://bbvnd6vovrk5m" path="res://skyboxes/panorama_image.png" id="4_7w0ls"]
 [ext_resource type="PackedScene" uid="uid://b5ixnnuvr5ng" path="res://groundshapes/sphere_ground.tscn" id="5_a5404"]
 [ext_resource type="Script" uid="uid://b4717sgqmrnju" path="res://playsecondpart.gd" id="7_ohhhg"]
 
