@@ -346,18 +346,16 @@ func _process(Delta: float) -> void:
 		var GravArea := GravAreaArray[0]
 		match GravArea.GravityType:
 			GravityArea.Type.Directional:
-				up_direction = -GravArea.gravity_direction
+				up_direction = -GravArea.global_basis.y
 			GravityArea.Type.ToPoint:
 				up_direction = (global_position - GravArea.global_position).normalized()
 			GravityArea.Type.FromPoint:
 				up_direction = -(global_position - GravArea.global_position).normalized()
 			GravityArea.Type.ToLine: 
-				var LineVectorGlobal := GravArea.global_basis * GravArea.gravity_point_center
-				var GravityMiddle := VectorUtil.project_on_line(GravArea.global_position, LineVectorGlobal, global_position)
+				var GravityMiddle := VectorUtil.project_on_line(GravArea.global_position, GravArea.global_basis.y, global_position)
 				up_direction = -(GravityMiddle - global_position).normalized()
 			GravityArea.Type.FromLine: 
-				var LineVectorGlobal := GravArea.global_basis * GravArea.gravity_point_center
-				var GravityMiddle := VectorUtil.project_on_line(GravArea.global_position, LineVectorGlobal, global_position)
+				var GravityMiddle := VectorUtil.project_on_line(GravArea.global_position, GravArea.global_basis.y, global_position)
 				up_direction = (GravityMiddle - global_position).normalized()
 		
 		# Set the facing direction of the Player correctly with the new gravity field
@@ -1414,6 +1412,8 @@ class PlayerWallJumpState extends State:
 			EnteredUpSpd   = VectorUtil.get_axis(This.velocity, This.up_direction) + WallBonus
 			This.velocity += This.up_direction * (VectorUtil.get_axis(This.velocity, This.up_direction) + WallBonus)
 		
+		if EnteredUpSpd <= 1.0:
+			EnteredUpSpd = 1.0
 		This.velocity += This.FacingDir * WallHor
 	
 	
@@ -1478,7 +1478,6 @@ class PlayerWallJumpWeakState extends State:
 	var Name = "WallJumpWeak"
 	
 	var InJumpBuffer : bool  = false
-	var EnteredUpSpd : float
 	
 	
 	func on_enter(This : Player):
@@ -1538,10 +1537,6 @@ class PlayerWallJumpWeakState extends State:
 		
 		# Gradually increase the fall-speed of the WallJump
 		This.CurGrav = move_toward(This.CurGrav, WJMaxGrav, WJGravMT * Delta)
-		
-		# Limit insane upwards momentum
-		if VectorUtil.get_axis(This.velocity, This.up_direction) > EnteredUpSpd:
-			This.velocity = VectorUtil.set_axis(This.velocity, EnteredUpSpd * This.up_direction)
 		
 		# Count down the wall jump time
 		This.WallTime -= Delta
@@ -1634,10 +1629,10 @@ class HitState extends State:
 			return PlayerDiveState.new()
 		return null
 		
-	func update(This : Player, Delta : float):
+	func update(_This : Player, _Delta : float):
 		pass
 	
-	func on_exit(This : Player):
+	func on_exit(_This : Player):
 		pass
 	
 
@@ -1669,10 +1664,10 @@ class BounceState extends State:
 			return PlayerDiveState.new()
 		return null
 		
-	func update(This : Player, Delta : float):
+	func update(_This : Player, _Delta : float):
 		pass
 	
-	func on_exit(This : Player):
+	func on_exit(_This : Player):
 		pass
 	
 

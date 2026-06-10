@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c5sib2syse8lj"]
+
+[ext_resource type="Script" uid="uid://bd5nbgxrumnt7" path="res://UpdateUI.gd" id="1_3sbvi"]
+[ext_resource type="Texture2D" uid="uid://cvo6vr17oipg" path="res://UI/texturesUI/health1.tres" id="2_nm1m0"]
+[ext_resource type="Texture2D" uid="uid://bd0t6ixptjop2" path="res://UI/texturesUI/health2.tres" id="3_c7tqi"]
+[ext_resource type="Texture2D" uid="uid://br4h5mlctel6y" path="res://UI/texturesUI/health3.tres" id="4_cbfhl"]
+[ext_resource type="Texture2D" uid="uid://0p0ybgnwbxdt" path="res://UI/texturesUI/boalbimg.tres" id="5_4fiuh"]
+[ext_resource type="FontFile" uid="uid://f83xlj1fo0lr" path="res://fonts/Matcha Cih.ttf" id="6_nm1m0"]
+
+[node name="UI" type="Control" unique_id=1013357421]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_3sbvi")
+
+[node name="1health" type="NinePatchRect" parent="." unique_id=1367088033]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 11.0
+offset_right = 1094.0
+offset_bottom = 126.0
+scale = Vector2(1.311073, 1.282265)
+texture = ExtResource("2_nm1m0")
+
+[node name="2health" type="NinePatchRect" parent="." unique_id=1887678619]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 11.0
+offset_right = 1094.0
+offset_bottom = 126.0
+scale = Vector2(1.311073, 1.282265)
+texture = ExtResource("3_c7tqi")
+
+[node name="3health" type="NinePatchRect" parent="." unique_id=1961805765]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 11.0
+offset_right = 1094.0
+offset_bottom = 126.0
+scale = Vector2(1.311073, 1.282265)
+texture = ExtResource("4_cbfhl")
+
+[node name="BoalbImg" type="NinePatchRect" parent="." unique_id=622940914]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -7.0
+offset_right = 152.0
+offset_bottom = 125.0
+texture = ExtResource("5_4fiuh")
+
+[node name="BoalbImg2" type="NinePatchRect" parent="." unique_id=369243478]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 127.0
+offset_right = 146.0
+offset_bottom = 246.0
+texture = ExtResource("5_4fiuh")
+
+[node name="BoalbImg3" type="NinePatchRect" parent="." unique_id=473382920]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 170.0
+offset_right = 91.0
+offset_bottom = 258.0
+texture = ExtResource("5_4fiuh")
+
+[node name="BoalbImg4" type="NinePatchRect" parent="." unique_id=1182728725]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 190.0
+offset_right = 132.0
+offset_bottom = 264.0
+texture = ExtResource("5_4fiuh")
+
+[node name="BoalbCount" type="RichTextLabel" parent="." unique_id=378805245]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 48.0
+offset_right = 288.0
+offset_bottom = 97.0
+theme_override_fonts/normal_font = ExtResource("6_nm1m0")
+text = "Energy: 0"
+
+[node name="BoalbCountTotal" type="RichTextLabel" parent="." unique_id=1317172567]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 190.0
+offset_right = 340.0
+offset_bottom = 239.0
+theme_override_fonts/normal_font = ExtResource("6_nm1m0")
+text = "Total Energy: 0"

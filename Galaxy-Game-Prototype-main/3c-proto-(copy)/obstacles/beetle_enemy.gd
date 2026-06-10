@@ -51,5 +51,5 @@ func _on_timer_timeout() -> void:
 		Jump()
 
 
-func _on_aggro_range_area_exited(area: Area3D) -> void:
+func _on_aggro_range_area_exited(_area: Area3D) -> void:
 	attackTimer.stop()

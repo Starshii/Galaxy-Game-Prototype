@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Levelmanager="*uid://bwkdg23q2uqq6"
+CurrencyManager="*uid://v2p1jqt85u8s"
 
 [debug_draw_3d]
 

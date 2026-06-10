@@ -19,17 +19,13 @@
 [ext_resource type="Material" uid="uid://ccl0uakes4qpy" path="res://materials/brownblock.material" id="17_gusra"]
 [ext_resource type="Script" uid="uid://dt8dmh6o6sigd" path="res://hangingcitypath.gd" id="18_oe60c"]
 [ext_resource type="Texture2D" uid="uid://ctnnc53pcbpxq" path="res://materials/blocktexture.tres" id="19_eoee5"]
-[ext_resource type="Material" uid="uid://h5mvgtdppkrj" path="res://materials/greenblocky.material" id="20_gutiw"]
 [ext_resource type="Curve3D" uid="uid://nqsitdimjg06" path="res://curves/root3.tres" id="21_xlu2f"]
 [ext_resource type="PackedScene" uid="uid://dy17ilo1t7ufx" path="res://obstacles/BeetleEnemy.tscn" id="22_map8x"]
 [ext_resource type="Script" uid="uid://c0tirjue0d3g4" path="res://obstacles/EnemyHitBox.gd" id="23_r708q"]
-[ext_resource type="Script" uid="uid://bd5nbgxrumnt7" path="res://UpdateUI.gd" id="24_2m3c7"]
-[ext_resource type="Texture2D" uid="uid://cvo6vr17oipg" path="res://UI/texturesUI/health1.tres" id="25_g5y6o"]
-[ext_resource type="Texture2D" uid="uid://bd0t6ixptjop2" path="res://UI/texturesUI/health2.tres" id="26_raj2e"]
-[ext_resource type="Texture2D" uid="uid://br4h5mlctel6y" path="res://UI/texturesUI/health3.tres" id="27_m7o5q"]
-[ext_resource type="Texture2D" uid="uid://0p0ybgnwbxdt" path="res://UI/texturesUI/boalbimg.tres" id="28_66hhv"]
+[ext_resource type="PackedScene" uid="uid://c5sib2syse8lj" path="res://UI/ui.tscn" id="23_woytj"]
 [ext_resource type="PackedScene" uid="uid://b2j2n3a3btf2d" path="res://obstacles/boalb1.tscn" id="29_vg6jq"]
 [ext_resource type="PackedScene" uid="uid://ygp3pddcfuhr" path="res://obstacles/boalb2.tscn" id="30_tbigj"]
+[ext_resource type="Script" uid="uid://48i27xhy7a2m" path="res://levels/level_timer.gd" id="31_i3naf"]
 [ext_resource type="PackedScene" uid="uid://bs2hgmmr2j06x" path="res://obstacles/spike.tscn" id="31_nfkfq"]
 
 [sub_resource type="Animation" id="Animation_7mycd"]
@@ -265,8 +261,7 @@ panorama = ExtResource("4_f1mgo")
 sky_material = SubResource("PanoramaSkyMaterial_kek77")
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
-background_mode = 2
-background_color = Color(1, 1, 1, 1)
+background_mode = 1
 sky = SubResource("Sky_ig7tw")
 ambient_light_source = 2
 ambient_light_color = Color(0.446777, 0.44677705, 0.44677705, 1)
@@ -533,7 +528,7 @@ radius = 38.15381
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_getpj"]
 height = 28.680708
-radius = 11.413574
+radius = 11.261719
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1u8w0"]
 height = 23.847534
@@ -1004,6 +999,7 @@ transform = Transform3D(1.0000007, 3.7252903e-07, 6.2584877e-06, -1.3783574e-06,
 shape = SubResource("CylinderShape3D_0odxb")
 
 [node name="GravityArea2" type="Area3D" parent="Tree/bottombranch" unique_id=1010698587 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -1.8492542e-06, 32.061764, -1.9073486e-06)
 collision_layer = 3
 collision_mask = 3
 priority = 1
@@ -1200,8 +1196,8 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 transform = Transform3D(1.0000011, 0, -2.734363e-06, 5.2154064e-08, 0.9999999, -1.0728836e-06, 0, 0, 1.0000001, 3.8146973e-06, 2.7526855, -1.9073486e-06)
 shape = SubResource("CylinderShape3D_vivmo")
 
-[node name="resetvinegrav" type="Area3D" parent="Tree" unique_id=2051783905 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(0.6367643, 0, 0.7710575, 0, 0.9999993, 0, -0.7710575, 0, 0.6367643, -5.399452, 65.95961, 9.678093)
+[node name="normalgrav" type="Area3D" parent="Tree" unique_id=2051783905 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-0.99999917, 8.742271e-08, 0, -8.7422706e-08, -0.9999993, 0, 0, 0, 0.99999917, -5.399452, 65.95961, 9.678093)
 collision_mask = 3
 priority = 3
 gravity_space_override = 3
@@ -1209,55 +1205,28 @@ script = ExtResource("5_duofn")
 PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tree/resetvinegrav" unique_id=1716446983]
-transform = Transform3D(0.39034563, 0, 0.9206667, 0, 0.9999987, 0, -0.9206667, 0, 0.39034563, 7.719986, -1.5748882, 10.052553)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tree/normalgrav" unique_id=1716446983]
+transform = Transform3D(0.39034563, 0, 0.9206667, 0, 0.9999987, 0, -0.9206667, 0, 0.39034563, -11.354566, 1.7998013, 1.0503763)
 shape = SubResource("BoxShape3D_w48qg")
 
-[node name="resetvinegrav3" type="Area3D" parent="Tree" unique_id=1090867481 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(0.6367643, 0, 0.7710575, 0, 0.9999993, 0, -0.7710575, 0, 0.6367643, -20.731323, 80.67088, -22.346478)
-collision_mask = 3
-priority = 5
-gravity_space_override = 3
-script = ExtResource("5_duofn")
-PriorityLink = NodePath(".")
-metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/resetvinegrav3" unique_id=1492721988]
-transform = Transform3D(0.9999989, 0, -3.874302e-07, 0, 0.9999987, 0, 3.874302e-07, 0, 0.9999989, -3.9329758, -3.900341, 3.4118576)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/normalgrav" unique_id=1492721988]
+transform = Transform3D(-0.63676435, -8.742267e-08, -0.77105707, 5.56677e-08, -0.99999875, 6.740794e-08, -0.77105707, 0, 0.63676435, 15.205521, -10.810944, -26.819492)
 shape = SubResource("BoxShape3D_cegan")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tree/resetvinegrav3" unique_id=691939176]
-transform = Transform3D(0.9946492, 0, 0.10329527, 0, 0.9999987, 0, -0.10329527, 0, 0.9946492, -0.26766968, -4.2220154, 9.482626)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Tree/normalgrav" unique_id=691939176]
+transform = Transform3D(-0.5537109, -8.742267e-08, -0.8327071, 4.8406935e-08, -0.99999875, 7.2797555e-08, -0.8327071, 0, 0.5537109, 8.190666, -10.489265, -25.780006)
 shape = SubResource("BoxShape3D_82xsv")
 
-[node name="resetvinegrav2" type="Area3D" parent="Tree" unique_id=1790136184 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(0.6367643, 0, 0.7710575, 0, 0.9999993, 0, -0.7710575, 0, 0.6367643, -4.922779, 85.15698, 9.783012)
-collision_mask = 3
-priority = 3
-gravity_space_override = 3
-script = ExtResource("5_duofn")
-PriorityLink = NodePath(".")
-metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/resetvinegrav2" unique_id=764240595]
-transform = Transform3D(0.9999989, 0, -3.874302e-07, 0, 0.9999987, 0, 3.874302e-07, 0, 0.9999989, 0.07915497, 0.83140945, -0.7535591)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Tree/normalgrav" unique_id=764240595]
+transform = Transform3D(-0.63676435, -8.742267e-08, -0.77105707, 5.56677e-08, -0.99999875, 6.740794e-08, -0.77105707, 0, 0.63676435, 0.053962708, -20.028797, -0.43595505)
 shape = SubResource("BoxShape3D_w48qg")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Tree/resetvinegrav2" unique_id=265524078]
-transform = Transform3D(0.97395897, 0.22662836, -0.006049007, -0.225223, 0.96416694, -0.13999107, -0.025892794, 0.13770595, 0.99013114, 9.4784775, -1.5006332, 10.943529)
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Tree/normalgrav" unique_id=265524078]
+transform = Transform3D(-0.6002179, -0.25048834, -0.7595969, 0.22522306, -0.96416694, 0.13999113, -0.7674666, -0.08705734, 0.63514477, -14.950333, -17.696754, -0.23508453)
 shape = SubResource("BoxShape3D_getpj")
 
-[node name="resetvinegrav4" type="Area3D" parent="Tree" unique_id=1441116077 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(-0.71754247, -0.0958163, 0.6898915, 7.450581e-09, 0.9904919, 0.13756545, -0.69651365, 0.09870916, -0.7107206, -8.068098, 90.73071, -2.1071606)
-collision_mask = 3
-priority = 3
-gravity_space_override = 3
-script = ExtResource("5_duofn")
-PriorityLink = NodePath(".")
-metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree/resetvinegrav4" unique_id=1821198068]
-transform = Transform3D(0.9999989, 0, -3.874302e-07, 0, 0.9999987, 0, 3.874302e-07, 0, 0.9999989, 0.07915497, 0.83140945, -0.7535591)
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Tree/normalgrav" unique_id=1821198068]
+transform = Transform3D(0.71754193, 0.09581616, -0.6898916, -1.2347712e-07, -0.9904914, -0.13756534, -0.6965137, 0.0987091, -0.7107201, 3.3249855, -25.490963, -11.222759)
 shape = SubResource("BoxShape3D_w48qg")
 
 [node name="boxtovineboom3" type="CSGBox3D" parent="Tree" unique_id=117061934]
@@ -1307,7 +1276,7 @@ mesh = SubResource("CylinderMesh_seu75")
 skeleton = NodePath("")
 
 [node name="swinggroundgrav" type="Area3D" parent="Tree/hangingcitypath/hangingcitypathfollow/swing" unique_id=59120263 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(0.9809131, 0, -0.19443962, 0, 0.999998, 0, 0.19443962, 0, 0.9809131, -11.271267, 71.37212, -19.088165)
+transform = Transform3D(-0.9809538, 8.5757655e-08, -0.19423409, -8.7422656e-08, -0.999998, 0, -0.19423409, 1.6980472e-08, 0.9809538, -11.271267, 74.41838, -19.088165)
 collision_mask = 3
 priority = 4
 script = ExtResource("5_duofn")
@@ -1373,7 +1342,7 @@ height = 23.477905
 sides = 32
 material = SubResource("StandardMaterial3D_getpj")
 
-[node name="side" type="Area3D" parent="treeplanet/planet" unique_id=1746605996 node_paths=PackedStringArray("PriorityLink")]
+[node name="sidegrav" type="Area3D" parent="treeplanet/planet" unique_id=1746605996 node_paths=PackedStringArray("PriorityLink")]
 collision_mask = 3
 priority = 1
 gravity_space_override = 3
@@ -1382,12 +1351,12 @@ GravityType = 3
 PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="treeplanet/planet/side" unique_id=85857418]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="treeplanet/planet/sidegrav" unique_id=85857418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.024505615, 0)
 shape = SubResource("CylinderShape3D_2cqfq")
 
-[node name="top" type="Area3D" parent="treeplanet/planet" unique_id=331112611 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.741188, 0)
+[node name="topgrav" type="Area3D" parent="treeplanet/planet" unique_id=331112611 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -4.7544455e-07, 18.17964, 0)
 collision_mask = 3
 priority = 1
 gravity_space_override = 3
@@ -1395,7 +1364,7 @@ script = ExtResource("5_duofn")
 PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="treeplanet/planet/top" unique_id=1095684096]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="treeplanet/planet/topgrav" unique_id=1095684096]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4406738, 0)
 shape = SubResource("CylinderShape3D_cegan")
 
@@ -1483,47 +1452,6 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 material = ExtResource("17_gusra")
-
-[node name="liltree" type="CSGCylinder3D" parent="." unique_id=1417322614]
-transform = Transform3D(-1, -1.2274165e-08, -8.655684e-08, -8.742278e-08, 0.14040008, 0.99009484, 0, 0.99009484, -0.14040008, 119.81937, -4.9951143, -104.1402)
-radius = 0.9770508
-height = 5.1273804
-material = ExtResource("17_gusra")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="liltree" unique_id=606211087]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.139366, -0.12979507)
-radius = 2.3781583
-material = ExtResource("20_gutiw")
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="liltree" unique_id=1160634556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7533264, -4.139366, -0.12979507)
-radius = 2.6232853
-material = ExtResource("20_gutiw")
-
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="liltree" unique_id=538119375]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.460968, -4.668167, -3.8589134)
-radius = 2.6232853
-material = ExtResource("20_gutiw")
-
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="liltree" unique_id=115334485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5125427, -4.489006, -2.5955353)
-radius = 2.6232853
-material = ExtResource("20_gutiw")
-
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="liltree" unique_id=1623498300]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0913086, -5.6935425, 1.1417351)
-radius = 2.0082092
-material = ExtResource("20_gutiw")
-
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="liltree" unique_id=154664343]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2639465, -5.391632, 3.2707558)
-radius = 2.0082092
-material = ExtResource("20_gutiw")
-
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="liltree" unique_id=2064231956]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0271912, -5.352936, 3.5436249)
-radius = 2.6259937
-material = ExtResource("20_gutiw")
 
 [node name="tower" type="CSGCombiner3D" parent="." unique_id=2062346985]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 119.81937, -4.7755747, -90.56851)
@@ -1671,7 +1599,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71972656, -4.141343, 0)
 shape = SubResource("CylinderShape3D_ryguw")
 
 [node name="topgrav" type="Area3D" parent="tower" unique_id=1357005313 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7451172, 11.945473, 0)
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -0.7564132, 63.722694, 0)
 collision_mask = 3
 priority = 1
 gravity_space_override = 3
@@ -1682,10 +1610,11 @@ PriorityLink = NodePath(".")
 metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower/topgrav" unique_id=1408978492]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7456207, 26.466204, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7456207, 26.46621, 0)
 shape = SubResource("CylinderShape3D_getpj")
 
 [node name="downgroundgrav" type="Area3D" parent="tower" unique_id=2098596463 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 1.2652454, -21.90661, 0.56681824)
 collision_mask = 3
 priority = 4
 gravity_space_override = 3
@@ -1700,7 +1629,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86846924, -10.5208435, 0)
 shape = SubResource("CylinderShape3D_1u8w0")
 
 [node name="downgroundgrav2" type="Area3D" parent="tower" unique_id=1949929639 node_paths=PackedStringArray("PriorityLink")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.748028, 0)
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0.5325046, -49.94227, 0)
 collision_mask = 3
 priority = 4
 gravity_space_override = 3
@@ -1875,6 +1804,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0961952, 1.2869492, 0)
 shape = SubResource("CapsuleShape3D_82xsv")
 
 [node name="chapelmiddleinnerbiggrav" type="Area3D" parent="ChapelNode1" unique_id=1589920666 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -1.7617484e-07, 2.0152054, 0)
 collision_layer = 3
 collision_mask = 3
 priority = 1
@@ -1888,6 +1818,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5114708, 1.0299072, 0)
 shape = SubResource("CylinderShape3D_seu75")
 
 [node name="chapelmiddleinnerpriorgrav2" type="Area3D" parent="ChapelNode1" unique_id=1366275195 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -1.7941235e-07, 2.0522382, 0)
 collision_layer = 3
 collision_mask = 3
 priority = 3
@@ -2123,6 +2054,7 @@ size = Vector3(2.0281982, 2.3370361, 85.84409)
 material = ExtResource("14_en2ks")
 
 [node name="bridhegravtop" type="Area3D" parent="BirdheNode" unique_id=2021235499 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -1.1364618e-06, 12.999608, 0)
 collision_layer = 3
 collision_mask = 3
 priority = 1
@@ -2136,6 +2068,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1072979, 7.0402603, 0.6260
 shape = SubResource("BoxShape3D_ryguw")
 
 [node name="bridhegravtopprior" type="Area3D" parent="BirdheNode/bridhegravtop" unique_id=4087516 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-14, 9.038185, 0)
 collision_layer = 3
 collision_mask = 3
 priority = 2
@@ -2254,55 +2187,7 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bridheplanet2/bgravprior2" unique_id=1208894319]
 shape = SubResource("SphereShape3D_d13ii")
 
-[node name="UI" type="Control" parent="." unique_id=188519298]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("24_2m3c7")
-
-[node name="1health" type="NinePatchRect" parent="UI" unique_id=1913894703]
-layout_mode = 0
-offset_left = 984.0
-offset_top = 11.0
-offset_right = 1094.0
-offset_bottom = 126.0
-scale = Vector2(1.311073, 1.282265)
-texture = ExtResource("25_g5y6o")
-
-[node name="2health" type="NinePatchRect" parent="UI" unique_id=390612580]
-layout_mode = 0
-offset_left = 984.0
-offset_top = 11.0
-offset_right = 1094.0
-offset_bottom = 126.0
-scale = Vector2(1.311073, 1.282265)
-texture = ExtResource("26_raj2e")
-
-[node name="3health" type="NinePatchRect" parent="UI" unique_id=983570572]
-layout_mode = 0
-offset_left = 984.0
-offset_top = 11.0
-offset_right = 1094.0
-offset_bottom = 126.0
-scale = Vector2(1.311073, 1.282265)
-texture = ExtResource("27_m7o5q")
-
-[node name="BoalbImg" type="NinePatchRect" parent="UI" unique_id=1504010694]
-layout_mode = 0
-offset_left = -16.0
-offset_top = 1.0
-offset_right = 153.0
-offset_bottom = 133.0
-texture = ExtResource("28_66hhv")
-
-[node name="BoalbCount" type="RichTextLabel" parent="UI" unique_id=904706195]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 48.0
-offset_right = 242.0
-offset_bottom = 97.0
-text = "Energy: 0"
+[node name="UI" parent="." unique_id=1013357421 instance=ExtResource("23_woytj")]
 
 [node name="BeetleEnemy2" parent="." unique_id=1810464084 instance=ExtResource("22_map8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.77655, 41.850346, -60.878483)
@@ -2541,6 +2426,12 @@ transform = Transform3D(0.016845286, 0.8076621, 0.46254516, -0.5452509, -0.34902
 [node name="Spike27" parent="." unique_id=563989263 instance=ExtResource("31_nfkfq")]
 transform = Transform3D(0.4019676, 0.76874655, -0.21296379, -0.5394149, 0.6211118, 0.07905805, 0.17065343, 0.15250637, 0.7515214, 127.00514, -0.64805007, -80.29293)
 
+[node name="LevelTimer" type="Timer" parent="." unique_id=356210253]
+wait_time = 180.0
+one_shot = true
+autostart = true
+script = ExtResource("31_i3naf")
+
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
-[connection signal="BounceSignal" from="Player" to="UI" method="_on_player_bounce_signal"]
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]
+[connection signal="timeout" from="LevelTimer" to="LevelTimer" method="_on_timeout"]

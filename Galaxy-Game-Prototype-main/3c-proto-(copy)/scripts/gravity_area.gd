@@ -14,7 +14,7 @@ enum Type {
 
 var TruePriority : int
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint() && GravityType == Type.Directional:
 		DebugDraw3D.draw_arrow(global_position, global_position + gravity_direction.normalized()*30, Color.BLUE_VIOLET, 0.1, true, 0)
 

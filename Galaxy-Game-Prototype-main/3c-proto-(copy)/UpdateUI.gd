@@ -5,9 +5,12 @@ var healthInt : int = 3
 var healthArray : Array
 
 var boalbCount : int
+var totalBoalbCount : int
 @onready var BoalbCounter: RichTextLabel = $BoalbCount
+@onready var TotalBoalbCounter: RichTextLabel = $BoalbCountTotal
 
 func _ready() -> void:
+	UpdateTotalBoalb(CurrencyManager.totalEnergy)
 	healthArray = get_children()
 	healthInt = 3
 	UpdateHealth(healthInt)
@@ -48,7 +51,12 @@ func _on_player_bounce_signal() -> void:
 	
 func _on_player_boalb_signal(amnt : int) -> void:
 	boalbCount += amnt
+	CurrencyManager.UpdateLevelEnergy(amnt)
 	UpdateBoalb()
 	
 func UpdateBoalb():
 	BoalbCounter.text = "Energy: " + str(boalbCount)
+	
+func UpdateTotalBoalb(boalbs : int):
+	totalBoalbCount = boalbs
+	TotalBoalbCounter.text = "Total Energy: " + str(totalBoalbCount)

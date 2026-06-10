@@ -21,13 +21,8 @@
 [ext_resource type="Material" uid="uid://c4nldblabimxl" path="res://materials/buttonmat2.tres" id="17_rnobp"]
 [ext_resource type="Material" uid="uid://cxi6amp8kmr2t" path="res://materials/buttonmat0.tres" id="18_xbe17"]
 [ext_resource type="Material" uid="uid://dvc3n4uirugyp" path="res://materials/buttonmat1.tres" id="19_dakm1"]
-
-[sub_resource type="Curve3D" id="Curve3D_16lin"]
-_data = {
-"points": PackedVector3Array(1.247221, 1.0075855, 0.18902874, -1.247221, -1.0075855, -0.18902874, 5.8523617, 3.6488762, 0.41975248, 0.89305115, 1.2479801, 0.71839714, -0.89305115, -1.2479801, -0.71839714, 0.531023, -0.9093323, 0.14121103, 0.4866047, 1.1514387, -0.57648987, -0.4866047, -1.1514387, 0.57648987, -1.5799122, -3.54603, -0.38086557, 0.6739578, 2.1484728, -0.09935713, -0.6739578, -2.1484728, 0.09935713, -3.6188412, -7.1083355, 0.15250278, 0.6260643, 4.6439314, -2.1711786, -0.6260643, -4.6439314, 2.1711786, -5.4356956, -13.4000845, -0.14554906),
-"tilts": PackedFloat32Array(-0.11556887, -0.16921847, -0.023517884, -0.08531052, -0.08447555)
-}
-point_count = 5
+[ext_resource type="Script" uid="uid://v2p1jqt85u8s" path="res://CurrencyManager.gd" id="22_huma7"]
+[ext_resource type="PackedScene" uid="uid://c5sib2syse8lj" path="res://UI/ui.tscn" id="23_nm5ud"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5orej"]
 panorama = ExtResource("3_us22c")
@@ -135,65 +130,45 @@ data = PackedVector3Array(-19.335619, -11.93395, -11.163425, -15.787467, -11.933
 [sub_resource type="SphereShape3D" id="SphereShape3D_dakm1"]
 radius = 63.544228
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_huma7"]
+radius = 25.861675
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xbe17"]
 height = 0.6444092
 radius = 2.4536133
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nm5ud"]
+radius = 11.416751
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qqg34"]
+radius = 6.1116285
+
+[sub_resource type="Curve3D" id="Curve3D_16lin"]
+_data = {
+"points": PackedVector3Array(1.247221, 1.0075855, 0.18902874, -1.247221, -1.0075855, -0.18902874, -9.880728, 26.474504, 1.2598791, 0.89305115, 1.2479801, 0.71839714, -0.89305115, -1.2479801, -0.71839714, -19.562094, 18.013208, -2.5881479, 0.4866047, 1.1514387, -0.57648987, -0.4866047, -1.1514387, 0.57648987, -26.22455, 9.160807, -1.0315119, 0.6739578, 2.1484728, -0.09935713, -0.6739578, -2.1484728, 0.09935713, -29.34615, 3.251337, -0.014785424, 0.6260643, 4.6439314, -2.1711786, -0.6260643, -4.6439314, 2.1711786, -32.57643, -7.778099, -1.154949),
+"tilts": PackedFloat32Array(-0.11556887, 0, -0.023517884, -0.08531052, -0.08447555)
+}
+point_count = 5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huma7"]
+size = Vector3(7.661194, 3.840332, 8.524902)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dakm1"]
+height = 16.035156
+radius = 13.038574
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_huma7"]
+height = 18.48285
+radius = 13.397949
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nm5ud"]
+height = 12.578491
+radius = 3.4536133
+
 [node name="hubworld" type="Node3D" unique_id=1685078710]
 
-[node name="Path3D" type="Path3D" parent="." unique_id=1452754909]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.12662, 17.628624, 0)
-curve = SubResource("Curve3D_16lin")
-
-[node name="grahh" type="CSGPolygon3D" parent="." unique_id=930054066]
-polygon = PackedVector2Array(-1.331249, -0.46191764, -1.2688845, 0.375741, 1.4111841, 0.38850975, 1.535069, -0.4995153)
-mode = 2
-path_node = NodePath("../Path3D")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = ExtResource("1_s4j1e")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=730364255]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.94863653)
-polygon = PackedVector2Array(0.5414777, 0.049728096, 0.3529994, 0.16860536, 0.30032694, 0.35751343, 0.3845553, 0.53057414, 0.5503638, 0.6419922, 0.70233905, 0.7019586, 0.8844654, 0.69742984, 1.0556362, 0.61517835, 1.1315295, 0.46604303, 1.1896867, 0.30566153, 1.0533278, 0.1069659, 0.93239427, 0.012612462, 0.74019146, 0.015114784)
-mode = 2
-path_node = NodePath("../Path3D")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = ExtResource("9_oeyw0")
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=128032357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07103729, -0.19374275, 2.2407346)
-polygon = PackedVector2Array(0.5414777, 0.049728096, 0.3529994, 0.16860536, 0.30032694, 0.35751343, 0.3845553, 0.53057414, 0.5503638, 0.6419922, 0.70233905, 0.7019586, 0.8844654, 0.69742984, 1.0556362, 0.61517835, 1.1315295, 0.46604303, 1.1896867, 0.30566153, 1.0533278, 0.1069659, 0.93239427, 0.012612462, 0.74019146, 0.015114784)
-mode = 2
-path_node = NodePath("../Path3D")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = ExtResource("9_oeyw0")
-
 [node name="Player" parent="." unique_id=1005209781 instance=ExtResource("1_oosvo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74222517, 28.402601, 0.010893822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74222517, 26.961027, 0.010893822)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=775980969]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
@@ -231,6 +206,7 @@ script = ExtResource("13_pmogu")
 script = ExtResource("15_xbe17")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Ship" unique_id=189232210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03232193, 0, 0.00056266785)
 mesh = SubResource("ArrayMesh_rnobp")
 skeleton = NodePath("../..")
 
@@ -249,6 +225,19 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 [node name="maingravcollbig" type="CollisionShape3D" parent="Ship/maingrav" unique_id=1524324465]
 shape = SubResource("SphereShape3D_dakm1")
 
+[node name="maingravprior" type="Area3D" parent="Ship" unique_id=387072434 node_paths=PackedStringArray("PriorityLink")]
+collision_layer = 3
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_su5vk")
+GravityType = 1
+PriorityLink = NodePath("../maingrav")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/maingravprior" unique_id=1611482029]
+shape = SubResource("SphereShape3D_huma7")
+
 [node name="CannonArea" type="Area3D" parent="Ship" unique_id=239574099]
 collision_layer = 0
 collision_mask = 8
@@ -263,6 +252,141 @@ shape = SubResource("CylinderShape3D_xbe17")
 
 [node name="LoadLevelTimer" type="Timer" parent="Ship/CannonArea" unique_id=161968357]
 
+[node name="spheregravbig" type="Area3D" parent="Ship" unique_id=1840195038 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.020906, -21.96924, 0)
+collision_layer = 3
+collision_mask = 3
+gravity_space_override = 3
+script = ExtResource("1_su5vk")
+GravityType = 1
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/spheregravbig" unique_id=1010660488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24003029, 0.5224762, 0)
+shape = SubResource("SphereShape3D_nm5ud")
+
+[node name="spheregravprior" type="Area3D" parent="Ship" unique_id=1041684376 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.020906, -21.96924, 0)
+collision_layer = 3
+collision_mask = 3
+gravity_space_override = 3
+script = ExtResource("1_su5vk")
+GravityType = 1
+PriorityLink = NodePath("../spheregravbig")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/spheregravprior" unique_id=294610992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6822128, 0.2470665, 0.07552725)
+shape = SubResource("SphereShape3D_qqg34")
+
+[node name="pathnode" type="Node3D" parent="Ship" unique_id=214170429]
+
+[node name="Path3D" type="Path3D" parent="Ship/pathnode" unique_id=1452754909]
+curve = SubResource("Curve3D_16lin")
+
+[node name="grahh" type="CSGPolygon3D" parent="Ship/pathnode/Path3D" unique_id=930054066]
+polygon = PackedVector2Array(-1.331249, -0.46191764, -1.2688845, 0.375741, 1.4111841, 0.38850975, 1.535069, -0.4995153)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("1_s4j1e")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Ship/pathnode/Path3D" unique_id=730364255]
+polygon = PackedVector2Array(0.5414777, 0.049728096, 0.3529994, 0.16860536, 0.30032694, 0.35751343, 0.3845553, 0.53057414, 0.5503638, 0.6419922, 0.70233905, 0.7019586, 0.8844654, 0.69742984, 1.0556362, 0.61517835, 1.1315295, 0.46604303, 1.1896867, 0.30566153, 1.0533278, 0.1069659, 0.93239427, 0.012612462, 0.74019146, 0.015114784)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("9_oeyw0")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Ship/pathnode/Path3D" unique_id=128032357]
+polygon = PackedVector2Array(0.5414777, 0.049728096, 0.3529994, 0.16860536, 0.30032694, 0.35751343, 0.3845553, 0.53057414, 0.5503638, 0.6419922, 0.70233905, 0.7019586, 0.8844654, 0.69742984, 1.0556362, 0.61517835, 1.1315295, 0.46604303, 1.1896867, 0.30566153, 1.0533278, 0.1069659, 0.93239427, 0.012612462, 0.74019146, 0.015114784)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = ExtResource("9_oeyw0")
+
+[node name="upsidedownblockgravbig" type="Area3D" parent="Ship" unique_id=1456096508 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 31.603586, 1.4807562, -1.0686067)
+collision_layer = 3
+collision_mask = 3
+priority = 2
+gravity_point_center = Vector3(1, 0, 0)
+gravity_direction = Vector3(1, 0, 0)
+script = ExtResource("1_su5vk")
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/upsidedownblockgravbig" unique_id=227685553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26602173, -1.420166, 0.052490234)
+shape = SubResource("BoxShape3D_huma7")
+
+[node name="deckgravbig" type="Area3D" parent="Ship" unique_id=970653039 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 31.84433, 0)
+collision_layer = 3
+collision_mask = 3
+priority = 2
+script = ExtResource("1_su5vk")
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/deckgravbig" unique_id=1582667528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8935547, 0)
+shape = SubResource("CylinderShape3D_dakm1")
+
+[node name="cyllindergravbig" type="Area3D" parent="Ship" unique_id=259928597 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-0.8535507, -0.52100956, 0, 0.52100956, -0.8535507, 0, 0, 0, 1, -15.95532, -30.574842, -9.536743e-07)
+collision_layer = 3
+collision_mask = 3
+priority = 1
+gravity_space_override = 3
+script = ExtResource("1_su5vk")
+GravityType = 3
+PriorityLink = NodePath(".")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/cyllindergravbig" unique_id=1015174021]
+transform = Transform3D(0.99999976, -2.9802322e-08, 0, 2.9802322e-08, 0.99999976, 0, 0, 0, 1, -9.536743e-07, -6.248148, 0)
+shape = SubResource("CylinderShape3D_huma7")
+
+[node name="Gravitcyllindergravprior" type="Area3D" parent="Ship" unique_id=1962410948 node_paths=PackedStringArray("PriorityLink")]
+transform = Transform3D(-0.8535508, -0.5210096, 0, 0.5210096, -0.8535508, 0, 0, 0, 1, -12.9562645, -25.508938, 0)
+collision_layer = 3
+collision_mask = 3
+priority = 2
+script = ExtResource("1_su5vk")
+GravityType = 3
+PriorityLink = NodePath("../cyllindergravbig")
+metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/Gravitcyllindergravprior" unique_id=1181780551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9073486e-06, 2.2583618, 0)
+shape = SubResource("CylinderShape3D_nm5ud")
+
 [node name="selectioncircle" type="CSGCylinder3D" parent="." unique_id=1416838572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019347906, 26.440678, -0.01731348)
 radius = 5.4658203
@@ -276,25 +400,40 @@ radius = 4.0786133
 height = 0.087768555
 sides = 32
 
-[node name="Button" parent="." unique_id=878035401 instance=ExtResource("13_bbkom")]
+[node name="Button1" parent="." unique_id=878035401 instance=ExtResource("13_bbkom")]
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 0.025731564, 26.47339, 4.7270255)
 RotationGiven = Vector3(0, 90, 0)
 mat = ExtResource("10_13sfc")
+stateInt = 1
+myButtonNumber = 1
 
 [node name="Button2" parent="." unique_id=270211901 instance=ExtResource("13_bbkom")]
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, -0.02091366, 26.476295, -4.783635)
 RotationGiven = Vector3(0, -90, 0)
 mat = ExtResource("18_xbe17")
+stateInt = 1
+myButtonNumber = 2
 
 [node name="Button3" parent="." unique_id=1432588608 instance=ExtResource("13_bbkom")]
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 4.7434845, 26.479555, -0.022857249)
 RotationGiven = Vector3(0, 180, 0)
 mat = ExtResource("19_dakm1")
+stateInt = 1
+myButtonNumber = 3
 
 [node name="Button4" parent="." unique_id=2133391946 instance=ExtResource("13_bbkom")]
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, -4.842366, 26.477701, 0.023427904)
 mat = ExtResource("17_rnobp")
+stateInt = 2
+myButtonNumber = 4
 
+[node name="Currencymanager" type="Node" parent="." unique_id=567647885]
+script = ExtResource("22_huma7")
+
+[node name="UI" parent="." unique_id=1013357421 instance=ExtResource("23_nm5ud")]
+
+[connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
+[connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]
 [connection signal="area_entered" from="Ship/CannonArea" to="Ship/CannonArea" method="_on_area_entered"]
 [connection signal="timeout" from="Ship/CannonArea/InitialTimer" to="Ship/CannonArea" method="_on_initial_timer_timeout"]
 [connection signal="timeout" from="Ship/CannonArea/LoadLevelTimer" to="Ship/CannonArea" method="_on_load_level_timer_timeout"]
