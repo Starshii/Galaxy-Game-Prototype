@@ -3,7 +3,7 @@ shader_type spatial;
 uniform vec4 color : source_color;
 
 void vertex() {
-	VERTEX += sin(TIME * 2.0) * 0.001;
+	VERTEX += sin(TIME * 2.0) * 0.002;
 	
 	// Rotation
 	vec2 OriginalPos = vec2(VERTEX.x, VERTEX.z);
@@ -15,7 +15,7 @@ void vertex() {
 
 
 vec3 srgb_to_linear(vec3 col) {
-    return pow(col, vec3(10.20));
+    return pow(col, vec3(4.2));
 }
 
 void fragment() {

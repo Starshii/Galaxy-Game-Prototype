@@ -1,9 +1,9 @@
-extends Timer
+extends AnimationPlayer
 
 
 
 
-func _on_timeout() -> void:
+func BeamToShip():
 	CurrencyManager.UpdateTotalEnergy()
 	CurrencyManager.levelEnergy = 0
 	Levelmanager.UpdateCurrentLevel(0)

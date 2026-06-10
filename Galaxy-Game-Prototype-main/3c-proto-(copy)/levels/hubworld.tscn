@@ -23,6 +23,7 @@
 [ext_resource type="Material" uid="uid://dvc3n4uirugyp" path="res://materials/buttonmat1.tres" id="19_dakm1"]
 [ext_resource type="Script" uid="uid://v2p1jqt85u8s" path="res://CurrencyManager.gd" id="22_huma7"]
 [ext_resource type="PackedScene" uid="uid://c5sib2syse8lj" path="res://UI/ui.tscn" id="23_nm5ud"]
+[ext_resource type="PackedScene" uid="uid://ix80ehucnatf" path="res://obstacles/buyarea.tscn" id="24_qqg34"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5orej"]
 panorama = ExtResource("3_us22c")
@@ -145,8 +146,8 @@ radius = 6.1116285
 
 [sub_resource type="Curve3D" id="Curve3D_16lin"]
 _data = {
-"points": PackedVector3Array(1.247221, 1.0075855, 0.18902874, -1.247221, -1.0075855, -0.18902874, -9.880728, 26.474504, 1.2598791, 0.89305115, 1.2479801, 0.71839714, -0.89305115, -1.2479801, -0.71839714, -19.562094, 18.013208, -2.5881479, 0.4866047, 1.1514387, -0.57648987, -0.4866047, -1.1514387, 0.57648987, -26.22455, 9.160807, -1.0315119, 0.6739578, 2.1484728, -0.09935713, -0.6739578, -2.1484728, 0.09935713, -29.34615, 3.251337, -0.014785424, 0.6260643, 4.6439314, -2.1711786, -0.6260643, -4.6439314, 2.1711786, -32.57643, -7.778099, -1.154949),
-"tilts": PackedFloat32Array(-0.11556887, 0, -0.023517884, -0.08531052, -0.08447555)
+"points": PackedVector3Array(0.6669464, -0.17524529, -0.69204354, -0.6669464, 0.17524529, 0.69204354, -12.500211, 21.164545, 0.62670076, 2.0092182, 2.7949257, -0.52367735, -2.0092182, -2.7949257, 0.52367735, -17.244402, 17.989197, -2.7359295, 1.2114544, 2.5256767, -0.62276196, -1.2114544, -2.5256767, 0.62276196, -20.460676, 14.236122, 2.358267, 0.6739578, 2.1484728, -0.09935713, -0.6739578, -2.1484728, 0.09935713, -23.21895, 9.485759, -1.7203125, 1.0673103, 3.8229513, 0.42333674, -1.0673103, -3.8229513, -0.42333674, -24.808273, 4.5581017, 0.5400679),
+"tilts": PackedFloat32Array(-0.104495585, -0.6134899, -0.6279647, -0.43884704, -0.65485895)
 }
 point_count = 5
 
@@ -300,36 +301,6 @@ path_u_distance = 1.0
 path_joined = false
 material = ExtResource("1_s4j1e")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Ship/pathnode/Path3D" unique_id=730364255]
-polygon = PackedVector2Array(0.5414777, 0.049728096, 0.3529994, 0.16860536, 0.30032694, 0.35751343, 0.3845553, 0.53057414, 0.5503638, 0.6419922, 0.70233905, 0.7019586, 0.8844654, 0.69742984, 1.0556362, 0.61517835, 1.1315295, 0.46604303, 1.1896867, 0.30566153, 1.0533278, 0.1069659, 0.93239427, 0.012612462, 0.74019146, 0.015114784)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = ExtResource("9_oeyw0")
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Ship/pathnode/Path3D" unique_id=128032357]
-polygon = PackedVector2Array(0.5414777, 0.049728096, 0.3529994, 0.16860536, 0.30032694, 0.35751343, 0.3845553, 0.53057414, 0.5503638, 0.6419922, 0.70233905, 0.7019586, 0.8844654, 0.69742984, 1.0556362, 0.61517835, 1.1315295, 0.46604303, 1.1896867, 0.30566153, 1.0533278, 0.1069659, 0.93239427, 0.012612462, 0.74019146, 0.015114784)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = ExtResource("9_oeyw0")
-
 [node name="upsidedownblockgravbig" type="Area3D" parent="Ship" unique_id=1456096508 node_paths=PackedStringArray("PriorityLink")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 31.603586, 1.4807562, -1.0686067)
 collision_layer = 3
@@ -432,8 +403,13 @@ script = ExtResource("22_huma7")
 
 [node name="UI" parent="." unique_id=1013357421 instance=ExtResource("23_nm5ud")]
 
+[node name="Buyable" parent="." unique_id=1595067783 instance=ExtResource("24_qqg34")]
+transform = Transform3D(2.074739, 0, 0, 0, 1, 0, 0, 0, 1.5732563, -7.91109, 26.547386, -7.2734337)
+cost = 2
+
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]
 [connection signal="area_entered" from="Ship/CannonArea" to="Ship/CannonArea" method="_on_area_entered"]
 [connection signal="timeout" from="Ship/CannonArea/InitialTimer" to="Ship/CannonArea" method="_on_initial_timer_timeout"]
 [connection signal="timeout" from="Ship/CannonArea/LoadLevelTimer" to="Ship/CannonArea" method="_on_load_level_timer_timeout"]
+[connection signal="updateTotalEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_total_energy"]

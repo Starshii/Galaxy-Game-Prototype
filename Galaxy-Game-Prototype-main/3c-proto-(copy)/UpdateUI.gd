@@ -60,3 +60,7 @@ func UpdateBoalb():
 func UpdateTotalBoalb(boalbs : int):
 	totalBoalbCount = boalbs
 	TotalBoalbCounter.text = "Total Energy: " + str(totalBoalbCount)
+
+
+func _on_currencymanager_update_total_energy() -> void:
+	UpdateTotalBoalb(totalBoalbCount)

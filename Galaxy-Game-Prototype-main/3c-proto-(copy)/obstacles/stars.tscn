@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cs6pmhiixolmq"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5v18dbf4pp6x" path="res://obstacles/starmesh.tres" id="1_20mto"]
+[ext_resource type="Script" uid="uid://d1ix1xvr8fsvm" path="res://obstacles/boalb.gd" id="1_tk243"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jm2sj"]
+size = Vector3(1.8652344, 1.9804688, 1.9541016)
+
+[node name="Star" type="Area3D" unique_id=96084659 groups=["Boalb"]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_tk243")
+BoalbAmount = 50
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1003328064]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
+shape = SubResource("BoxShape3D_jm2sj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=232399925]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
+mesh = ExtResource("1_20mto")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

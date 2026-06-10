@@ -3,6 +3,8 @@ extends Node
 
 var totalEnergy : int
 var levelEnergy : int
+signal updateTotalEnergy
+signal updateLevelEnergy
 
 func _ready() -> void:
 
@@ -15,6 +17,7 @@ func UpdateLevelEnergy(amount : int):
 
 func UpdateTotalEnergy():
 	totalEnergy += levelEnergy
+	updateTotalEnergy.emit()
 	print("updatedtotalenergy")
 	print("total energy: " + str(totalEnergy))
 	print("level energy: " + str(levelEnergy))

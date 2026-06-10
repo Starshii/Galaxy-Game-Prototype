@@ -18,7 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06298828, 0, 0.025291443)
 shape = SubResource("BoxShape3D_6twge")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296628096]
-transform = Transform3D(36.30126, -27.982544, -6.293113, 25.670595, 27.171206, 27.26085, -12.792442, -24.881939, 36.84631, -0.040514708, -0.08470756, 0.008940816)
+transform = Transform3D(6.112217, -15.913462, 43.009422, 37.358944, 26.892006, 4.6408157, -26.596195, 34.117294, 16.403055, -0.040514708, -0.08470756, 0.008940816)
 mesh = ExtResource("2_8c4b2")
 
 [node name="Timer" type="Timer" parent="." unique_id=221953201]

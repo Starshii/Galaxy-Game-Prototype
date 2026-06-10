@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ix80ehucnatf"]
+
+[ext_resource type="Script" uid="uid://ncu1w4o0ur2l" path="res://obstacles/buyarea.gd" id="1_y304v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tg5o8"]
+
+[node name="Buyable" type="Area3D" unique_id=1595067783]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_y304v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1657954081]
+shape = SubResource("BoxShape3D_tg5o8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
