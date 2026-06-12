@@ -7,9 +7,6 @@ var currentLevel : String
 var hubornah : bool = true
 var firstTime: bool = true
 
-@export var ceaselessbubbleint: int = 1
-@export var dragonflyplanetint: int = 1
-@export var ouroborosplanetint: int = 1
 
 var unlocks = {
 	"ceaselessbubbles" : false,

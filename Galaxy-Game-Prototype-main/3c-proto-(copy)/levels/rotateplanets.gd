@@ -9,6 +9,7 @@ func _physics_process(delta: float) -> void:
 	rotation.y += delta * 1
 
 
+
 func Locked():
 	mymaterial.albedo_color = Color(0.0, 0.0, 0.6, 0.765)
 	

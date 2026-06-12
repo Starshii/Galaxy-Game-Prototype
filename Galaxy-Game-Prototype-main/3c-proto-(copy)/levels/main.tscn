@@ -30,7 +30,7 @@
 
 [sub_resource type="Animation" id="Animation_o6dmv"]
 resource_name = "ChangeLight"
-length = 11.566667
+length = 120.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,7 +38,7 @@ tracks/0/path = NodePath("WorldEnvironment:environment:background_energy_multipl
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10.350021),
+"times": PackedFloat32Array(0, 117.22256),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -50,7 +50,7 @@ tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 10.350021),
+"times": PackedFloat32Array(0, 117.22256),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -62,7 +62,7 @@ tracks/2/path = NodePath("Player/DirectionalLight3D:light_energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 10.53334),
+"times": PackedFloat32Array(0, 117.405876),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -74,7 +74,7 @@ tracks/3/path = NodePath("ChangeLight")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(10.950027),
+"times": PackedFloat32Array(117.82256),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

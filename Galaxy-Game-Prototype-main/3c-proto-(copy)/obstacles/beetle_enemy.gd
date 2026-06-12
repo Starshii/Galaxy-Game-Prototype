@@ -23,8 +23,9 @@ func _ready() -> void:
 	
 func _on_top_hit_box_area_entered(area: Area3D) -> void:
 	print("ouch")
-	area.Bounce(10,10)
-	queue_free()
+	if (area.is_in_group("Player")):
+		area.Bounce(10,10)
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
