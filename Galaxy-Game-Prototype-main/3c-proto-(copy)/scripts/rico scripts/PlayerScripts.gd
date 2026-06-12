@@ -14,6 +14,8 @@ class_name Player extends CharacterBody3D
 @onready var HitTimer: Timer = $HitTimer
 @onready var HitBox: Area3D = $HitBox
 @onready var AnimatorP: AnimationPlayer = $AnimationPlayer
+@export var Startpos: Node3D
+@export var Startposfirst: Node3D
 
 
 
@@ -261,6 +263,11 @@ func _ready() -> void:
 	FacingDirSmoothed = -global_basis.z
 	DirInputPlayer    = -global_basis.z
 	SkateInput        = Vector2.DOWN
+	if Levelmanager.firstTime:
+		position = Startposfirst.global_position
+	else:
+		position = Startpos.global_position
+	
 	# Camera
 	MainCam.position = position
 
@@ -1825,6 +1832,8 @@ func FixFacingDir() -> void:
 
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
+	if area.is_in_group("firstboalb"):
+		CurrencyManager.IncrementTotalEnergy(-area.BoalbAmount)
 		
 	if area.is_in_group("Boalb"):
 		BoalbSignal.emit(area.BoalbAmount)

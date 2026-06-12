@@ -13,8 +13,13 @@ var inbuyarea : bool
 
 func _ready() -> void:
 	mesh.set_surface_override_material(0, mat)
-	UpdateButtonState(stateInt)
+	if Levelmanager.unlocks.get(mylevel, true) == true:
+		UpdateButtonState(1)
+	elif Levelmanager.unlocks.get(mylevel, false) == false:
+		UpdateButtonState(0)
+	
 	Levelmanager.UpdateButtons.connect(LevelSelect)
+	
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	Levelmanager.RotateShip(RotationGiven, mylevel)

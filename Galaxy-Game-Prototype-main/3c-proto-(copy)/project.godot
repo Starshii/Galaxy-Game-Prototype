@@ -39,6 +39,7 @@ Player=""
 HurtBox=""
 HitBox=""
 Boalb=""
+firstboalb=""
 
 [input]
 

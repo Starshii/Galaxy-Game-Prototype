@@ -30,7 +30,7 @@
 
 [sub_resource type="Animation" id="Animation_o6dmv"]
 resource_name = "ChangeLight"
-length = 200.0
+length = 11.566667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,7 +38,7 @@ tracks/0/path = NodePath("WorldEnvironment:environment:background_energy_multipl
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 196.76666),
+"times": PackedFloat32Array(0, 10.350021),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -50,7 +50,7 @@ tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 196.76666),
+"times": PackedFloat32Array(0, 10.350021),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -62,7 +62,7 @@ tracks/2/path = NodePath("Player/DirectionalLight3D:light_energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 196.94998),
+"times": PackedFloat32Array(0, 10.53334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -74,7 +74,7 @@ tracks/3/path = NodePath("ChangeLight")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(197.36667),
+"times": PackedFloat32Array(10.950027),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -928,8 +928,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 [node name="GameManager" parent="." unique_id=316524885 instance=ExtResource("11_vydlj")]
 script = ExtResource("12_2hoto")
 
-[node name="Player" parent="." unique_id=1005209781 instance=ExtResource("13_l412s")]
+[node name="Player" parent="." unique_id=1005209781 node_paths=PackedStringArray("Startpos", "Startposfirst") instance=ExtResource("13_l412s")]
 transform = Transform3D(-1.2422433, -1.9646797, -2.3240378, 2.024452e-07, 2.5101776, -2.1220884, 3.0432024, -0.8019877, -0.94867843, 9.901747, 23.202782, 64.23331)
+Startpos = NodePath("../StartPos")
+Startposfirst = NodePath("../StartPosfirst")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=51523138]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.1353836, -1.8937378, 1.4289093)
@@ -2974,6 +2976,12 @@ transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 124.202515, 127.3
 
 [node name="boalb66" parent="." unique_id=808548304 instance=ExtResource("29_vg6jq")]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 124.202515, 121.71277, -78.29578)
+
+[node name="StartPos" type="Node3D" parent="." unique_id=1390748306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.78845, 41.737892, -112.40007)
+
+[node name="StartPosfirst" type="Node3D" parent="." unique_id=1028909502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.78845, 41.737892, -112.40007)
 
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]

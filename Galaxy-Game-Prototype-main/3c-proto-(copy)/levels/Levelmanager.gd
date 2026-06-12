@@ -5,6 +5,7 @@ signal UpdateButtons(currentbutton : String)
 
 var currentLevel : String
 var hubornah : bool = true
+var firstTime: bool = true
 
 @export var ceaselessbubbleint: int = 1
 @export var dragonflyplanetint: int = 1
@@ -18,8 +19,12 @@ var unlocks = {
 }
 
 func _ready() -> void:
-	currentLevel = "skyruins"
-	pass
+	
+	if firstTime:
+		currentLevel = "hubworld"
+	else:
+		currentLevel = "skyruins"
+	
 
 
 func UpdateCurrentLevel(newLevel : String):
@@ -38,6 +43,7 @@ func LoadLevel():
 	
 	if currentLevel == "skyruins":
 		hubornah = false
+		print("main??")
 		get_tree().change_scene_to_file("res://levels/main.tscn")
 		
 	if currentLevel == "ceaselessbubbles":

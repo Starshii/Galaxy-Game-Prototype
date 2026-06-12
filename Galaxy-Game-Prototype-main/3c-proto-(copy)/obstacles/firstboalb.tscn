@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bxhjqwmvegtxt"]
+
+[ext_resource type="Script" uid="uid://d1ix1xvr8fsvm" path="res://obstacles/boalb.gd" id="1_gcjbt"]
+[ext_resource type="ArrayMesh" uid="uid://rm3gq4vs47qb" path="res://models/boalb.mesh" id="2_e0uwt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6twge"]
+size = Vector3(1.3608398, 1, 1.2910004)
+
+[node name="boalb" type="Area3D" unique_id=326290794 groups=["firstboalb"]]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_gcjbt")
+BoalbAmount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1184569572]
+transform = Transform3D(1.895, 0, 0, 0, 1.895, 0, 0, 0, 1.895, -0.06298828, 0, 0.025291443)
+shape = SubResource("BoxShape3D_6twge")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296628096]
+transform = Transform3D(11.892947, -30.963879, 83.686295, 72.691795, 52.325558, 9.029944, -51.749992, 66.38429, 31.916515, -0.040514708, -0.08470756, 0.008940816)
+mesh = ExtResource("2_e0uwt")
+
+[node name="Timer" type="Timer" parent="." unique_id=221953201]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

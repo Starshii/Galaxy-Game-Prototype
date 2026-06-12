@@ -1,7 +1,7 @@
 extends Node
 
 
-var totalEnergy : int = 10
+var totalEnergy : int = 0
 var levelEnergy : int = 0
 signal updateTotalEnergy
 signal updateLevelEnergy

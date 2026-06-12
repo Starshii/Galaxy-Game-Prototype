@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c5sib2syse8lj" path="res://UI/ui.tscn" id="23_nm5ud"]
 [ext_resource type="ArrayMesh" uid="uid://v5n6w4qqgfgs" path="res://models/ouroborosmesh.tres" id="23_qqg34"]
 [ext_resource type="PackedScene" uid="uid://ix80ehucnatf" path="res://obstacles/buyarea.tscn" id="24_qqg34"]
+[ext_resource type="PackedScene" uid="uid://bxhjqwmvegtxt" path="res://obstacles/firstboalb.tscn" id="26_oufch"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5orej"]
 panorama = ExtResource("3_us22c")
@@ -86,8 +87,10 @@ material = ExtResource("21_dakm1")
 
 [node name="hubworld" type="Node3D" unique_id=1685078710]
 
-[node name="Player" parent="." unique_id=1005209781 instance=ExtResource("1_oosvo")]
+[node name="Player" parent="." unique_id=1005209781 node_paths=PackedStringArray("Startpos", "Startposfirst") instance=ExtResource("1_oosvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74222517, 26.961027, 0.010893822)
+Startpos = NodePath("../StartPos")
+Startposfirst = NodePath("../StartPosFirst")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=775980969]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
@@ -256,6 +259,30 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9073486e-06, 2.2583618, 0)
 shape = SubResource("CylinderShape3D_nm5ud")
 
+[node name="boalb" parent="Ship" unique_id=326290794 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 10.5549965, -6.826037, -22.667343)
+
+[node name="boalb6" parent="Ship" unique_id=799615722 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 7.6395063, -16.501932, -18.284527)
+
+[node name="boalb7" parent="Ship" unique_id=1413431588 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 4.080871, -22.550804, -11.058299)
+
+[node name="boalb8" parent="Ship" unique_id=362095883 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 1.1195784, -25.19903, -3.6848378)
+
+[node name="boalb2" parent="Ship" unique_id=959081985 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 11.901375, 1.8105091, -22.589113)
+
+[node name="boalb3" parent="Ship" unique_id=244436640 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 12.296598, 12.210513, -18.932516)
+
+[node name="boalb4" parent="Ship" unique_id=590373779 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 7.5887985, 26.958656, -9.817008)
+
+[node name="boalb5" parent="Ship" unique_id=1774282523 instance=ExtResource("26_oufch")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 8.701052, 21.19877, -11.433912)
+
 [node name="selectioncircle" type="CSGCylinder3D" parent="." unique_id=1416838572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019347906, 26.440678, -0.01731348)
 radius = 5.4658203
@@ -348,6 +375,12 @@ script = ExtResource("21_nm5ud")
 transform = Transform3D(8.476572, 0, 0, 0, 8.476572, 0, 0, 0, 8.476572, -0.17324543, 0.31552887, 0.26093695)
 mesh = SubResource("SphereMesh_huma7")
 skeleton = NodePath("")
+
+[node name="StartPos" type="Node3D" parent="." unique_id=164470688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.58953, 0)
+
+[node name="StartPosFirst" type="Node3D" parent="." unique_id=1782047827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.06785, 0)
 
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]
