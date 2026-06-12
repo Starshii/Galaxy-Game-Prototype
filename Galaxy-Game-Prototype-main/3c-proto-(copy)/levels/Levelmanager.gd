@@ -1,30 +1,56 @@
 extends Node
 
 signal UpdateRotation(rotationvalue : Vector3)
-signal UpdateButtons(state : int)
+signal UpdateButtons(currentbutton : String)
 
-@export var currentLevel : int = 1
+var currentLevel : String
+var hubornah : bool = true
 
-func UpdateCurrentLevel(newLevel : int):
+@export var ceaselessbubbleint: int = 1
+@export var dragonflyplanetint: int = 1
+@export var ouroborosplanetint: int = 1
+
+var unlocks = {
+	"ceaselessbubbles" : false,
+	"dragonflyplanet" : false,
+	"ouroborosplanet" : false,
+	"skyruins" : false
+}
+
+func _ready() -> void:
+	currentLevel = "skyruins"
+	pass
+
+
+func UpdateCurrentLevel(newLevel : String):
 	currentLevel = newLevel
-func RotateShip(rotationvalues : Vector3, currentButton : int):
-	print("rotation to the guy thun")
+	
+func RotateShip(rotationvalues : Vector3, currentButton : String):
 	currentLevel = currentButton
 	UpdateRotation.emit(rotationvalues)
 	UpdateButtons.emit(currentButton)
 
+
 func LoadLevel():
-	if currentLevel == 0:
+	if currentLevel == "hubworld":
+		hubornah = true
 		get_tree().call_deferred("change_scene_to_file", "res://levels/hubworld.tscn")
 	
-	if currentLevel == 1:
+	if currentLevel == "skyruins":
+		hubornah = false
 		get_tree().change_scene_to_file("res://levels/main.tscn")
 		
-	if currentLevel == 2:
-		print("level2")
+	if currentLevel == "ceaselessbubbles":
+		get_tree().call_deferred("change_scene_to_file", "res://levels/wipscene.tscn")
 		
-	if currentLevel == 3:
-		print("level3")
+	if currentLevel == "ouroborosplanet":
+		get_tree().call_deferred("change_scene_to_file", "res://levels/wipscene.tscn")
 		
-	if currentLevel == 4:
-		print("level4")
+	if currentLevel == "dragonflyplanet":
+		get_tree().call_deferred("change_scene_to_file", "res://levels/wipscene.tscn")
+		
+		
+		
+func UpdateUnlocks(interger : int):
+	pass
+	

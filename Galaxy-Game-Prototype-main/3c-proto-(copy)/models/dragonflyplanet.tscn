@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bjutcpxf6ekaa"]
+
+[ext_resource type="ArrayMesh" uid="uid://df3gmuml2p1ff" path="res://models/dragonflyplanet.tres" id="1_xjqx7"]
+
+[node name="dragonflyplanet" type="Node3D" unique_id=1392246752]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1002370919]
+mesh = ExtResource("1_xjqx7")

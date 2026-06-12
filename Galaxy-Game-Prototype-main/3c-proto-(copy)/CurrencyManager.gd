@@ -1,30 +1,30 @@
 extends Node
 
 
-var totalEnergy : int
-var levelEnergy : int
+var totalEnergy : int = 10
+var levelEnergy : int = 0
 signal updateTotalEnergy
 signal updateLevelEnergy
-
-func _ready() -> void:
-
-	print("total energy: " + str(totalEnergy))
-	print("level energy: " + str(levelEnergy))
 
 func UpdateLevelEnergy(amount : int):
 	print("updatedlevelenergy")
 	levelEnergy += amount
+	updateLevelEnergy.emit()
+	
+func IncrementTotalEnergy(amnt : int):
+	totalEnergy -= amnt
+	updateTotalEnergy.emit()
+	
 
 func UpdateTotalEnergy():
 	totalEnergy += levelEnergy
 	updateTotalEnergy.emit()
-	print("updatedtotalenergy")
-	print("total energy: " + str(totalEnergy))
-	print("level energy: " + str(levelEnergy))
 
 
 func loadscene():
 	levelEnergy = 0
 	print("loadscene")
-	Levelmanager.UpdateCurrentLevel(0)
+	Levelmanager.UpdateCurrentLevel("hubworld")
 	Levelmanager.LoadLevel()
+	updateTotalEnergy.emit()
+	updateLevelEnergy.emit()

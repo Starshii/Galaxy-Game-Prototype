@@ -14,11 +14,11 @@ script = ExtResource("1_8c4b2")
 BoalbAmount = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1184569572]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06298828, 0, 0.025291443)
+transform = Transform3D(1.895, 0, 0, 0, 1.895, 0, 0, 0, 1.895, -0.06298828, 0, 0.025291443)
 shape = SubResource("BoxShape3D_6twge")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296628096]
-transform = Transform3D(6.112217, -15.913462, 43.009422, 37.358944, 26.892006, 4.6408157, -26.596195, 34.117294, 16.403055, -0.040514708, -0.08470756, 0.008940816)
+transform = Transform3D(11.892947, -30.963879, 83.686295, 72.691795, 52.325558, 9.029944, -51.749992, 66.38429, 31.916515, -0.040514708, -0.08470756, 0.008940816)
 mesh = ExtResource("2_8c4b2")
 
 [node name="Timer" type="Timer" parent="." unique_id=221953201]

@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cjmd0bakd3wjr"]
+
+[ext_resource type="Shader" uid="uid://d1jrnqcsfi855" path="res://shaders/planetbubbleshader.gdshader" id="1_trfst"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_trfst")
+shader_parameter/level = 1.0
+shader_parameter/emission_intensity = 0.0
+shader_parameter/fresnel_color = Color(0.0099482415, 0.23879671, 0.9999996, 1)
+shader_parameter/fresnel_intensity = 0.7630000362425
+shader_parameter/fresnel_power = 1.5350000254125
+shader_parameter/rim_color = Color(0.796243, 0.796243, 0.796243, 1)
+shader_parameter/rim_size = 0.0
+shader_parameter/rim_intensity = 0.0
+shader_parameter/rim_start = 0.040000049399999904
+shader_parameter/rim_end = 0.0

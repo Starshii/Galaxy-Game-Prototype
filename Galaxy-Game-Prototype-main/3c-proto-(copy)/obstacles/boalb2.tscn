@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dbpkxfaypo7x2" path="res://shaders/boalbshader2.gdshader" id="2_7fh5x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6twge"]
-size = Vector3(1.3608398, 1, 1.2910004)
+size = Vector3(1.6652832, 1.5975647, 1.6982384)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t0158"]
 render_priority = 0
@@ -36,11 +36,11 @@ script = ExtResource("1_7fh5x")
 BoalbAmount = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1184569572]
-transform = Transform3D(1.5968841, 0, 0, 0, 1.5968841, 0, 0, 0, 1.5968841, -0.06969534, 0.025280356, 0.03017116)
+transform = Transform3D(1.5968841, 0, 0, 0, 1.5968841, 0, 0, 0, 1.5968841, -0.13733679, 0.12330651, -0.13591409)
 shape = SubResource("BoxShape3D_6twge")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296628096]
-transform = Transform3D(57.96891, -44.684883, -10.049373, 40.992966, 43.389267, 43.53242, -20.428047, -39.733574, 58.839287, -0.033807646, -0.109987915, 0.004061101)
+transform = Transform3D(88.25614, -68.03155, -15.299908, 62.410706, 66.059006, 66.27696, -31.101162, -60.49331, 89.58126, -0.033807646, -0.109987915, 0.004061101)
 mesh = SubResource("ArrayMesh_8jy1s")
 
 [node name="Timer" type="Timer" parent="." unique_id=221953201]

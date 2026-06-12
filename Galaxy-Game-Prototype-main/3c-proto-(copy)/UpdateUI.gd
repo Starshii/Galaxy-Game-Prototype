@@ -4,16 +4,26 @@ var healthInt : int = 3
 
 var healthArray : Array
 
-var boalbCount : int
+var levelboalbCount : int
 var totalBoalbCount : int
-@onready var BoalbCounter: RichTextLabel = $BoalbCount
+@onready var LevelBoalbCounter: RichTextLabel = $BoalbCount
 @onready var TotalBoalbCounter: RichTextLabel = $BoalbCountTotal
 
 func _ready() -> void:
-	UpdateTotalBoalb(CurrencyManager.totalEnergy)
+	if Levelmanager.hubornah:
+		LevelBoalbCounter.hide()
+		TotalBoalbCounter.show()
+	else:
+		LevelBoalbCounter.show()
+		TotalBoalbCounter.hide()
+	
+	UpdateLevelBoalb()
+	UpdateTotalBoalb()
+	CurrencyManager.updateTotalEnergy.connect(UpdateTotalBoalb)
 	healthArray = get_children()
 	healthInt = 3
 	UpdateHealth(healthInt)
+	
 	
 func _on_player_change_health(amnt : int) -> void:
 	healthInt += amnt
@@ -45,22 +55,22 @@ func UpdateHealth(amount :int):
 	if healthInt > 3:
 		healthInt = 3
 		UpdateHealth(healthInt)
-
-func _on_player_bounce_signal() -> void:
-	pass
 	
 func _on_player_boalb_signal(amnt : int) -> void:
-	boalbCount += amnt
 	CurrencyManager.UpdateLevelEnergy(amnt)
-	UpdateBoalb()
-	
-func UpdateBoalb():
-	BoalbCounter.text = "Energy: " + str(boalbCount)
-	
-func UpdateTotalBoalb(boalbs : int):
-	totalBoalbCount = boalbs
-	TotalBoalbCounter.text = "Total Energy: " + str(totalBoalbCount)
+	UpdateLevelBoalb()
+	UpdateTotalBoalb()
 
+func _on_currencymanager_update_level_energy() -> void:
+	UpdateLevelBoalb()
+	UpdateTotalBoalb()
 
 func _on_currencymanager_update_total_energy() -> void:
-	UpdateTotalBoalb(totalBoalbCount)
+	UpdateLevelBoalb()
+	UpdateTotalBoalb()
+
+func UpdateLevelBoalb():
+	LevelBoalbCounter.text = "Energy " + str(CurrencyManager.levelEnergy)
+	
+func UpdateTotalBoalb():
+	TotalBoalbCounter.text = "Energy: " + str(CurrencyManager.totalEnergy)

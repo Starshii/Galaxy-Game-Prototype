@@ -9,6 +9,9 @@ height = 0.02
 height = 0.03857422
 radius = 0.4921875
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7ujg6"]
+height = 0.09313965
+
 [node name="Button" type="Node3D" unique_id=1432588608]
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 0, 0, 0)
 script = ExtResource("1_vssqe")
@@ -24,4 +27,14 @@ collision_mask = 8
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.0026855466, 0)
 shape = SubResource("CylinderShape3D_j77gf")
 
+[node name="buyarea" type="Area3D" parent="." unique_id=1548565862]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="buyarea" unique_id=1693255889]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.03948969, 0)
+shape = SubResource("CylinderShape3D_7ujg6")
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="buyarea" to="." method="_on_buyarea_area_entered"]
+[connection signal="area_exited" from="buyarea" to="." method="_on_buyarea_area_exited"]

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dcdvqwfh104bf"]
+
+[ext_resource type="Shader" uid="uid://tm8q47n5wvqf" path="res://shaders/bubbleshader.gdshader" id="1_laybd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4jch"]
+render_priority = 0
+shader = ExtResource("1_laybd")
+shader_parameter/level = 0.6150000292125
+shader_parameter/emission_intensity = 0.2850000135375
+shader_parameter/fresnel_color = Color(0.14439374, 0.9079792, 0.99999994, 1)
+shader_parameter/fresnel_intensity = 1.9150000909625
+shader_parameter/fresnel_power = 1.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/rim_size = 0.36400001729
+shader_parameter/rim_intensity = 0.6070000288325
+shader_parameter/rim_start = -0.889999994775
+shader_parameter/rim_end = -0.449999973875
+
+[sub_resource type="SphereMesh" id="SphereMesh_hwbu7"]
+material = SubResource("ShaderMaterial_f4jch")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_laybd"]
+
+[node name="LaunchRing" type="Area3D" unique_id=720818455]
+collision_layer = 16
+collision_mask = 16
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1986407924]
+mesh = SubResource("SphereMesh_hwbu7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=215581249]
+shape = SubResource("BoxShape3D_laybd")

@@ -21,7 +21,6 @@
 [ext_resource type="Material" uid="uid://cjmd0bakd3wjr" path="res://materials/planetbubblemat.tres" id="21_dakm1"]
 [ext_resource type="Script" uid="uid://bprmbd53rmpty" path="res://levels/rotateplanets.gd" id="21_nm5ud"]
 [ext_resource type="Script" uid="uid://v2p1jqt85u8s" path="res://CurrencyManager.gd" id="22_huma7"]
-[ext_resource type="ArrayMesh" uid="uid://c741vnmr6pbvl" path="res://models/skyruinsmesh.tres" id="23_26824"]
 [ext_resource type="PackedScene" uid="uid://c5sib2syse8lj" path="res://UI/ui.tscn" id="23_nm5ud"]
 [ext_resource type="ArrayMesh" uid="uid://v5n6w4qqgfgs" path="res://models/ouroborosmesh.tres" id="23_qqg34"]
 [ext_resource type="PackedScene" uid="uid://ix80ehucnatf" path="res://obstacles/buyarea.tscn" id="24_qqg34"]
@@ -287,14 +286,14 @@ cost = 5
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 4.7434845, 26.479555, -0.022857249)
 RotationGiven = Vector3(0, 180, 0)
 mat = ExtResource("19_dakm1")
-mylevel = "ouroborosplanet"
+mylevel = "ouroborospl"
 cost = 5
 
 [node name="SkyRuinsButton2" parent="." unique_id=2133391946 instance=ExtResource("13_bbkom")]
 transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, -4.842366, 26.477701, 0.023427904)
 mat = ExtResource("17_rnobp")
 stateInt = 2
-mylevel = "skyruins"
+mylevel = "skyr"
 
 [node name="Currencymanager" type="Node" parent="." unique_id=567647885]
 script = ExtResource("22_huma7")
@@ -313,17 +312,6 @@ script = ExtResource("21_nm5ud")
 
 [node name="bubble" type="MeshInstance3D" parent="Dragonflyplanet" unique_id=1336248745]
 transform = Transform3D(43.513065, 0, 0, 0, 43.513065, 0, 0, 0, 43.513065, 0.98366416, -2.2362366, -0.7483101)
-mesh = SubResource("SphereMesh_huma7")
-skeleton = NodePath("")
-
-[node name="SkyRuins" type="MeshInstance3D" parent="." unique_id=1300639576]
-transform = Transform3D(0.517, 0, 0, 0, 0.246, 0, 0, 0, 0.517, -4.8025827, 27.591291, 0.17570734)
-mesh = ExtResource("23_26824")
-skeleton = NodePath("../Buyable")
-script = ExtResource("21_nm5ud")
-
-[node name="bubble3" type="MeshInstance3D" parent="SkyRuins" unique_id=1193220763]
-transform = Transform3D(6.3123407, 0, 0, 0, 13.266176, 0, 0, 0, 6.3123407, 0.185462, 3.1507874, -0.09110558)
 mesh = SubResource("SphereMesh_huma7")
 skeleton = NodePath("")
 
@@ -358,5 +346,4 @@ skeleton = NodePath("")
 [connection signal="area_entered" from="Ship/CannonArea" to="Ship/CannonArea" method="_on_area_entered"]
 [connection signal="timeout" from="Ship/CannonArea/InitialTimer" to="Ship/CannonArea" method="_on_initial_timer_timeout"]
 [connection signal="timeout" from="Ship/CannonArea/LoadLevelTimer" to="Ship/CannonArea" method="_on_load_level_timer_timeout"]
-[connection signal="updateLevelEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_level_energy"]
 [connection signal="updateTotalEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_total_energy"]
