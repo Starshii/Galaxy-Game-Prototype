@@ -9,7 +9,7 @@ var inArea:bool
 @export var statue : MeshInstance3D
 
 func _ready() -> void:
-	if Levelmanager.unlocks[unlockable, true] = true:
+	##if Levelmanager.unlocks[unlockable, true] = true:
 		pass
 
 func _on_area_entered(area: Area3D) -> void:
