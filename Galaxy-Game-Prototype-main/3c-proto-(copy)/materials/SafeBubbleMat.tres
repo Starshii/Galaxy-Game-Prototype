@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d2x15rco8tof1"]
+
+[ext_resource type="Shader" uid="uid://tm8q47n5wvqf" path="res://shaders/bubbleshader.gdshader" id="1_oyff8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_oyff8")
+shader_parameter/level = 1.0
+shader_parameter/emission_intensity = 0.7150000339625
+shader_parameter/fresnel_color = Color(0, 1.0771401, 1.8247963, 1)
+shader_parameter/fresnel_intensity = 0.690000032775
+shader_parameter/fresnel_power = 1.0
+shader_parameter/rim_color = Color(0, 0.60767543, 0.6044174, 1)
+shader_parameter/rim_size = 0.0
+shader_parameter/rim_intensity = 0.0870000041325
+shader_parameter/rim_start = 1.0
+shader_parameter/rim_end = -0.08299995644250002

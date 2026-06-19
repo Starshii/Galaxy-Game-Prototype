@@ -2,29 +2,19 @@ extends Area3D
 
 @export var playernode: Player
 
-
-@export var animationTime: float =20
+@export var animationTime: float = 2
 @export var pathfollow : PathFollow3D
 @export var remote : RemoteTransform3D
 var issoaring : bool
-var level : String
-@export var exportlevel : String
 
 func _ready() -> void:
 	issoaring = false
 
-func _process(delta: float) -> void:
-	if issoaring:
-		if pathfollow.progress_ratio >= 0.8:
-			Levelmanager.FadeOut()
-			
-
 func _on_area_entered(area: Area3D) -> void:
 	issoaring = true
-	playernode.ISSOARING()
 	pathfollow.progress_ratio = 0
 	remote.remote_path = playernode.get_path()
-	
+	playernode.ISSOARING()
 	var tween = create_tween()
 	
 	tween.tween_property(remote, "rotation", Vector3(0,TAU * 12,0), 1)
@@ -35,8 +25,4 @@ func _on_area_entered(area: Area3D) -> void:
 	tween3.tween_property(pathfollow, "progress_ratio", 1, animationTime)
 	await tween3.finished
 	remote.remote_path = ""
-	if exportlevel == "":
-		Levelmanager.LoadLevel()
-	else:
-		Levelmanager.UpdateCurrentLevel(exportlevel)
-		Levelmanager.LoadLevel()
+	playernode.ISSOARING()

@@ -2,11 +2,12 @@ extends Node
 
 signal UpdateRotation(rotationvalue : Vector3)
 signal UpdateButtons(currentbutton : String)
+signal FadeInSignal
+signal FadeOutSignal
 
 var currentLevel : String
 var hubornah : bool = true
 var firstTime: bool = true
-
 
 var unlocks = {
 	"ceaselessbubbles" : false,
@@ -16,13 +17,10 @@ var unlocks = {
 }
 
 func _ready() -> void:
-	
 	if firstTime:
 		currentLevel = "hubworld"
 	else:
 		currentLevel = "skyruins"
-	
-
 
 func UpdateCurrentLevel(newLevel : String):
 	currentLevel = newLevel
@@ -53,7 +51,14 @@ func LoadLevel():
 		get_tree().call_deferred("change_scene_to_file", "res://levels/wipscene.tscn")
 		
 		
-		
+func FadeIn():
+	print("emitted")
+	FadeInSignal.emit()
+
+func FadeOut():
+	print("emitted")
+	FadeOutSignal.emit()
+
 func UpdateUnlocks(interger : int):
 	pass
 	

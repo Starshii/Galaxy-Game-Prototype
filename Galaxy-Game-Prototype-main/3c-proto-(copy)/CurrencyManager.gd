@@ -15,7 +15,10 @@ func IncrementTotalEnergy(amnt : int):
 	totalEnergy -= amnt
 	updateTotalEnergy.emit()
 	
-
+func IncrementLevelEnergy(amnt : int):
+	levelEnergy -= amnt
+	updateLevelEnergy.emit()
+	
 func UpdateTotalEnergy():
 	totalEnergy += levelEnergy
 	updateTotalEnergy.emit()

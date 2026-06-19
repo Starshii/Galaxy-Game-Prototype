@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ty5y320mfiyh"]
+
+[ext_resource type="Material" uid="uid://d2x15rco8tof1" path="res://materials/SafeBubbleMat.tres" id="2_a6i8r"]
+[ext_resource type="Material" uid="uid://c4wxkbcfno036" path="res://materials/startplanetmat.material" id="3_a6i8r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_82apb"]
+material = ExtResource("2_a6i8r")
+flip_faces = true
+radius = 15.0
+height = 30.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7pfe"]
+transparency = 1
+albedo_color = Color(0.61865985, 1.0220597, 1.1539998, 0.259)
+
+[sub_resource type="SphereMesh" id="SphereMesh_22bev"]
+material = SubResource("StandardMaterial3D_l7pfe")
+flip_faces = true
+radius = 15.0
+height = 30.0
+
+[node name="SafeBubble" type="CSGSphere3D" unique_id=158769645]
+use_collision = true
+radius = 9.124873
+radial_segments = 32
+rings = 12
+material = ExtResource("3_a6i8r")
+
+[node name="bubblefresnel" type="MeshInstance3D" parent="." unique_id=999103428]
+transform = Transform3D(0.69, 0, 0, 0, 0.69, 0, 0, 0, 0.69, 0, 0, 0)
+mesh = SubResource("SphereMesh_82apb")
+
+[node name="bubbleinside" type="MeshInstance3D" parent="." unique_id=1052384380]
+transform = Transform3D(0.69, 0, 0, 0, 0.69, 0, 0, 0, 0.69, 0, 0, 0)
+mesh = SubResource("SphereMesh_22bev")
+
+[node name="cutout" type="CSGCylinder3D" parent="." unique_id=113303678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9984026, 0)
+operation = 2
+radius = 11.56543
+height = 10.583496
+material = ExtResource("3_a6i8r")

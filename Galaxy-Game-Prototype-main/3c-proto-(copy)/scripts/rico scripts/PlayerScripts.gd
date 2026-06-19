@@ -95,7 +95,7 @@ var JumpBufferTime : float = 0
 # OTHER JUMPS
 # Backflip
 const BFJumpVer : float = 14.0
-const BFJumpHor : float = 16.0
+const BFJumpHor : float = 12.0
 const BFGrav    : float = 30.0
 const BFMaxGrav : float = 80.0
 const BFGravMT  : float = 10.0
@@ -105,7 +105,7 @@ const BFAcc     : float = 40.0
 # Triple jump
 const BaseLand  : float = 0.2
 const DJJumpSpd : float = 10.0
-const TJJumpVer : float = 18.0
+const TJJumpVer : float = 28.0
 const TJGrav    : float = 30.0
 const TJAcc     : float = 10.0
 
@@ -171,7 +171,7 @@ const Stun : float = 0.5
 var StunTime : float
 
 # DIVE
-const BaseDiveHor    : float = 9.0
+const BaseDiveHor    : float = 15.0
 const BaseDiveVer    : float = 8.0
 const DiveGrav       : float = 20.0
 const DiveMaxGrav    : float = 80.0
@@ -240,7 +240,9 @@ var BounceVer : float
 var BounceHor : float
 # CAMERA VARIABLES ////////////////////////////////////////////////////////////////////////////////
 
+var IsSoaring      : bool
 const PositionStr  : float = 5.0
+const SoaringPosStr: float = 19
 const CamHeight    : float = 0.0
 
 
@@ -257,6 +259,7 @@ var CurrentState : State = PlayerGroundState.new()
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
 
 func _ready() -> void:
+
 	visible           = true
 	UpDirLinVec       = up_direction
 	FacingDir         = -global_basis.z
@@ -270,6 +273,13 @@ func _ready() -> void:
 	
 	# Camera
 	MainCam.position = position
+
+
+func ISSOARING():
+	if IsSoaring:
+		IsSoaring = false
+	else:
+		IsSoaring = true
 
 
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -287,6 +297,7 @@ func _process(Delta: float) -> void:
 	var CamBasis : Basis = get_viewport().get_camera_3d().global_basis
 	
 	# Check input
+
 	DirInput = Input.get_vector("Left", "Right", "Down", "Up").limit_length(1.0)
 	DirInputLength = DirInput.length()
 	
@@ -336,10 +347,14 @@ func _process(Delta: float) -> void:
 	var UpLength : Vector3 = CamHeight * up_direction
 	var TargetC  : Basis   = Basis.IDENTITY
 	
-	TargetC = Basis.looking_at(VectorUtil.make_perpendicular(-MainCam.global_basis.z, up_direction), up_direction)
-	MainCam.global_position = lerp(MainCam.global_position, global_position + UpLength, min(1.0, PositionStr * Delta))
-	MainCam.global_basis = MainCam.global_basis.slerp(TargetC, 3 * Delta).orthonormalized()
-	
+	if !IsSoaring:
+		TargetC = Basis.looking_at(VectorUtil.make_perpendicular(-MainCam.global_basis.z, up_direction), up_direction)
+		MainCam.global_position = lerp(MainCam.global_position, global_position + UpLength, min(1.0, PositionStr * Delta))
+		MainCam.global_basis = MainCam.global_basis.slerp(TargetC, 3 * Delta).orthonormalized()
+	else: 
+		TargetC = Basis.looking_at(VectorUtil.make_perpendicular(-MainCam.global_basis.z, up_direction), up_direction)
+		MainCam.global_position = lerp(MainCam.global_position, global_position + UpLength, min(1.0, SoaringPosStr * Delta))
+		MainCam.global_basis = MainCam.global_basis.slerp(TargetC, 3 * Delta).orthonormalized()
 	
 	# /////////////////////////////////////////////////////////////////////////////////////////////
 	# GRAVITY AREA SORTING AND UP-DIRECTION
@@ -834,12 +849,13 @@ class PlayerBackFlipState extends State:
 	var EnteredDir : Vector2
 	
 	func on_enter(This : Player):
-		This.MaxAirSpd          = maxf(VectorUtil.get_axis(This.velocity, This.DirInputPlayer), BaseAirSpd)
-		This.velocity          += BFJumpVer * This.up_direction
+		This.MaxAirSpd          = BFJumpHor
 		This.FacingDirSmoothed  = This.FacingDir
+		This.velocity          += BFJumpVer * This.up_direction
+		This.velocity          += BFJumpHor * This.FacingDir
 		This.CurGrav            = BFGrav
 		EnteredDir              = This.DirInput
-	
+		
 	
 	func check_state(This : Player) -> State: 
 		if This.GotHit: return HitState.new() 
@@ -878,8 +894,8 @@ class PlayerBackFlipState extends State:
 		This.AirMovement(BFAcc, AirDec, Delta)
 		
 		# Slowly increase the backflip gravity and speed
+		
 		This.CurGrav   = move_toward(This.CurGrav, BFMaxGrav, BFGravMT * Delta)
-		This.MaxAirSpd = move_toward(This.MaxAirSpd, BFJumpHor, BFSpdMT * Delta)
 	
 	
 	func on_exit(This : Player):

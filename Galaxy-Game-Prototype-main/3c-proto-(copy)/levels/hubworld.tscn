@@ -54,6 +54,13 @@ radius = 25.861675
 height = 0.6444092
 radius = 2.4536133
 
+[sub_resource type="Curve3D" id="Curve3D_oufch"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -26.215, 0, 0, 14.988621, 2.2699594, -2.0233135, -14.988621, -2.2699594, 2.0233135, -59.782635, -3.5392523, -0.4305935, -13.472208, 1.8231812, -6.8141785, 13.472208, -1.8231812, 6.8141785, -38.545303, 11.159271, 53.057472, -4.5441284, -11.512527, 8.627308, 4.5441284, 11.512527, -8.627308, 24.900558, 28.317371, 65.504616, 0.07222748, -2.7973328, 7.629097, -0.07222748, 2.7973328, -7.629097, 39.311516, 50.6799, 27.195454, -0.6394234, -5.7123566, 11.878757, 0.6394234, 5.7123566, -11.878757, 42.750126, 59.140648, 2.1361656, 0, 0, 0, 0, 0, 0, 45.090176, 82.11366, -18.600925),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_nm5ud"]
 radius = 11.416751
 
@@ -172,20 +179,27 @@ metadata/_custom_type_script = "uid://dw7b0jyuluyi4"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/maingravprior" unique_id=1611482029]
 shape = SubResource("SphereShape3D_huma7")
 
-[node name="CannonArea" type="Area3D" parent="Ship" unique_id=239574099]
+[node name="CannonArea" type="Area3D" parent="Ship" unique_id=239574099 node_paths=PackedStringArray("playernode", "pathfollow", "remote")]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("16_dakm1")
-vert = 100.0
+playernode = NodePath("../../Player")
+animationTime = 5.0
+pathfollow = NodePath("Path3D/PathFollow3D")
+remote = NodePath("Path3D/PathFollow3D/RemoteTransform3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/CannonArea" unique_id=538665301]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -25.622395, 2.9627378e-08, 0)
 shape = SubResource("CylinderShape3D_xbe17")
 
-[node name="InitialTimer" type="Timer" parent="Ship/CannonArea" unique_id=1083885498]
+[node name="Path3D" type="Path3D" parent="Ship/CannonArea" unique_id=1466734817]
+curve = SubResource("Curve3D_oufch")
 
-[node name="LoadLevelTimer" type="Timer" parent="Ship/CannonArea" unique_id=161968357]
-wait_time = 0.7
+[node name="PathFollow3D" type="PathFollow3D" parent="Ship/CannonArea/Path3D" unique_id=608271948]
+transform = Transform3D(0.13094138, -0.06699296, 0.9891157, 0, 0.997702, 0.06757504, -0.9913824, -0.008848401, 0.13064198, -26.215, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Ship/CannonArea/Path3D/PathFollow3D" unique_id=168786234]
+remote_path = NodePath("..")
 
 [node name="spheregravbig" type="Area3D" parent="Ship" unique_id=1840195038 node_paths=PackedStringArray("PriorityLink")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.020906, -21.96924, 0)
@@ -423,7 +437,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.06785, 0)
 [connection signal="UpdateButtons" from="LevelManager" to="ouroborosplanetButton" method="_on_level_manager_update_buttons"]
 [connection signal="UpdateButtons" from="LevelManager" to="SkyRuinsButton2" method="_on_level_manager_update_buttons"]
 [connection signal="area_entered" from="Ship/CannonArea" to="Ship/CannonArea" method="_on_area_entered"]
-[connection signal="timeout" from="Ship/CannonArea/InitialTimer" to="Ship/CannonArea" method="_on_initial_timer_timeout"]
-[connection signal="timeout" from="Ship/CannonArea/LoadLevelTimer" to="Ship/CannonArea" method="_on_load_level_timer_timeout"]
 [connection signal="updateLevelEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_level_energy"]
 [connection signal="updateTotalEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_total_energy"]

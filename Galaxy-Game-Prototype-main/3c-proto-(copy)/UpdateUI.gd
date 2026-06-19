@@ -8,8 +8,12 @@ var levelboalbCount : int
 var totalBoalbCount : int
 @onready var LevelBoalbCounter: RichTextLabel = $BoalbCount
 @onready var TotalBoalbCounter: RichTextLabel = $BoalbCountTotal
+@onready var whiteout: ColorRect = $whiteout
+
 
 func _ready() -> void:
+	Levelmanager.FadeOutSignal.connect(FadeOutFunc)
+	Levelmanager.FadeInSignal.connect(FadeInFunc)
 	if Levelmanager.hubornah:
 		LevelBoalbCounter.hide()
 		TotalBoalbCounter.show()
@@ -20,6 +24,7 @@ func _ready() -> void:
 	UpdateLevelBoalb()
 	UpdateTotalBoalb()
 	CurrencyManager.updateTotalEnergy.connect(UpdateTotalBoalb)
+	CurrencyManager.updateLevelEnergy.connect(UpdateLevelBoalb)
 	healthArray = get_children()
 	healthInt = 3
 	UpdateHealth(healthInt)
@@ -50,7 +55,8 @@ func UpdateHealth(amount :int):
 		
 
 	if healthInt < 1:
-		print("ded lmao")
+		Levelmanager.currentLevel = "hubworld"
+		Levelmanager.LoadLevel()
 		
 	if healthInt > 3:
 		healthInt = 3
@@ -70,7 +76,17 @@ func _on_currencymanager_update_total_energy() -> void:
 	UpdateTotalBoalb()
 
 func UpdateLevelBoalb():
-	LevelBoalbCounter.text = "Energy " + str(CurrencyManager.levelEnergy)
+	LevelBoalbCounter.text = "Level Energy: " + str(CurrencyManager.levelEnergy)
 	
 func UpdateTotalBoalb():
-	TotalBoalbCounter.text = "Energy: " + str(CurrencyManager.totalEnergy)
+	TotalBoalbCounter.text = "Total Energy: " + str(CurrencyManager.totalEnergy)
+	
+func FadeInFunc():
+	whiteout.color = Color(1.0, 1.0, 1.0, 1.0)
+	var tween = create_tween()
+	tween.tween_property(whiteout, "color", Color(1.0, 1.0, 1.0, 0.0), 1)
+
+func FadeOutFunc():
+	whiteout.color = Color(0.0, 0.0, 0.0, 0.0)
+	var tween = create_tween()
+	tween.tween_property(whiteout, "color", Color(1.0, 1.0, 1.0, 1.0), 1)
