@@ -10,6 +10,7 @@ var totalBoalbCount : int
 @onready var TotalBoalbCounter: RichTextLabel = $BoalbCountTotal
 @onready var whiteout: ColorRect = $whiteout
 
+@export var animator : AnimationPlayer
 
 func _ready() -> void:
 	Levelmanager.FadeOutSignal.connect(FadeOutFunc)
@@ -55,8 +56,7 @@ func UpdateHealth(amount :int):
 		
 
 	if healthInt < 1:
-		Levelmanager.currentLevel = "hubworld"
-		Levelmanager.LoadLevel()
+		animator.play("dying")
 		
 	if healthInt > 3:
 		healthInt = 3
