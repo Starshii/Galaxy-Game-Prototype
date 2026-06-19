@@ -26,88 +26,6 @@ _data = {
 &"beamback": SubResource("Animation_0jrjy")
 }
 
-[sub_resource type="Animation" id="Animation_i3naf"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_vpyym"]
-resource_name = "dying"
-length = 6.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DyingRemotely")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"DieRemotely"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DyingRemotely:remote_path")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.033333335, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [NodePath("../Player"), NodePath("")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DyingRemotely:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 2, 2.4333334, 3.77),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 37.699112, 0), Vector3(0, 37.699112, 0), Vector3(0, 37.699112, 1.5707964)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(3.8, 6),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"FadeOutFunc"
-}, {
-"args": [],
-"method": &"FadeInFunc"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Player")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(5.9666667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"ResetPlayer"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0jrjy"]
-_data = {
-&"RESET": SubResource("Animation_i3naf"),
-&"dying": SubResource("Animation_vpyym")
-}
-
 [node name="Node2D" type="Node2D" unique_id=1323540920]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1868757142]
@@ -118,6 +36,3 @@ texture = ExtResource("1_n6wqm")
 libraries/ = SubResource("AnimationLibrary_u367o")
 autoplay = &"beamback"
 script = ExtResource("2_0jrjy")
-
-[node name="playeranimationplayer" type="AnimationPlayer" parent="." unique_id=13718467]
-libraries/ = SubResource("AnimationLibrary_0jrjy")

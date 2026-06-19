@@ -9,7 +9,9 @@
 [ext_resource type="ArrayMesh" uid="uid://qb6voktw405d" path="res://models/shipmesh.tres" id="7_rnobp"]
 [ext_resource type="Material" uid="uid://dddspe2pou7q3" path="res://materials/rockrexture.tres" id="9_oeyw0"]
 [ext_resource type="Material" uid="uid://d3dypvcna4wu4" path="res://materials/buttonmat.tres" id="10_13sfc"]
+[ext_resource type="Material" uid="uid://c3ity7rg3gdln" path="res://materials/blocktexture.material" id="12_ns2rg"]
 [ext_resource type="PackedScene" uid="uid://dif8l0oibo5jy" path="res://obstacles/button.tscn" id="13_bbkom"]
+[ext_resource type="Script" uid="uid://ncu1w4o0ur2l" path="res://obstacles/buyarea.gd" id="13_ns2rg"]
 [ext_resource type="Script" uid="uid://bwkdg23q2uqq6" path="res://levels/Levelmanager.gd" id="13_pmogu"]
 [ext_resource type="Script" uid="uid://2xppvs14w60o" path="res://levels/shipscript.gd" id="15_xbe17"]
 [ext_resource type="Script" uid="uid://b8fil7eeha74w" path="res://levels/cannonarea.gd" id="16_dakm1"]
@@ -24,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://c5sib2syse8lj" path="res://UI/ui.tscn" id="23_nm5ud"]
 [ext_resource type="ArrayMesh" uid="uid://v5n6w4qqgfgs" path="res://models/ouroborosmesh.tres" id="23_qqg34"]
 [ext_resource type="Material" uid="uid://1vajnocdg07" path="res://materialsplanets/skyruinsmat.tres" id="24_oufch"]
-[ext_resource type="PackedScene" uid="uid://ix80ehucnatf" path="res://obstacles/buyarea.tscn" id="24_qqg34"]
 [ext_resource type="PackedScene" uid="uid://bxhjqwmvegtxt" path="res://obstacles/firstboalb.tscn" id="26_oufch"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5orej"]
@@ -88,6 +89,15 @@ radius = 13.397949
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nm5ud"]
 height = 12.578491
 radius = 3.4536133
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oufch"]
+material = ExtResource("12_ns2rg")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oufch"]
+height = 0.59924316
+radius = 0.45214844
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ns2rg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_huma7"]
 material = ExtResource("21_dakm1")
@@ -330,6 +340,54 @@ transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 7.5887985, 26.958
 [node name="boalb5" parent="Ship" unique_id=1774282523 instance=ExtResource("26_oufch")]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 8.701052, 21.19877, -11.433912)
 
+[node name="buypillar1" type="MeshInstance3D" parent="Ship" unique_id=15272819]
+transform = Transform3D(2.6134653, 0, 0, 0, -4.3711385e-08, 2.5346017, 0, -0.99999994, -1.1079096e-07, 4.2444854, 6.8835483, -29.1355)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="Area3D" type="Area3D" parent="Ship/buypillar1" unique_id=1171786418]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("13_ns2rg")
+cost = 5
+inlevel = null
+unlockable = "statue1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/buypillar1/Area3D" unique_id=602470069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84832764, 0)
+shape = SubResource("CylinderShape3D_oufch")
+
+[node name="statue1" type="MeshInstance3D" parent="Ship/buypillar1" unique_id=1197285392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4365866, 0)
+mesh = SubResource("CylinderMesh_ns2rg")
+
+[node name="buypillar2" type="MeshInstance3D" parent="Ship" unique_id=1156960276]
+transform = Transform3D(2.6134653, 0, 0, 0, -4.3711385e-08, 2.5346017, 0, -0.99999994, -1.1079096e-07, 3.741703, 2.3449597, 31.559694)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="buypillar3" type="MeshInstance3D" parent="Ship" unique_id=1494787706]
+transform = Transform3D(-1.142382e-07, -0.9358927, 0, 2.6134653, -4.0909168e-08, 0, 0, 0, 2.5346017, 32.735783, 1.003948, -1.2624315)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="buypillar4" type="MeshInstance3D" parent="Ship" unique_id=314972851]
+transform = Transform3D(-2.154316, -0.5661328, 0, 1.4795686, -0.82431394, 0, 0, 0, 2.5346017, -17.075632, -32.59296, 0.07856797)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="buypillar5" type="MeshInstance3D" parent="Ship" unique_id=1387845610]
+transform = Transform3D(2.6134653, 0, 0, 0, 0.99999994, 0, 0, 0, 2.5346017, 8.405766, 25.560898, -7.3269153)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="buypillar6" type="MeshInstance3D" parent="Ship" unique_id=600092930]
+transform = Transform3D(2.6134653, 0, 0, 0, 0.99999994, 0, 0, 0, 2.5346017, -7.9189825, 25.560898, -7.3269153)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="buypillar7" type="MeshInstance3D" parent="Ship" unique_id=724471011]
+transform = Transform3D(2.6134653, 0, 0, 0, 0.99999994, 0, 0, 0, 2.5346017, 8.405766, 25.560898, 6.909637)
+mesh = SubResource("CylinderMesh_oufch")
+
+[node name="buypillar8" type="MeshInstance3D" parent="Ship" unique_id=1112588410]
+transform = Transform3D(2.6134653, 0, 0, 0, 0.99999994, 0, 0, 0, 2.5346017, -7.9189825, 25.560898, 6.909637)
+mesh = SubResource("CylinderMesh_oufch")
+
 [node name="selectioncircle" type="CSGCylinder3D" parent="." unique_id=1416838572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019347906, 26.440678, -0.01731348)
 radius = 5.4658203
@@ -375,10 +433,6 @@ script = ExtResource("22_huma7")
 
 [node name="UI" parent="." unique_id=1013357421 instance=ExtResource("23_nm5ud")]
 
-[node name="Buyable" parent="." unique_id=1595067783 instance=ExtResource("24_qqg34")]
-transform = Transform3D(2.074739, 0, 0, 0, 1, 0, 0, 0, 1.5732563, -7.91109, 26.547386, -7.2734337)
-cost = 2
-
 [node name="Dragonflyplanet" type="MeshInstance3D" parent="." unique_id=675062794]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -0.14584112, 28.534101, -4.6615477)
 mesh = ExtResource("20_nm5ud")
@@ -393,7 +447,7 @@ skeleton = NodePath("")
 [node name="SkyRuins" type="MeshInstance3D" parent="." unique_id=1300639576]
 transform = Transform3D(0.517, 0, 0, 0, 0.246, 0, 0, 0, 0.517, -4.8025827, 27.591291, 0.17570734)
 mesh = SubResource("ArrayMesh_kp83q")
-skeleton = NodePath("../Buyable")
+skeleton = NodePath("")
 script = ExtResource("21_nm5ud")
 mymaterial = ExtResource("24_oufch")
 

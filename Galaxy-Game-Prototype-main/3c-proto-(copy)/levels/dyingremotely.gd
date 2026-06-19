@@ -1,7 +1,11 @@
 extends RemoteTransform3D
 
-@export var playerbody: CharacterBody3D
+@export var playernode: Player
+func SetTransform():
+	print("settransform")
+	rotation = playernode.global_rotation
+	global_position = playernode.global_position
+	remote_path = playernode.get_path()
 
-
-func DieRemotely():
-	global_position = playerbody.global_position
+func UnSetTransform():
+	remote_path = ""

@@ -231,6 +231,7 @@ signal ChangeHealth
 signal BoalbSignal
 const KnockBackVecV : float = 10
 const KnockBackVecH : float = 10
+@onready var bubble: MeshInstance3D = $Bubble
 
 #BOUNCE
 var CanBounce : bool
@@ -259,7 +260,7 @@ var CurrentState : State = PlayerGroundState.new()
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
 
 func _ready() -> void:
-
+	bubble.scale = Vector3.ZERO
 	visible           = true
 	UpDirLinVec       = up_direction
 	FacingDir         = -global_basis.z
@@ -283,6 +284,7 @@ func ISSOARING():
 
 func ResetPlayer():
 	global_position = Startpos.global_position
+	velocity = Vector3.ZERO
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
 ## PROCESS
 ## ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1869,3 +1871,8 @@ func Bounce(Hor : float, Ver : float):
 	BounceHor = Hor
 	BounceVer = Ver
 	CanBounce = true
+
+
+func _on_levelmanager_nightfall() -> void:
+
+	AnimatorP.play("zipback")

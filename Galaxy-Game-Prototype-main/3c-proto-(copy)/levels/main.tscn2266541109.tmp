@@ -45,10 +45,10 @@ tracks/0/path = NodePath("WorldEnvironment:environment:background_energy_multipl
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 74.666664, 119.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 119.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 1.0, 0.01]
+"values": [1.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,10 +57,10 @@ tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 74.666664, 119.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 119.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 1.0, 0.03]
+"values": [1.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -69,36 +69,10 @@ tracks/2/path = NodePath("DirectionalLight3D:light_energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 119.833336),
+"times": PackedFloat32Array(0, 119.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("WorldEnvironment:environment:ambient_light_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 20, 74.666664, 100.166664),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.13665321, 0.12670347, 0.0013420177, 1), Color(0.4653375, 0.55162007, 0.35422307, 1), Color(0.46669877, 0.5526737, 0.33547673, 1), Color(0.66182953, 0.47409612, 0.26212808, 1)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Levelmanager")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(119.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"NightFall"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_wk3pi"]
@@ -138,18 +112,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("WorldEnvironment:environment:ambient_light_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.13665321, 0.12670347, 0.0013420177, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpyym"]
@@ -254,7 +216,7 @@ background_color = Color(0.9253379, 0.9253379, 0, 1)
 background_energy_multiplier = 0.0
 sky = SubResource("Sky_ig7tw")
 ambient_light_source = 2
-ambient_light_color = Color(0.13665321, 0.12670347, 0.0013420177, 1)
+ambient_light_color = Color(0.24614403, 0.22994605, 0.0024323356, 1)
 ambient_light_energy = 0.0
 tonemap_mode = 2
 ssao_enabled = true
@@ -295,7 +257,6 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_wk3pi"]
-material = ExtResource("31_m6gxc")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vpyym"]
 
@@ -762,20 +723,6 @@ tracks/3/keys = {
 "method": &"SetTransform"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("dieremotely")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(5.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"UnSetTransform"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8a5tp"]
 _data = {
@@ -795,7 +742,6 @@ point_count = 7
 [node name="ChangeLight" type="AnimationPlayer" parent="." unique_id=2087081067]
 libraries/ = SubResource("AnimationLibrary_vpyym")
 autoplay = &"ChangeLight"
-speed_scale = 6.0
 
 [node name="vinepoly2" type="CSGPolygon3D" parent="." unique_id=1990416028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6740508, 0)
@@ -888,7 +834,7 @@ script = ExtResource("12_2hoto")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=51523138]
 transform = Transform3D(-0.31726015, 0.37670937, 0.87030804, 0.49450856, -0.7173586, 0.4907729, 0.8092016, 0.5860775, 0.041303273, 144.12845, 73.39752, 38.3377)
-light_color = Color(0.24596697, 0.19862118, 0.09706161, 1)
+light_color = Color(0.6909976, 0.58423704, 0.3623793, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
 
@@ -3027,7 +2973,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8747559, 0)
 curve = SubResource("Curve3D_8a5tp")
 
 [node name="cannonpathfollow" type="PathFollow3D" parent="SafeBubble/cannonpath" unique_id=9412754]
-transform = Transform3D(0.1850914, -0.9604182, 0.20813683, -0.2279005, -0.24794863, -0.94168156, 0.9559226, 0.1268487, -0.26480594, -266.11978, 239.48875, -73.69816)
+transform = Transform3D(0.1850914, -0.9604182, 0.20813586, -0.2279005, -0.24794863, -0.94167715, 0.9559226, 0.1268487, -0.26480472, -266.11978, 239.48875, -73.69816)
 progress = 859.00085
 
 [node name="cannonremote" type="RemoteTransform3D" parent="SafeBubble/cannonpath/cannonpathfollow" unique_id=1288568344]
@@ -3092,10 +3038,9 @@ remote_path = NodePath("..")
 [node name="playeranimationplayer" type="AnimationPlayer" parent="." unique_id=2131389857]
 libraries/ = SubResource("AnimationLibrary_8a5tp")
 
-[node name="dieremotely" type="RemoteTransform3D" parent="." unique_id=239729667 node_paths=PackedStringArray("playernode")]
+[node name="dieremotely" type="RemoteTransform3D" parent="." unique_id=239729667]
 transform = Transform3D(1, 0, 9.5399045e-08, 0, 1, 0, -9.5399045e-08, 0, 1, 157.22844, 67.10504, 18.209703)
 script = ExtResource("34_duofn")
-playernode = NodePath("../Player")
 
 [node name="LaunchRing4" parent="." unique_id=2139126106 node_paths=PackedStringArray("playernode", "pathfollow", "remote") instance=ExtResource("29_wk3pi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.66331, 130.17732, 136.08154)
@@ -3114,6 +3059,9 @@ transform = Transform3D(0.22431831, -0.69637984, -0.6817138, -5.960457e-08, 0.69
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="LaunchRing4/Path3D/PathFollow3D" unique_id=237122819]
 remote_path = NodePath("..")
 
+[node name="Spike77" parent="." unique_id=1295860400 instance=ExtResource("31_nfkfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.06133, 63.688164, 25.06841)
+
 [connection signal="BoalbSignal" from="Player" to="UI" method="_on_player_boalb_signal"]
 [connection signal="ChangeHealth" from="Player" to="UI" method="_on_player_change_health"]
 [connection signal="area_entered" from="Tree/boulderbuy" to="Tree/boulderbuy" method="_on_area_entered"]
@@ -3122,12 +3070,6 @@ remote_path = NodePath("..")
 [connection signal="area_entered" from="Tree/LaunchRingBacktosafearea" to="Tree/LaunchRingBacktosafearea" method="_on_area_entered"]
 [connection signal="FadeInSignal" from="Levelmanager" to="UI" method="_on_levelmanager_fade_in_signal"]
 [connection signal="FadeOutSignal" from="Levelmanager" to="UI" method="_on_levelmanager_fade_out_signal"]
-[connection signal="nightfall" from="Levelmanager" to="Player" method="_on_levelmanager_nightfall"]
-[connection signal="nightfall" from="Levelmanager" to="Tree/LaunchRingBacktosafearea" method="_on_levelmanager_nightfall"]
-[connection signal="nightfall" from="Levelmanager" to="LaunchRing3" method="_on_levelmanager_nightfall"]
-[connection signal="nightfall" from="Levelmanager" to="LaunchRing" method="_on_levelmanager_nightfall"]
-[connection signal="nightfall" from="Levelmanager" to="LaunchRing2" method="_on_levelmanager_nightfall"]
-[connection signal="nightfall" from="Levelmanager" to="LaunchRing4" method="_on_levelmanager_nightfall"]
 [connection signal="area_entered" from="SafeBubble/cannonbottom/cannonarea" to="SafeBubble/cannonbottom/cannonarea" method="_on_area_entered"]
 [connection signal="area_entered" from="LaunchRing3" to="LaunchRing3" method="_on_area_entered"]
 [connection signal="area_entered" from="LaunchRing" to="LaunchRing" method="_on_area_entered"]

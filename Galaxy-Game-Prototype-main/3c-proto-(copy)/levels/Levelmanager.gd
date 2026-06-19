@@ -4,6 +4,7 @@ signal UpdateRotation(rotationvalue : Vector3)
 signal UpdateButtons(currentbutton : String)
 signal FadeInSignal
 signal FadeOutSignal
+signal nightfall
 
 var currentLevel : String
 var hubornah : bool = true
@@ -13,7 +14,15 @@ var unlocks = {
 	"ceaselessbubbles" : false,
 	"dragonflyplanet" : false,
 	"ouroborosplanet" : false,
-	"skyruins" : false
+	"skyruins" : false,
+	"statue1" : false,
+	"statue2" : false,
+	"statue3" : false,
+	"statue4" : false,
+	"statue5" : false,
+	"statue6" : false,
+	"statue7" : false,
+	"statue8" : false
 }
 
 func _ready() -> void:
@@ -58,7 +67,7 @@ func FadeIn():
 func FadeOut():
 	print("emitted")
 	FadeOutSignal.emit()
-
-func UpdateUnlocks(interger : int):
-	pass
 	
+func NightFall():
+	print("nightfall")
+	nightfall.emit()

@@ -90,3 +90,13 @@ func FadeOutFunc():
 	whiteout.color = Color(0.0, 0.0, 0.0, 0.0)
 	var tween = create_tween()
 	tween.tween_property(whiteout, "color", Color(1.0, 1.0, 1.0, 1.0), 1)
+
+func BlackOut():
+	whiteout.color = Color(0.0, 0.0, 0.0, 0.0)
+	var tween = create_tween()
+	tween.tween_property(whiteout, "color", Color(0.0, 0.0, 0.0, 1.0), 1)
+
+func BlackIn():
+	whiteout.color = Color(0.0, 0.0, 0.0, 1.0)
+	var tween = create_tween()
+	tween.tween_property(whiteout, "color", Color(0.0, 0.0, 0.0, 0.0), 1)

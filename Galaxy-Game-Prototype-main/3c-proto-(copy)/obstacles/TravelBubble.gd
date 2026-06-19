@@ -7,8 +7,10 @@ extends Area3D
 @export var remote : RemoteTransform3D
 var issoaring : bool
 
+
 func _ready() -> void:
 	issoaring = false
+	Levelmanager.nightfall.connect(Destroy)
 
 func _on_area_entered(area: Area3D) -> void:
 	issoaring = true
@@ -26,3 +28,11 @@ func _on_area_entered(area: Area3D) -> void:
 	await tween3.finished
 	remote.remote_path = ""
 	playernode.ISSOARING()
+
+func Destroy():
+	print("destroy")
+	
+
+
+func _on_levelmanager_nightfall() -> void:
+	queue_free()
