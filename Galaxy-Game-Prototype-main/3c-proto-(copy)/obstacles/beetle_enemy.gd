@@ -30,7 +30,11 @@ func _on_top_hit_box_area_entered(area: Area3D) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	
-	
+	if is_instance_valid(targetArea3D):
+		targetTransform = targetArea3D.global_position
+		
+	global_basis = Basis.looking_at(targetTransform - global_position, up_direction)
+
 
 
 func _on_aggro_range_area_entered(area: Area3D) -> void:
@@ -54,3 +58,4 @@ func _on_timer_timeout() -> void:
 
 func _on_aggro_range_area_exited(_area: Area3D) -> void:
 	attackTimer.stop()
+	velocity = Vector3.ZERO

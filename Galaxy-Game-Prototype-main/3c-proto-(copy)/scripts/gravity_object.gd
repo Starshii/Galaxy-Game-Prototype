@@ -104,6 +104,8 @@ func _physics_process(delta: float) -> void:
 	FacingDirSmoothed = VectorUtil.make_perpendicular(FacingDirSmoothed, UpDirLinVec).normalized()
 	if FacingDirSmoothed.cross(UpDirLinVec) != Vector3.ZERO:
 		global_basis = Basis.looking_at(FacingDirSmoothed, UpDirLinVec)
+		
+		
 # /////////////////////////////////////////////////////////////////////////////////////////////
 	# GRAVITY AREA SORTING AND UP-DIRECTION
 	# /////////////////////////////////////////////////////////////////////////////////////////////

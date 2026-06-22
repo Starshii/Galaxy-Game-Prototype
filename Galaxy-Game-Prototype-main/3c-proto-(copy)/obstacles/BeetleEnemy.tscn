@@ -3,15 +3,18 @@
 [ext_resource type="Script" uid="uid://byniccrw7dhjc" path="res://obstacles/beetle_enemy.gd" id="1_bf16p"]
 [ext_resource type="Material" uid="uid://dcmmjcg3fjtd" path="res://materials/enemymat.material" id="2_tfa4j"]
 [ext_resource type="Script" uid="uid://c0tirjue0d3g4" path="res://obstacles/EnemyHitBox.gd" id="3_tfa4j"]
+[ext_resource type="PackedScene" uid="uid://5odoh1f5onru" path="res://models/spikeyspidergg.glb" id="4_32o7e"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_32o7e"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s7s5k"]
+height = 1.87854
+radius = 0.8071289
 
 [sub_resource type="SphereMesh" id="SphereMesh_s7s5k"]
 material = ExtResource("2_tfa4j")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bf16p"]
-height = 0.830307
-radius = 0.50390625
+height = 1.8894615
+radius = 0.828125
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tfa4j"]
 height = 0.38734436
@@ -25,21 +28,25 @@ collision_layer = 3
 script = ExtResource("1_bf16p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975087811]
-shape = SubResource("SphereShape3D_32o7e")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22882572, 0.56802475, 0)
+shape = SubResource("CylinderShape3D_s7s5k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1119771549]
+visible = false
 mesh = SubResource("SphereMesh_s7s5k")
 
 [node name="HitBox" type="Area3D" parent="." unique_id=956766504 groups=["HitBox"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36042684, 0.46452874, 0)
 collision_layer = 9
 script = ExtResource("3_tfa4j")
 DmgAmnt = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=1493487379]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.091423035, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12919044, 0.119421005, 0)
 shape = SubResource("CylinderShape3D_bf16p")
 
 [node name="TopHitBox" type="Area3D" parent="." unique_id=719921462 groups=["HurtBox"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33689094, 0)
 collision_layer = 16
 collision_mask = 16
 
@@ -56,6 +63,9 @@ shape = SubResource("SphereShape3D_tfa4j")
 
 [node name="Timer" type="Timer" parent="." unique_id=1062038509]
 autostart = true
+
+[node name="spikeyspidergg" parent="." unique_id=1671861731 instance=ExtResource("4_32o7e")]
+transform = Transform3D(-2.1637137e-08, 0, 0.495, 0, 0.495, 0, -0.495, 0, -2.1637137e-08, 0.01102218, 0.31387937, 0.009148993)
 
 [connection signal="area_entered" from="TopHitBox" to="." method="_on_top_hit_box_area_entered"]
 [connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]

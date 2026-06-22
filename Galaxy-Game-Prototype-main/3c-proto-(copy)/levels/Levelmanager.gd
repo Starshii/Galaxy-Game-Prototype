@@ -22,11 +22,14 @@ var unlocks = {
 	"statue5" : false,
 	"statue6" : false,
 	"statue7" : false,
-	"statue8" : false
+	"statue8" : false,
+	"boulder" : false,
+	"launchbubble1" : false
 }
 
 func _ready() -> void:
 	if firstTime:
+		CurrencyManager.CurrencySwitch(true)
 		currentLevel = "hubworld"
 	else:
 		currentLevel = "skyruins"
@@ -42,12 +45,13 @@ func RotateShip(rotationvalues : Vector3, currentButton : String):
 
 func LoadLevel():
 	if currentLevel == "hubworld":
+		CurrencyManager.CurrencySwitch(true)
 		hubornah = true
 		get_tree().call_deferred("change_scene_to_file", "res://levels/hubworld.tscn")
 	
 	if currentLevel == "skyruins":
+		CurrencyManager.CurrencySwitch(false)
 		hubornah = false
-		print("main??")
 		get_tree().change_scene_to_file("res://levels/main.tscn")
 		
 	if currentLevel == "ceaselessbubbles":
@@ -61,13 +65,10 @@ func LoadLevel():
 		
 		
 func FadeIn():
-	print("emitted")
 	FadeInSignal.emit()
 
 func FadeOut():
-	print("emitted")
 	FadeOutSignal.emit()
 	
 func NightFall():
-	print("nightfall")
 	nightfall.emit()

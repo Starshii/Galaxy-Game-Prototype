@@ -1,10 +1,24 @@
 extends Node
 
-
 var totalEnergy : int = 0
 var levelEnergy : int = 0
 signal updateTotalEnergy
 signal updateLevelEnergy
+
+		
+func CurrencySwitch(hubornah : bool):
+	if hubornah:
+		print("hub")
+		totalEnergy += levelEnergy
+		levelEnergy = 0
+		updateTotalEnergy.emit()
+	else: 
+		levelEnergy = 0
+		updateLevelEnergy.emit()
+		print("level")
+		
+	print("level energy" + str(levelEnergy))
+	print("total energy" + str(totalEnergy))
 
 func UpdateLevelEnergy(amount : int):
 	print("updatedlevelenergy")
@@ -23,9 +37,7 @@ func UpdateTotalEnergy():
 	totalEnergy += levelEnergy
 	updateTotalEnergy.emit()
 
-
 func loadscene():
-	levelEnergy = 0
 	print("loadscene")
 	Levelmanager.UpdateCurrentLevel("hubworld")
 	Levelmanager.LoadLevel()

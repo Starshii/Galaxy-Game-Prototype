@@ -6,6 +6,7 @@ extends Area3D
 @export var pathfollow : PathFollow3D
 @export var remote : RemoteTransform3D
 var issoaring : bool
+var IsActive : bool
 
 
 func _ready() -> void:
@@ -32,7 +33,11 @@ func _on_area_entered(area: Area3D) -> void:
 func Destroy():
 	print("destroy")
 	
-
-
+func IsSetActive():
+	set_collision_mask_value(5, true)
+	
+func IsSetInactive():
+	set_collision_mask_value(5, false)
+	
 func _on_levelmanager_nightfall() -> void:
 	queue_free()

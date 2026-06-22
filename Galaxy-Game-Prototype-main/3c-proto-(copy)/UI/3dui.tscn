@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bv2i4nxhbm4mw"]
+
+[ext_resource type="Script" uid="uid://dr7kuigy86cqw" path="res://3dui.gd" id="1_rwjss"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jwbqo"]
+viewport_path = NodePath("SubViewport")
+
+[node name="3DUI" type="Sprite3D" unique_id=1428580392]
+texture = SubResource("ViewportTexture_jwbqo")
+script = ExtResource("1_rwjss")
+cost = 5
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=364581118]
+transparent_bg = true
+size = Vector2i(200, 100)
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=1230919503]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/Control" unique_id=659592835]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.1
+offset_top = -20.0
+offset_right = 98.1
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "\"[color=blue]\" str(cost) \"[img=16x16]\"  \"res://UI/boalbconceptshading.png\" + \"[/img] \" + desc + \"[/color]\""
+scroll_active = false

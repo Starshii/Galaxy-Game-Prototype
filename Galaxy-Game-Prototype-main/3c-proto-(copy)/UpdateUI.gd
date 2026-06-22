@@ -6,8 +6,8 @@ var healthArray : Array
 
 var levelboalbCount : int
 var totalBoalbCount : int
-@onready var LevelBoalbCounter: RichTextLabel = $BoalbCount
-@onready var TotalBoalbCounter: RichTextLabel = $BoalbCountTotal
+@export var LevelBoalbCounter : RichTextLabel
+@export var TotalBoalbCounter : RichTextLabel
 @onready var whiteout: ColorRect = $whiteout
 
 @export var animator : AnimationPlayer
@@ -68,12 +68,16 @@ func _on_player_boalb_signal(amnt : int) -> void:
 	UpdateTotalBoalb()
 
 func _on_currencymanager_update_level_energy() -> void:
+	print("updatelevelenerhgy")
+	
 	UpdateLevelBoalb()
 	UpdateTotalBoalb()
 
 func _on_currencymanager_update_total_energy() -> void:
+	print("updatetotalenerhgy")
 	UpdateLevelBoalb()
 	UpdateTotalBoalb()
+	
 
 func UpdateLevelBoalb():
 	LevelBoalbCounter.text = "Level Energy: " + str(CurrencyManager.levelEnergy)

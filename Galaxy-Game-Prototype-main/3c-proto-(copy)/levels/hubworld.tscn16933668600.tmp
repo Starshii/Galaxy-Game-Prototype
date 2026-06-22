@@ -9,15 +9,15 @@
 [ext_resource type="ArrayMesh" uid="uid://qb6voktw405d" path="res://models/shipmesh.tres" id="7_rnobp"]
 [ext_resource type="Material" uid="uid://dddspe2pou7q3" path="res://materials/rockrexture.tres" id="9_oeyw0"]
 [ext_resource type="Material" uid="uid://d3dypvcna4wu4" path="res://materials/buttonmat.tres" id="10_13sfc"]
+[ext_resource type="Material" uid="uid://c3ity7rg3gdln" path="res://materials/blocktexture.material" id="12_ns2rg"]
 [ext_resource type="PackedScene" uid="uid://dif8l0oibo5jy" path="res://obstacles/button.tscn" id="13_bbkom"]
 [ext_resource type="Material" uid="uid://bm777e4qs7rop" path="res://materials/innercannonmat.material" id="13_kp83q"]
+[ext_resource type="Script" uid="uid://ncu1w4o0ur2l" path="res://obstacles/buyarea.gd" id="13_ns2rg"]
 [ext_resource type="Script" uid="uid://bwkdg23q2uqq6" path="res://levels/Levelmanager.gd" id="13_pmogu"]
 [ext_resource type="Material" uid="uid://vddpdc030eoy" path="res://materials/planetseethroughmat.tres" id="14_ar48g"]
 [ext_resource type="Script" uid="uid://fqsur70jxq72" path="res://statue.gd" id="15_3uqjf"]
 [ext_resource type="Script" uid="uid://2xppvs14w60o" path="res://levels/shipscript.gd" id="15_xbe17"]
 [ext_resource type="Script" uid="uid://b8fil7eeha74w" path="res://levels/cannonarea.gd" id="16_dakm1"]
-[ext_resource type="PackedScene" uid="uid://ix80ehucnatf" path="res://obstacles/buyarea.tscn" id="16_uykmy"]
-[ext_resource type="Material" uid="uid://d0y7itowy71ir" path="res://materials/playermats/helmetmat.material" id="17_3uqjf"]
 [ext_resource type="Material" uid="uid://c4nldblabimxl" path="res://materials/buttonmat2.tres" id="17_rnobp"]
 [ext_resource type="Material" uid="uid://cxi6amp8kmr2t" path="res://materials/buttonmat0.tres" id="18_xbe17"]
 [ext_resource type="Material" uid="uid://dvc3n4uirugyp" path="res://materials/buttonmat1.tres" id="19_dakm1"]
@@ -94,46 +94,22 @@ radius = 13.397949
 height = 12.578491
 radius = 3.4536133
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y304v"]
-load_path = "res://.godot/imported/checkeredtexture.png-88843926307c0b78f3d5bf3e9e3675cd.s3tc.ctex"
+[sub_resource type="CylinderMesh" id="CylinderMesh_oufch"]
+material = ExtResource("12_ns2rg")
+top_radius = 1.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uqjf"]
-albedo_color = Color(1, 0.46596903, 0.60528946, 1)
-albedo_texture = SubResource("CompressedTexture2D_y304v")
-clearcoat_enabled = true
-clearcoat_roughness = 0.46
-anisotropy_enabled = true
-anisotropy = 0.69
-uv1_triplanar = true
-texture_filter = 0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oufch"]
+height = 2.0683594
+radius = 1.2456055
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uykmy"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ns2rg"]
 material = ExtResource("13_kp83q")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_uykmy"]
 material = ExtResource("14_ar48g")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_qr40u"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr40u"]
-albedo_color = Color(1, 0.46596903, 0.60528946, 1)
-albedo_texture = SubResource("CompressedTexture2D_y304v")
-clearcoat_enabled = true
-clearcoat_roughness = 0.46
-anisotropy_enabled = true
-anisotropy = 0.69
-uv1_triplanar = true
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_qr40u"]
-material = ExtResource("17_3uqjf")
-
-[sub_resource type="BoxMesh" id="BoxMesh_yjhhg"]
-material = ExtResource("14_ar48g")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_yjhhg"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereMesh" id="SphereMesh_huma7"]
 material = ExtResource("21_dakm1")
@@ -376,54 +352,38 @@ transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 7.5887985, 26.958
 [node name="boalb5" parent="Ship" unique_id=1774282523 instance=ExtResource("26_oufch")]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 8.701052, 21.19877, -11.433912)
 
-[node name="Buyable" parent="Ship" unique_id=1595067783 instance=ExtResource("16_uykmy")]
-transform = Transform3D(1.95, 0, 0, 0, -8.523721e-08, 1.95, 0, -1.95, -8.523721e-08, 4.237839, 6.9608555, -29.444176)
-cost = 5
-unlockable = "statue1"
-mat = SubResource("StandardMaterial3D_3uqjf")
+[node name="buypillar1" type="MeshInstance3D" parent="Ship" unique_id=15272819]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.2444854, 6.8835483, -29.1355)
+mesh = SubResource("CylinderMesh_oufch")
 
-[node name="statue1" type="Node3D" parent="Ship/Buyable" unique_id=1886094051]
-transform = Transform3D(0.51282054, 0, 0, 0, 0.5128205, 0, 0, 0, 0.5128205, 0.003408432, -0.15829468, -0.03964448)
+[node name="buyarea1" type="Area3D" parent="Ship/buypillar1" unique_id=501599734]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("13_ns2rg")
+cost = 6
+unlockable = "statue1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship/buypillar1/buyarea1" unique_id=1862654139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034179688, 0)
+shape = SubResource("CylinderShape3D_oufch")
+
+[node name="3DUI" parent="Ship/buypillar1" unique_id=1428580392 instance=ExtResource("30_uykmy")]
+transform = Transform3D(-1, 8.742278e-08, 0, 8.742278e-08, 1, 8.742278e-08, 7.642742e-15, 8.742278e-08, -1, -0.06297296, 1.5224706, -1.5383183)
+texture = SubResource("ViewportTexture_uykmy")
+desc = "guifguifheiuhgfiou"
+
+[node name="statue1" type="Node3D" parent="Ship/buypillar1" unique_id=1886094051]
 script = ExtResource("15_3uqjf")
 
-[node name="statue1bought" type="MeshInstance3D" parent="Ship/Buyable/statue1" unique_id=1197285392]
+[node name="statue1bought" type="MeshInstance3D" parent="Ship/buypillar1/statue1" unique_id=1197285392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4365864, 0)
-visible = false
 mesh = SubResource("CylinderMesh_ns2rg")
-skeleton = NodePath("")
+skeleton = NodePath("../..")
 
-[node name="statue1unbought" type="MeshInstance3D" parent="Ship/Buyable/statue1" unique_id=1924883099]
+[node name="statue1unbought" type="MeshInstance3D" parent="Ship/buypillar1/statue1" unique_id=1924883099]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0068268776, 2.434042, -0.0018520355)
 mesh = SubResource("CylinderMesh_uykmy")
-skeleton = NodePath("")
-
-[node name="3DUI" parent="Ship/Buyable" unique_id=1428580392 instance=ExtResource("30_uykmy")]
-transform = Transform3D(-0.51282054, 4.4832195e-08, 0, 4.483219e-08, 0.5128205, 4.483219e-08, 3.9193544e-15, 4.483219e-08, -0.5128205, -0.028885365, 0.6224594, -0.82852554)
-texture = SubResource("ViewportTexture_qr40u")
-desc = "exquisite taste"
-
-[node name="Buyable2" parent="Ship" unique_id=213848825 instance=ExtResource("16_uykmy")]
-transform = Transform3D(1.91, 0, 0, 0, -8.348875e-08, -1.91, 0, 1.91, -8.348875e-08, 3.6986763, 2.268682, 31.784683)
-cost = 5
-unlockable = "statue2"
-mat = SubResource("StandardMaterial3D_qr40u")
-
-[node name="statue2" type="Node3D" parent="Ship/Buyable2" unique_id=1006284220]
-script = ExtResource("15_3uqjf")
-
-[node name="statue2bought" type="MeshInstance3D" parent="Ship/Buyable2/statue2" unique_id=882613625]
-transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, 0, 1.3590988, 0)
-visible = false
-mesh = SubResource("BoxMesh_qr40u")
-
-[node name="statue2unbought" type="MeshInstance3D" parent="Ship/Buyable2/statue2" unique_id=1586218510]
-transform = Transform3D(0.8535533, -0.14644662, 0.49999997, 0.49999997, 0.49999997, -0.70710677, -0.14644662, 0.8535533, 0.49999997, 0, 1.359, 0)
-mesh = SubResource("BoxMesh_yjhhg")
-
-[node name="3DUI2" parent="Ship" unique_id=527091542 instance=ExtResource("30_uykmy")]
-transform = Transform3D(1, 0, 0, 0, -0.09428202, -0.9955455, 0, 0.9955455, -0.09428202, 3.7256787, 0.29463816, 33.41046)
-texture = SubResource("ViewportTexture_yjhhg")
-desc = "pluh cube"
+skeleton = NodePath("../..")
 
 [node name="selectioncircle" type="CSGCylinder3D" parent="." unique_id=1416838572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019347906, 26.440678, -0.01731348)
@@ -528,11 +488,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.06785, 0)
 [connection signal="UpdateButtons" from="LevelManager" to="ouroborosplanetButton" method="_on_level_manager_update_buttons"]
 [connection signal="UpdateButtons" from="LevelManager" to="SkyRuinsButton2" method="_on_level_manager_update_buttons"]
 [connection signal="area_entered" from="Ship/CannonArea" to="Ship/CannonArea" method="_on_area_entered"]
-[connection signal="bought" from="Ship/Buyable" to="Ship/Buyable/statue1" method="_on_bought"]
-[connection signal="bought" from="Ship/Buyable" to="Ship/Buyable/3DUI" method="_on_buyarea_1_bought"]
-[connection signal="unbought" from="Ship/Buyable" to="Ship/Buyable/statue1" method="_on_unbought"]
-[connection signal="bought" from="Ship/Buyable2" to="Ship/Buyable2/statue2" method="_on_bought"]
-[connection signal="bought" from="Ship/Buyable2" to="Ship/3DUI2" method="_on_buyarea_1_bought"]
-[connection signal="unbought" from="Ship/Buyable2" to="Ship/Buyable2/statue2" method="_on_unbought"]
+[connection signal="area_entered" from="Ship/buypillar1/buyarea1" to="Ship/buypillar1/buyarea1" method="_on_area_entered"]
+[connection signal="area_exited" from="Ship/buypillar1/buyarea1" to="Ship/buypillar1/buyarea1" method="_on_area_exited"]
+[connection signal="bought" from="Ship/buypillar1/buyarea1" to="Ship/buypillar1/3DUI" method="_on_buyarea_1_bought"]
+[connection signal="bought" from="Ship/buypillar1/buyarea1" to="Ship/buypillar1/statue1" method="_on_buyarea_1_bought"]
+[connection signal="unbought" from="Ship/buypillar1/buyarea1" to="Ship/buypillar1/statue1" method="_on_buyarea_1_unbought"]
 [connection signal="updateLevelEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_level_energy"]
 [connection signal="updateTotalEnergy" from="Currencymanager" to="UI" method="_on_currencymanager_update_total_energy"]

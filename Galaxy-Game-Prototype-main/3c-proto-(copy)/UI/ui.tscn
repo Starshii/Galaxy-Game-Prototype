@@ -7,12 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://0p0ybgnwbxdt" path="res://UI/texturesUI/boalbimg.tres" id="5_4fiuh"]
 [ext_resource type="FontFile" uid="uid://f83xlj1fo0lr" path="res://fonts/Matcha Cih.ttf" id="6_nm1m0"]
 
-[node name="UI" type="Control" unique_id=1013357421]
+[node name="UI" type="Control" unique_id=1013357421 node_paths=PackedStringArray("LevelBoalbCounter", "TotalBoalbCounter")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_3sbvi")
+LevelBoalbCounter = NodePath("BoalbCount")
+TotalBoalbCounter = NodePath("BoalbCountTotal")
 
 [node name="1health" type="NinePatchRect" parent="." unique_id=1367088033]
 layout_mode = 0
